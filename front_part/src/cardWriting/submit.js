@@ -87,7 +87,7 @@ async function submitCard(event) {
 
     // FormData를 순회하며 formObj에 데이터를 저장
     formData.forEach((value, key) => {
-        formObj[key] = value;
+        formObj[key] = value;   
     });
 
     // 동물 이미지 경로 추가
