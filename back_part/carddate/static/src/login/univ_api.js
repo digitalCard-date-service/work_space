@@ -1,16 +1,15 @@
-// // 인증 상태 확인
+// //인증 상태 확인
 // function checkAuth() {
 //     const authToken = getCookie('authToken');
 //     if (!authToken) {
 //         alert('로그인이 필요합니다.');
-//         window.location.href = './login.html'; // 로그인 페이지로 리디렉션
+//         window.location.href = '/login'; // 로그인 페이지로 리디렉션
 //     }
 // }
 
 'use strict';
-import { LOGIN_API } from '../config.js'
+//import { LOGIN_API } from '../config.js'
 const API_BASE_URL = 'https://univcert.com/api/v1';
-const API_KEY = LOGIN_API;
 
 /**
  * 공통 Fetch 함수
@@ -18,13 +17,14 @@ const API_KEY = LOGIN_API;
  * @param {Object} body - 요청 데이터
  */
 async function fetchAPI(endpoint, body = {}) {
+
     try {
-        const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
+        const response = await fetch(`/login/${endpoint}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ ...body, key: API_KEY }),
+            body: JSON.stringify(body),
         });
 
         if (!response.ok) {
@@ -34,7 +34,6 @@ async function fetchAPI(endpoint, body = {}) {
 
         return await response.json();
     } catch (error) {
-        console.error('API 요청 중 오류:', error.message);
         throw error;
     }
 }
@@ -80,7 +79,6 @@ document.querySelector('.email__checkButton').addEventListener('click', async ()
     try {
         // 이미 인증된 사용자 확인
         const statusCheck = await fetchAPI('status', { email });
-        console.log('Status API Response:', statusCheck);
 
         if (statusCheck.success && statusCheck.certified_date) {
             alert('이미 인증된 이메일입니다. 서비스를 이용할 수 없습니다.');
@@ -89,7 +87,6 @@ document.querySelector('.email__checkButton').addEventListener('click', async ()
 
         // 이메일 인증 요청
         const result = await fetchAPI('certify', { email, univName: schoolName, univ_check: true });
-        console.log('Certify API Response:', result);
 
         if (result.success) {
             alert('이메일 전송 성공! 이메일에서 인증코드를 확인하세요.');
@@ -140,6 +137,6 @@ function startSessionTimer(timeoutMinutes) {
     setTimeout(() => {
         alert('세션이 만료되었습니다. 다시 로그인하세요.');
         document.cookie = 'authToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; secure; samesite=strict';
-        window.location.href = './login.html';
+        window.location.href = '/login';
     }, timeoutMinutes * 60 * 1000);
 }

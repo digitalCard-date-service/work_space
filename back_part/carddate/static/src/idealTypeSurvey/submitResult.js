@@ -75,12 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
         surveyData.hobbies = hobbyInput.split(",").map((hobby) => hobby.trim()); // ,로 구분하여 배열로 변환
       }
   
-      // JSON 데이터 출력 (디버깅용)
-      console.log("보낼 데이터:", JSON.stringify(surveyData));
-  
       // 서버로 데이터 전송
       try {
-        const response = await fetch("https://your-server-endpoint.com/submit", {
+        const response = await fetch("/survey/submit", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -90,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
           alert("전송 완료");
           setTimeout(() => {
-            window.location.href = "./cardWriting.html"; // 전송 후 이동
+            window.location.href = "/drawing"; // 전송 후 이동
           }, 500);
         } else {
           throw new Error("서버 응답 오류");

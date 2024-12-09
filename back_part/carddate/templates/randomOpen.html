@@ -13,14 +13,14 @@
     <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
     <meta name="twitter:description" content="blind date site for University Student" />
     <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
-    <link rel="stylesheet" href="./css/randomOpen.css">
-    <link rel="shortcut icon" href="./assets/teamLogo.svg">
-    <script src="./src/randomOpen/randomOpen.js" type="module"></script>
-    <script src="./src/randomOpen/zoomIn.js" type="module"></script>
+    <link rel="stylesheet" href="../static/css/randomOpen.css">
+    <link rel="shortcut icon" href="../static/assets/teamLogo.svg">
+    <script src="../static/src/randomOpen/randomOpen.js" type="module"></script>
+    <script src="../static/src/randomOpen/zoomIn.js" type="module"></script>
     <title>Card Opening(랜덤카드)</title>
 </head>
 <body>
-    <script src="./src/login/univ_api.js" defer></script>
+    <script src="../static/src/login/univ_api.js" defer></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             checkAuth(); 
@@ -28,7 +28,7 @@
     </script>
     <header id="header" aria-label="title, logo">
         <div class="header__dev-container">
-            <img class="header__img" src="./assets/teamLogo.svg" alt="학교로고">
+            <img class="header__img" src="../static/assets/teamLogo.svg" alt="학교로고">
             <h1 class="header__title">명함소개팅</h1>
         </div>
     </header>
@@ -39,7 +39,7 @@
                     <div class="card-front"></div>
                     <div class="card-back">
                         <div class="card-image">
-                            <img src="./assets/1.cuteDog.png" alt="동물 이미지">
+                            <img src="../static/assets/1.cuteDog.png" alt="동물 이미지">
                         </div>
                         <div class="card-info">
                             <div class="info-row"><span class="label">성별 :</span><span class="value gender"></span></div>
@@ -57,7 +57,7 @@
                 <button id="openButton">카드1오픈</button>
                 <button id="confirmButton" disabled>확정하기</button>
             </div>
-            <button id="nextButton"><a href="./aiSimulation.html">다음페이지</a></button>
+            <button id="nextButton"><a href="../static/aiSimulation.html">다음페이지</a></button>
         </main>
 </body>
 </html>

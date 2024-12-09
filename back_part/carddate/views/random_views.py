@@ -16,19 +16,15 @@ def get_random_profile():
 
         # 선택한 프로필들을 JSON 형식으로 변환하여 반환
         profiles_data = [{
+            'id': profile.id,
             'gender': profile.gender,
             'age': profile.age,
             'major': profile.major,
             'mbti': profile.mbti,
-            'hobby': profile.hobby
+            'hobby': profile.hobby,
+            'image': profile.image,
+            'color': profile.color
         } for profile in random_profiles]
-
-        # 선택된 프로필들을 데이터베이스에서 삭제
-        for profile in random_profiles:
-            db.session.delete(profile)
-
-        # 변경 사항을 커밋하여 데이터베이스에 반영
-        db.session.commit()
 
         # 랜덤 프로필 데이터와 함께 randomOpen.html 파일을 렌더링
         return render_template('randomOpen.html', profiles=profiles_data)
