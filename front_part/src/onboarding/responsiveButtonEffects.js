@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener('DOMContentLoaded', function () {
     const button = document.querySelector('.start_cardButton');
 
