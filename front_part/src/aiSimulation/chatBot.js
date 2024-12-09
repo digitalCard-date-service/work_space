@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setConfirmedCard(storedCard);
     } else {
         alert("확정한 카드가 존재하지 않습니다. 랜덤뽑기로 이동합니다.");
-        window.location.href = "./randomOpen.html";
+        // window.location.href = "./randomOpen.html";
         
     }
 });
