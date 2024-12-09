@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="letYuchan, guapa0girl">
+    <meta name="description" content="This service is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
+    <meta property="og:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta property="og:description" content="blind date site for University Student" />
+    <meta property="og:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <meta property="og:url" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/aisimulation.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta name="twitter:description" content="blind date site for University Student" />
+    <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/idealTypeSurvey.css">
+    <link rel="shortcut icon" href="./assets/teamLogo.svg">
+    <script src="./src/idealTypeSurvey/selectedButton.js" type="module"></script>
+    <script src="./src/idealTypeSurvey/submitResult.js" type="module"></script>
+    <title>Ideal-Type survey(이상형조사)</title>
+</head>
+<body>
+    <script src="./src/login/univ_api.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            checkAuth(); 
+        });
+    </script>
+    <header id="header" aria-label="title, logo">
+        <div class="header__dev-container">
+            <img class="header__img" src="./assets/teamLogo.svg" alt="학교로고">
+            <h1 class="header__title">명함소개팅</h1>
+        </div>
+    </header>
+    <main id="main">
+        <h1 class="survey_title">이상형(Ideal Type) 고르기!</h1>
+        <form id="survey-container">
+          <div class="survey_section-container">
+            <h3 class="survey_section_title">나이(Age)</h3>
+            <div id="older" data-label="older">연상(older)</div>
+            <div id="same" data-label="same">동갑(same)</div>
+            <div id="younger" data-label="youger">연하(youger)</div>
+          </div>
+          <div class="survey_section-container">
+            <h3 class="survey_section_title">학과(Major)</h3>
+            <div id="engineering" data-label="engie">공대(Engie)</div>
+            <div id="liberalArts" data-label="libbie">문과(Libbie)</div>
+            <div id="naturalSci" data-label="scie">이과(Scie)</div>
+            <div id="music" data-label="music">음대(Music)</div>
+            <div id="physic" data-label="physic">체대(Phsysic)</div>
+            <div id="art" data-label="art">미대(Art)</div>
+          </div>
+          <div class="survey_section-container mbti">
+            <h3 class="survey_section_title">MBTI</h3>
+            <div class="mbti-group">
+              <div id="mbti_e" data-label="e">E</div>
+              <div id="mbti_i" data-label="i">I</div>
+            </div>
+            <div class="mbti-group">
+              <div id="mbti_s" data-label="s">S</div>
+              <div id="mbti_n" data-label="n">N</div>
+            </div>
+            <div class="mbti-group">
+              <div id="mbti_f" data-label="f">F</div>
+              <div id="mbti_t" data-label="t">T</div>
+            </div>
+            <div class="mbti-group">
+              <div id="mbti_j" data-label="j">J</div>
+              <div id="mbti_p" data-label="p">P</div>
+            </div>
+          </div>
+          <div class="survey_section-container">
+            <h3 class="survey_section_title">취미(Hobby)</h3>
+            <input id="hobby_input" type="text" placeholder="한 단어로, use keyword ex)축구">
+            <button id="submitButton">제출하기</button>
+          </div>
+        </form>
+      </main>
+    <footer id="contact" aria-label="information of rights and developer">
+        <div class="max-container">
+            <div class="contact-container">
+                <div class="contact_rights-container">
+                    <p>This website is copyrighted by © <strong>CHO LEE MOON JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">SVGbackgrounds</a>, other blogs.</p>
+                    <p>Lead Designers: <strong>Seo-in LEE&CHO Yu-chan</strong></p>
+                    <p>Lead Front-End Developers: <strong>Yu-chan CHO&Seo-in LEE</strong></p>
+                    <p>Lead Back-End Developers: <strong>MOON Hyo-jae&JEONG Da-un</strong></p>
+                </div>
+                <div class="contact_rightPart-container">
+                    <div class="contact__SNS-container">
+                        <a href="./contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
+                        <a href="./contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <img class="contact_img" src="./assets/teamLogo.svg" alt="teamLogo">      
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

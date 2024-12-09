@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="letYuchan, guapa0girl">
+    <meta name="description" content="This service is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
+    <meta property="og:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta property="og:description" content="blind date site for University Student" />
+    <meta property="og:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <meta property="og:url" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/aisimulation.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta name="twitter:description" content="blind date site for University Student" />
+    <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <link rel="stylesheet" href="./css/cardDrawing.css">
+    <link rel="shortcut icon" href="./assets/teamLogo.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="./src/cardDrawing/modal.js" type="module"></script>
+    <title>Card Drawing(카드뽑기)</title>
+</head>
+<body>
+    <script src="./src/login/univ_api.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            checkAuth(); 
+        });
+    </script>
+    <header id="header" aria-label="title, logo">
+        <div class="header__dev-container">
+            <img class="header__img" src="./assets/teamLogo.svg" alt="학교로고">
+            <h1 class="header__title">명함소개팅</h1>
+        </div>
+    </header>
+    <main id="main" aria-label="Drawing card, There are methods of randomly drawing 2 cards and a method of drawing 1 card through a recommendation service.">
+        <div class="max-container">
+            <div class="draw-container">
+                <section class="draw-random">
+                    <img class="draw_randomImg" src="./assets/randomImg.png" alt="랜덤뽑기">
+                    <p class="draw_desc-ran">랜덤으로 2장을 뽑아줘요
+                        <br>
+                        Give away 2 cards at random
+                    </p>
+                    <button class="draw_randomButton">DrawButton</button>
+                </section>
+                <section class="draw-recommend">
+                    <img class="draw_recommendImg" src="./assets/recommendImg.svg" alt="추천뽑기">
+                    <p class="draw_desc-rec">AI가 1장을 추천해줘요
+                        <br>
+                        AI recommends one
+                    </p>
+                    <button class="draw_recommendButton">DrawButton</button>
+                </section>
+            </div>
+            <div class="modal-overlay"></div>
+            <div class="modal">
+                <h1 class="modal_loading">뽑기중...</h1>
+                <div class="modal_card-container"></div>
+                <button class="drawButton">뽑기</button>
+            </div>
+        </div>
+    </main>
+    <footer id="contact" aria-label="information of rights and developer">
+        <div class="max-container">
+            <div class="contact-container">
+                <div class="contact_rights-container">
+                    <p>This website is copyrighted by © <strong>CHO LEE MOON JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">SVGbackgrounds</a>, other blogs.</p>
+                    <p>Lead Designers: <strong>Seo-in LEE&CHO Yu-chan</strong></p>
+                    <p>Lead Front-End Developers: <strong>Yu-chan CHO&Seo-in LEE</strong></p>
+                    <p>Lead Back-End Developers: <strong>MOON Hyo-jae&JEONG Da-un</strong></p>
+                </div>
+                <div class="contact_rightPart-container">
+                    <div class="contact__SNS-container">
+                        <a href="./contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
+                        <a href="./contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <img class="contact_img" src="./assets/teamLogo.svg" alt="teamLogo">      
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

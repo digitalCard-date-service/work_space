@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="letYuchan, guapa0girl">
+    <meta name="description" content="This service is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
+    <meta property="og:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta property="og:description" content="blind date site for University Student" />
+    <meta property="og:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <meta property="og:url" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/aisimulation.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta name="twitter:description" content="blind date site for University Student" />
+    <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="shortcut icon" href="./assets/teamLogo.svg">
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <script src="./src/login/univ_api.js" type="module"></script>
+    <title>Login(로그인)</title>
+</head>
+<body>
+        <div class="wrapper">
+            <div class="left-wrap">
+                <img src="../front_part/assets/teamLogo.svg" alt="Logo" class="logo">
+                <div class="welcome-text">
+                    명함소개팅 <br /> JOIN!
+                </div>
+            </div>
+            <div class="right-wrap">
+                <div class="login-container">
+                    <h1 class="login-title">대학 인증 로그인</h1>
+                    <div class="input-field">
+                        <label for="university">학교명</label>
+                        <input class="univ__input" type="text" id="university" placeholder="ex) 서울과학기술대학교">
+                        <button class="btn univ__checkButton">확인</button>
+                    </div>
+                    <div class="input-field">
+                        <label for="email">학교 이메일</label>
+                        <input class="email__input" type="email" id="email" placeholder="ex) honggildong@seoultech.ac.kr">
+                        <button class="btn email__checkButton">전송</button>
+                    </div>
+                    <div class="input-field">
+                        <label for="code">인증번호</label>
+                        <input class="prove__input" type="text" id="code" placeholder="ex) 1234">
+                        <button class="btn prove__checkButton">제출</button>
+                    </div>
+                    <div class="check__container">
+                        <i class="fa-regular fa-circle-check check-icon"></i>
+                        <p class="check__desc">대학 재학여부 확인</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
