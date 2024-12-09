@@ -1,0 +1,681 @@
+/* Color */
+:root{
+    --color-coral: #FF6F61;
+    --color-peach: #FF8A80;
+    --color-gray: #F5F5F5;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-DifferentGray: #888888;
+    --color-primary: var(--color-white);
+    --color-primary-variant:var(--color-gray);
+    --color-accent: var(--color-coral);
+    --color-accent-variant: var(--color-peach);
+    --color-text-variant: var(--color-DifferentGray);
+}
+
+/* animation */
+@keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes blinkTextColor {
+    0% {
+        color: var(--color-accent-variant);
+    }
+    50% {
+        color: var(--color-accent)
+    }
+    100% {
+        color: var(--color-accent-variant)
+    }
+}
+
+/* common */
+*{
+    box-sizing: border-box;
+  }
+  
+
+
+  body, html{
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul,p,h1,h2,h3{
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  button{
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+  }
+
+  .max-container{
+    max-width: 1300px;
+    margin: auto; 
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* header */
+  #header{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    background-color: var(--color-accent-variant);
+    border-bottom: 2px solid var(--color-accent);
+  }
+ .header__dev-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header__img{
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+  }
+
+  .header__title{
+    font-size: 1rem;
+    color: var(--color-white);
+    text-align: center;
+  }
+  
+  .nav__menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .nav__menu__item{
+    font-weight: 300;
+    transition: all 200ms ease-out;
+    padding: 10px;
+  }
+
+  .nav__menu__item:hover{
+    transform: scale(1.3);
+  }
+
+  .nav__menu__item a{
+    color: var(--color-white);
+  }
+
+  .nav__menu__item::after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    width: 2px;
+    height: 20px;
+    left: 15px;
+    top: 5px;
+    background-color: var(--color-white);
+  }
+
+  .nav__active{
+    border-bottom: 2px solid var(--color-primary-variant);
+  }
+
+  #main{
+    width: 100%;
+  }
+
+  /* home */
+  #home{
+    width: 100%;
+    background-color: var(--color-primary);
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('../assets/home.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .homeImg__Logo{
+    margin-top: 150px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .home__title{
+    font-size: 3rem;
+    color: black;
+    margin-bottom: 20px;
+  }
+
+  .home__desc{
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: black;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
+    -2px -2px 5px rgba(255, 255, 255, 0.3);
+  }
+
+  .home__buttons{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    padding-bottom: 50px;
+  }
+
+  .home__contact, .home__nextStep{
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent-variant);
+    border-radius: 5px;
+    padding: 5px;
+    color: var(--color-white);
+  }
+
+  .home__nextStep:hover::after{
+    display: block;
+    content: "Go AD section"; 
+    position: absolute;
+    left: 200px; 
+    transform: translateX(110%); /* 요소 크기에 따라 이동 */
+    height: 15px;
+    width: 100px; 
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px; 
+    border-radius: 5px; 
+    font-size: 12px;
+    line-height: 1.4;
+    z-index: 100; 
+  }
+
+  /* ad */
+  #ad{
+    width: 100%;
+    background-color: var(--color-primary-variant);
+    padding-bottom: 100px;
+  }
+  .ad-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ad__img{
+    width: 650px;
+    height: 750px;  
+  }
+
+
+  .ad__desc-container{
+    text-align: right;
+    position: relative;
+
+    line-height: 45px;
+}
+
+  .ad__title{
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
+    -2px -2px 5px rgba(255, 255, 255, 0.3);
+  }
+
+  .ad__title-em{
+    animation: blinkTextColor 1s infinite;
+  }
+
+  .ad__desc-kor{
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+
+  .ad__desc-eng{
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+
+  .ad__nextStep{
+    margin-top: 50px;
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent-variant);
+    border-radius: 5px;
+    padding: 5px;
+    color: var(--color-white);  
+  }
+
+  .ad__nextStep:hover::after{
+    display: block;
+    text-align: center;
+    content: "Go step1 section"; 
+    position: absolute;
+    left: 290px; 
+    transform: translateX(110%); 
+    width: 100px; 
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px; 
+    border-radius: 5px; 
+    font-size: 12px;
+    line-height: 1.4;
+    z-index: 100; 
+  }
+
+  /* steps */
+#step1{
+    margin-bottom: 70px;
+    width: 100%;
+    background-color: var(--color-primary);
+}
+
+#step2{
+    background-color: var(--color-primary-variant);
+    padding: 50px 0;
+    width: 100%;
+}
+
+#step3{
+   width: 100%;
+    background-color: var(--color-primary);
+}
+
+.step1-container, .step2-container, .step3-container{
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.step__text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.step__title{
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
+    -2px -2px 5px rgba(255, 255, 255, 0.3);
+}
+
+.step__img{
+    width: 650px;
+    height: 750px;
+}
+
+.slide-down {
+  animation: slideDown 3s ease-in-out forwards;
+}
+
+.step__desc-eng, .step__desc-kor{
+    line-height: 45px;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.step1__content{
+    text-align: left;
+}
+
+.step2__content{
+    text-align: right;
+}
+
+.step3__content{
+    text-align: left;
+}
+
+.step3__content .step__title{
+    margin-top: 100px;
+}
+
+.nextStepButton1{
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent-variant);
+    border-radius: 5px;
+    padding: 5px;
+    color: var(--color-white);
+    position: relative;
+    right: 280px;
+}
+
+.nextStepButton1:hover::after{
+    display: block;
+    text-align: center;
+    content: "Go step2 section"; 
+    position: absolute;
+    right: 20px;
+    transform: translateX(110%); 
+    width: 150px; 
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px; 
+    border-radius: 5px; 
+    font-size: 12px;
+    line-height: 1.4;
+    z-index: 100; 
+}
+
+.nextStepButton2{
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent-variant);
+    border-radius: 5px;
+    padding: 5px;
+    color: var(--color-white);
+    position: relative;
+    left: 270px;
+}
+
+.nextStepButton2:hover::after{
+    display: block;
+    text-align: center;
+    content: "Go step3 section"; 
+    position: absolute;
+    right: 230px; 
+    transform: translateX(110%); 
+    width: 150px; 
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px; 
+    border-radius: 5px; 
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+
+.nextStepButton3{
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent-variant);
+    border-radius: 5px;
+    padding: 5px;
+    color: var(--color-white);
+    margin-bottom: 100px;
+    position: relative;
+    right: 285px;
+    top: -15px;
+}
+
+.nextStepButton3:hover::after{
+    display: block;
+    text-align: center;
+    content: "Go start section"; 
+    position: absolute;
+    right: 20px; 
+    transform: translateX(110%); 
+    width: 100px; 
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px; 
+    border-radius: 5px; 
+    font-size: 12px;
+}
+
+/* start */
+#start{
+    width: 100%;
+    background-color: var(--color-primary-variant);
+    padding: 50px;
+}
+
+.start-container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.start_fortuneCard-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.start_card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  position: relative;
+  cursor: pointer;
+  margin: 10px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  display: none; /* 기본 상태는 숨김 */
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: var(--color-white); 
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.start_card.active {
+  display: block; /* 선택된 카드만 표시 */
+}
+
+.start_card:hover {
+  transform: rotateY(180deg);
+}
+
+.start_card-front, .start_card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /* 카드가 뒤집혔을 때만 보이도록 설정 */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.start_card-front {
+  background-image: url('../assets/fortuneCard.png');
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(0deg); /* 전면 초기 상태 */
+}
+
+.start_card-back {
+  transform: rotateY(180deg); /* 뒷면 초기 상태 */
+  background-color: var(--color-yello);
+  color: var(--color-accent);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.start_cardButton {
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: var(--color-primary-variant); /* 버튼 배경 색 */
+  color: var(--color-black); /* 버튼 글자 색 */
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.start_cardButton:hover {
+  color: var(--color-primary);
+  background-color: yellowgreen; /* Hover 시 색상 변경 */
+  transform: translateY(-3px); /* Hover 시 살짝 위로 이동 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Hover 시 그림자 강화 */
+}
+
+.start_cardButton:active {
+  transform: translateY(0); /* 클릭 시 원래 위치로 돌아옴 */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 감소 */
+}
+
+.start_nextStep-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.start_nextStep_desc {
+  font-size: 2rem;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
+  -2px -2px 5px rgba(255, 255, 255, 0.3);
+  font-style: italic;
+}
+
+.start_nextStep {
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.start_nextStep img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.start_nextStep:hover {
+  transform: translateY(-3px); /* Hover 시 살짝 위로 이동 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Hover 시 그림자 강화 */
+}
+
+
+
+
+
+/* arrow - up */
+#arrow-up {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  display: none;
+  background-color: var(--color-accent-variant);
+  color: var(--color-primary);
+  border: 2px solid var(--color-accent);
+  width: 60px;  
+  height: 60px; 
+  border-radius: 50%; 
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;            
+  align-items: center;      
+  justify-content: center;   
+  font-size: 24px;
+  opacity: 0.8;          
+}
+
+#arrow-up i {
+  padding: 0; 
+}
+
+#arrow-up:hover {
+  background-color: var(--color-accent);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+#arrow-up:active {
+  
+  transform: translateY(1px);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* contact */
+
+#contact{
+  color: var(--color-text-variant);
+}
+.contact-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact_rights-container{
+  font-size: 0.8rem;
+}
+
+.contact_rightPart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact__SNS-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact__SNS-container a{
+  font-size: 50px;
+  color: var(--color-DifferentGray);
+}
+
+.contact__SNS-container a:hover{
+  color: var(--color-accent);
+}
+
+
+
+.contact_img{
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  opacity: 0.5;
+}
+  
+  
+
+
+
+
+
+
+
+

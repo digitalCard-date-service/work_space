@@ -1,0 +1,14 @@
+<svg width="650" height="400" viewBox="0 0 650 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="650" height="400" fill="#FFDDBD"/>
+<path d="M0 0H650V45.4545H0V0Z" fill="#FFBF9A"/>
+<ellipse cx="325.407" cy="23.03" rx="13.5934" ry="13.9702" fill="#FFE662"/>
+<ellipse cx="324.593" cy="22.9702" rx="13.5934" ry="13.9702" fill="white"/>
+<path d="M320.004 29.8954H316.344L320.004 15.985H321.834L324.593 21.8954L327.324 15.985H329.183L332.842 29.8954H329.183L327.353 22.1939L324.593 27.9253L321.863 22.2536L320.004 29.8954Z" stroke="black" stroke-width="0.5"/>
+<path d="M323.373 21.7166V23.3882H324.477" stroke="black" stroke-width="0.25"/>
+<path d="M325.813 21.7166V23.3882H324.71" stroke="black" stroke-width="0.25"/>
+<path d="M324.013 22.9104V24.3177L324.594 24.7014L325.174 24.3177V22.9104" stroke="black" stroke-width="0.25"/>
+<rect x="324.245" y="23.7465" width="0.232365" height="0.238806" fill="#C80000"/>
+<rect x="324.709" y="23.7465" width="0.232365" height="0.238806" fill="#C80000"/>
+<path d="M320.12 15.3284H321.457L320.12 13.3583V15.3284Z" fill="#FFE662" stroke="#FFE662" stroke-width="0.5"/>
+<path d="M321.689 15.3284H320.353L321.689 13.3583V15.3284Z" fill="#FFE662" stroke="#FFE662" stroke-width="0.5"/>
+</svg>

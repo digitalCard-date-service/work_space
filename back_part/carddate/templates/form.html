@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/cardWritting.css">
+    <script src="../static/src/cardWritting/changeAnimalImg.js" type="module"></script>
+    <script src="../static/src/cardWritting/submitToserver.js" type="module"></script>
+    <script src="../static/src/cardWritting/changeColor.js" type="module"></script>
+    <title>card writting(카드작성)</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <header id="header" aria-label="title, logo">
+        <div class="header__dev-container">
+            <img class="header__img" src="../static/assets/teamLogo.svg" alt="학교로고">
+            <h1 class="header__title">명함소개팅</h1>
+        </div>
+    </header>
+    <main id="main" aria-label="writting card">
+        <form class="form-container" method="post">
+            <img class="form_image" src="../static/assets/1.cuteDog.png" alt="동물이미지">
+            <div class="form_info">
+                <div class="form_row">
+                    <label>성별 :</label>
+                    <input type="text" placeholder="여성">
+                </div>
+                <div class="form_row">
+                    <label>이름 :</label>
+                    <input type="text" placeholder="김야옹">
+                </div>
+                <div class="form_row">
+                    <label>학과 :</label>
+                    <input type="text" placeholder="컴퓨터공학과">
+                </div>
+                <div class="form_row">
+                    <label>학번(나이) :</label>
+                    <input type="text" placeholder="23학번(21살)">
+                </div>
+                <div class="form_row">
+                    <label>MBTI :</label>
+                    <input type="text" placeholder="INTJ">
+                </div>
+                <div class="form_row">
+                    <label>취미 :</label>
+                    <input type="text" placeholder="축구, OTT">
+                </div>
+                <div class="form_row">
+                    <label>연락처 :</label>
+                    <input type="text" placeholder="insta_id01">
+                </div>
+            </div>
+        </form>
+        <div class="card_UX">
+            <div class="card_UX-topContainer">
+                <div class="color-container">
+                    <button class="color c1" data-src="../static/assets/card_gray.svg"></button>
+                    <button class="color c2" data-src="../static/assets/card_pink.svg"></button>
+                    <button class="color c3" data-src="../static/assets/card_orange.svg"></button>
+                    <button class="color c4" data-src="../static/assets/card_yellow.svg"></button>
+                    <button class="color c5" data-src="../static/assets/card_green.svg"></button>
+                    <button class="color c6" data-src="../static/assets/card_blue.svg"></button>
+                    <button class="color c7" data-src="../static/assets/card_purple.svg"></button>
+                    <button class="color c8" data-src="../static/assets/card_white.svg"></button>
+                </div>
+                <button class="submitButton" type="submit">제출하기</button>
+            </div>
+            <hr>
+            <div class="animalImg-container">
+                <img src="../static/assets/1.cuteDog.png" alt="동물사진" class="animalImg img1">
+                <img src="../static/assets/2.dengE.png" alt="동물사진" class="animalImg img2">
+                <img src="../static/assets/3.husky.png" alt="동물사진" class="animalImg img3">
+                <img src="../static/assets/4.cat.png" alt="동물사진" class="animalImg img4">
+                <img src="../static/assets/5.hamster.png" alt="동물사진" class="animalImg img5">
+                <img src="../static/assets/6.rabbit.png" alt="동물사진" class="animalImg img6">
+                <img src="../static/assets/7.fox.png" alt="동물사진" class="animalImg img7">
+                <img src="../static/assets/8.panda.png" alt="동물사진" class="animalImg img8">
+                <img src="../static/assets/9.wolf.png" alt="동물사진" class="animalImg img9">
+                <img src="../static/assets/10.lion.png" alt="동물사진" class="animalImg img10">
+                <img src="../static/assets/11.tiger.png" alt="동물사진" class="animalImg img11">
+                <img src="../static/assets/12.bear.png" alt="동물사진" class="animalImg img12">
+                <img src="../static/assets/13.dragon.png" alt="동물사진" class="animalImg img13">
+                <img src="../static/assets/14.horse.png" alt="동물사진" class="animalImg img14">
+                <img src="../static/assets/15.Monkey.png" alt="동물사진" class="animalImg img15">
+                <img src="../static/assets/16.turtle.png" alt="동물사진" class="animalImg img16">
+            </div>
+        </div>
+    </main>
+    <footer id="contact" aria-label="information of rights and developer">
+        <div class="max-container">
+            <div class="contact-container">
+                <div class="contact_rights-container">
+                    <p>This website is copyrighted by © <strong>CHO MOON LEE JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">SVGbackgrounds</a>, other blogs.</p>
+                    <p>Lead Designer: <strong>Seo-in Lee </strong>(Assistant: Yu-chan Cho)</p>
+                    <p>Lead Front-End Developer: <strong>Yu-chan Cho</strong>(Assistant: Seo-in Lee)</p>
+                    <p>Lead Back-End Developers: <strong>Hyo-jae Moon & Da-un Jeong</strong></p>
+                </div>
+                <div class="contact_rightPart-container">
+                    <div class="contact__SNS-container">
+                        <a href="../static/contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
+                        <a href="../static/contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="../static/contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <img class="contact_img" src="../static/assets/teamLogo.svg" alt="teamLogo">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

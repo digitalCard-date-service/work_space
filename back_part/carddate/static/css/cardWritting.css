@@ -1,0 +1,357 @@
+:root {
+    --color-gray: #d9d9d9;
+    --color-DeepGray: #8f8f8f;
+    --color-pink: #ffbdbe;
+    --color-orange: #ffddbd;
+    --color-yellow: #feffbd;
+    --color-green: #d6ffbd;
+    --color-blue: #bee0ff;
+    --color-purple: #d4b8f7;
+    --color-white: #ffffff;
+    --color-coral: #FF6F61;
+    --color-peach: #FF8A80;
+    --color-gray: #F5F5F5;
+    --color-black: #000000;
+    --color-DifferentGray: #888888;
+    --color-primary: var(--color-white);
+    --color-primary-variant:var(--color-gray);
+    --color-accent: var(--color-coral);
+    --color-accent-variant: var(--color-peach);
+    --color-text-variant: var(--color-DifferentGray);
+}
+/* common */
+*{
+    box-sizing: border-box;
+  }
+  
+
+
+  body, html{
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul,p,h1,h2,h3{
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  button{
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+  }
+
+  .max-container{
+    max-width: 1300px;
+    margin: auto; 
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* header */
+  #header{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    background-color: var(--color-accent-variant);
+    border-bottom: 2px solid var(--color-accent);
+  }
+ .header__dev-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header__img{
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+  }
+
+  .header__title{
+    font-size: 1rem;
+    color: var(--color-white);
+    text-align: center;
+  }
+  
+ #header{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    background-color: var(--color-accent-variant);
+    border-bottom: 2px solid var(--color-accent);
+  }
+ .header__dev-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header__img{
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+  }
+
+  .header__title{
+    font-size: 1rem;
+    color: var(--color-white);
+    text-align: center;
+  }
+  
+/* main */
+#main {
+    background-color: var(--color-primary-variant);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 90 90'%3E%3Ccircle fill-opacity='0.65' fill='%23FFFFFF' cx='45' cy='45' r='8'/%3E%3Cg fill='%23FF8A80' fill-opacity='0.65'%3E%3Ccircle cx='0' cy='90' r='8'/%3E%3Ccircle cx='90' cy='90' r='8'/%3E%3Ccircle cx='90' cy='0' r='8'/%3E%3Ccircle cx='0' cy='0' r='8'/%3E%3C/g%3E%3C/svg%3E");    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.form-container:hover::after {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    text-align: center;
+    content: "기입양식 가이드:\A 1.성별(Gender) - 남성(Man, man), 여성(Woman, woman)\A 2.이름(Name) - 자유롭게 기입(anything)\A 3.학과(Major) - 학교에서 지정해준 이름 사용(use the name given by the school)\A 4.학번(나이)(ClassNum(Age)) - N학번(N살)\A 5.mbti - 대소문자 구분X(case not separated)\A 6.취미(Hobby) - 자유롭게 기입하되 한 단어로(anything, only use keyword)\A 7.연락처(contact) - instagramID, kakaoID, phone number etc";
+    position: absolute;
+    right: 80px;
+    bottom: 30px;
+    transform: translateX(110%); 
+    width: 400px;
+    height: 300px; 
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px; 
+    border-radius: 5px; 
+    font-size: 13px;
+    line-height: 1.2;
+    white-space: pre-wrap; /* 줄 바꿈 적용 */
+}
+
+
+.form-container {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 400px;
+    width: 650px;
+    background-image: url(../assets/card_gray.svg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form_image {
+    width: 230px;
+    height: 230px;
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.form_info {
+    padding: 10px;
+    width: 250px;
+}
+
+.form_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form_row label {
+    font-weight: bold;
+    flex: 0 0 40%; 
+}
+
+.form_row input {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid var(--color-black);
+    background-color: transparent;
+    outline: none;ß
+}
+
+.card_UX {
+    width: 650px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e5e5;
+}
+
+.card_UX-topContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 
+}
+
+.color-container{
+    padding: 7px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submitButton{
+    border: 1px solid var(--color-DeepGray);
+    border-radius: 20px;
+    background-color: var(--color-DeepGray);
+    color: var(--color-white);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.submitButton:hover{
+  transform: translateY(-2px); /* Hover 시 살짝 위로 이동 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Hover 시 그림자 강화 */
+}
+
+.color{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.color:hover {
+    outline: 1px solid var(--color-black);
+}
+
+.c1 {
+    background-color: var(--color-DeepGray);
+}
+
+.c2 {
+    background-color: var(--color-pink);
+}
+
+.c3 {
+    background-color: var(--color-orange) ;
+}
+
+.c4{
+    background-color: var(--color-yellow);
+}
+
+.c5 {
+    background-color: var(--color-green);
+}
+
+.c6 {
+    background-color: var(--color-blue);
+}
+
+.c7 {
+    background-color: var(--color-purple);
+}
+
+.c8 {
+    background-color: var(--color-white);
+}
+
+.animalImg-container{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.animalImg{
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.animalImg:hover {
+    outline: 2px solid var(--color-black);
+    border-radius: 5px;
+}
+
+hr {
+    width: 100%;         
+    border: 1px solid var(--color-DeepGray); 
+    margin: 0;             
+}
+
+/* contact */
+#contact{
+    background-color: var(--color-primary);
+    color: var(--color-text-variant);
+  }
+  .contact-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .contact_rights-container{
+    font-size: 0.8rem;
+  }
+  
+  .contact_rightPart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contact__SNS-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .contact__SNS-container a{
+    font-size: 50px;
+    color: var(--color-DifferentGray);
+  }
+  
+  .contact__SNS-container a:hover{
+    color: var(--color-accent);
+  }
+             
+  .contact_img{
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    opacity: 0.5;
+  }

@@ -1,0 +1,210 @@
+:root{
+  --color-coral: #FF6F61;
+  --color-peach: #FF8A80;
+  --color-gray: #F5F5F5;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-primary: var(--color-white);
+  --color-primary-variant:var(--color-gray);
+  --color-accent: var(--color-coral);
+  --color-accent-variant: var(--color-peach);
+}
+
+/* common */
+
+*{
+    box-sizing: border-box;
+  }
+
+  body{
+    margin: 0; 
+    background-color: var(--color-primary-variant);
+    overflow: hidden;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul,p,h1,h2,h3{
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  button{
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+  }
+
+  .max-container{
+    max-width: 1300px;
+    margin: auto; 
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* login form */
+  body {
+    background: linear-gradient(135deg, #ffd1dc, #ffe4e1, #ffffff);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login__container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+}
+
+.login__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.univ__container, 
+.email__container, 
+.prove__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.univ__input, 
+.email__input, 
+.prove__input {
+    width: 75%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.univ__checkButton, 
+.email__checkButton, 
+.prove__checkButton {
+    background-color: #3A99D9;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.univ__checkButton:hover, 
+.email__checkButton:hover, 
+.prove__checkButton:hover {
+    background-color: #2a6ca7;
+}
+
+.check__container {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-icon {
+    color: red;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.check__desc {
+    font-size: 16px;
+    color: var(--color-black);
+}
+
+.login__detail {
+    margin-top: 30px;
+}
+
+.login__detail p {
+    font-size: 14px;
+    color: #555;
+}
+
+.login__button {
+    background-color: #E54067;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 0;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login__button:hover {
+    background-color: #d13b5a;
+}
+
+ 
+
+/* text */
+.text-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0); /* 원래 위치 */
+  }
+  50% {
+      transform: translateY(20px); /* 아래로 이동 */
+  }
+}
+
+.text1 {
+  font-size: 4rem;
+  font-weight: bold;
+  animation: bounce 1.5s infinite;
+}
+
+.text2 {
+  font-size: 4rem;
+  font-weight: bold;
+  animation: bounce 2s infinite;
+}
+
+.text3 {
+  font-size: 4rem;
+  font-weight: bold;
+  animation: bounce 2.5s infinite;
+}
+
+.text4 {
+  font-size: 4rem;
+  font-weight: bold;
+  animation: bounce 3s infinite;
+}
+
+.text5 {
+  font-size: 4rem;
+  font-weight: bold;
+  animation: bounce 3.5s infinite;
+}

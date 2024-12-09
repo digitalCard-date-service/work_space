@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="letYuchan">
+    <meta name="author" content="letYuchan">
+    <meta name="description" content="This page is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
+    <meta property="og:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta property="og:description" content="blind date site for University Student" />
+    <meta property="og:image" content="#" />
+    <meta property="og:url" content="#" />
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <script src="../static/src/login/univ_api.js" type="module"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="shortcut icon" href="../static/assets/teamLogo.svg">
+    <title>Login(로그인)</title>
+</head>
+<body>
+    <div class="max-container">
+        <div class="text-container">
+            <span class="text1">명</span>
+            <span class="text2">함</span>
+            <span class="text3">소</span>
+            <span class="text4">개</span>
+            <span class="text5">팅</span>
+        </div>
+        <div class="login__container">
+            <h1 class="login__title">대학 인증으로 한번에 로그인!</h1>
+            <p class="대학교와 "></p>
+            <div class="univ__container">
+                <input class="univ__input" type="text" required placeholder="학교명: ex) 서울과학기술대학교" autofocus>
+                <button class="univ__checkButton" type="submit">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+            </div>
+            <div class="email__container">
+                <input class="email__input" type="email" required placeholder="학교이메일: ex) honggildong@seoultech.ac.kr">
+                <button class="email__checkButton" type="submit">
+                   <span class="">전송</span>
+                </button>
+            </div>
+            <div class="prove__container">
+                <input class="prove__input" type="text" required placeholder=" 인증번호 입력: ex) 1234">
+                <button class="prove__checkButton" type="submit">
+                    <span>제출</span>
+                </button>
+            </div>
+            <div class="check__container">
+                <i class="fa-regular fa-circle-check check-icon"></i>
+                <p class="check__desc">대학 재학여부 확인</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
