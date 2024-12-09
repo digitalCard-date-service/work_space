@@ -1,4 +1,4 @@
-/* Color */
+/* color */
 :root{
   --color-coral: #FF6F61;
   --color-peach: #FF8A80;
@@ -48,7 +48,7 @@ body, html {
   scroll-behavior: smooth; 
 }
 
-/* 왼쪽 영역 */
+/* left section */
 .left-wrap {
   flex: 1;
   background: linear-gradient(to bottom, var(--color-accent), var(--color-soft-pink));
@@ -74,7 +74,7 @@ body, html {
   line-height: 1.2;
 }
 
-/* 오른쪽 영역 */
+/* right section */
 .right-wrap {
   flex: 1;
   background: var(--color-primary);

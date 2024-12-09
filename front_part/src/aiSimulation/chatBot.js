@@ -1,4 +1,5 @@
 'use strict';
+
 import { CHATGPT_API } from "../config.js";
 
 const apiKey = CHATGPT_API; // ChatGPT API 키
@@ -32,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (storedCard) {
         setConfirmedCard(storedCard);
     } else {
-        alert("확정한 카드가 존재하지 않습니다. 다시 뽑아주세요.");
-        // window.location.href = "./Drawing.html";
+        alert("확정한 카드가 존재하지 않습니다. 랜덤뽑기로 이동합니다.");
+        window.location.href = "./randomOpen.html";
         
     }
 });
@@ -113,9 +114,8 @@ sendButton.addEventListener("click", async () => {
         botDiv.textContent = botMessage;
         messages.appendChild(botDiv);
 
-        messages.scrollTop = messages.scrollHeight; // 스크롤 자동 하단 이동
+        messages.scrollTop = messages.scrollHeight; 
     } catch (error) {
-        console.error("Error:", error);
         alert("메시지를 전송하는 중 오류가 발생했습니다.");
     }
 });

@@ -23,7 +23,7 @@ function changeColor(clickedColor) {
 
 // 834px 이하에서만 실행되는 추가 동작
 function handleSmallScreen(clickedColor) {
-    console.log("834px 이하에서 실행되는 추가 동작");
     const cardSrcMobile = clickedColor.getAttribute("data-mobile");
     card.style.backgroundImage = `url(${cardSrcMobile})`;
 }
+  

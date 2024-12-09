@@ -44,8 +44,6 @@
   }
 }
 
-
-
 @keyframes flicker {
   0%, 100% {
       opacity: 1;
