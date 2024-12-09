@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener("DOMContentLoaded", () => {
     const randomButton = document.querySelector(".draw_randomButton");
     const recommendButton = document.querySelector(".draw_recommendButton");
@@ -60,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lockScroll(); 
         currentAction = action;
         setupCardStrip(); 
-        startLoadingAnimation(); // 로딩 애니메이션 시작
+        startLoadingAnimation(); 
     }
 
     function setupCardStrip() {
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function stopAnimation() {
         animationStarted = false;
         animationCompleted = true;
-        stopLoadingAnimation(); // 로딩 애니메이션 중지
+        stopLoadingAnimation(); 
 
         const currentTranslateY = getComputedStyle(stripContainer).transform.match(/matrix.*\((.+)\)/);
         let translateY = currentTranslateY ? parseFloat(currentTranslateY[1].split(", ")[5]) : 0;

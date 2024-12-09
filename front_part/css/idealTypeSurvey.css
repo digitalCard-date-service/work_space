@@ -336,7 +336,7 @@ main {
     }
   
     form#survey-container {
-      flex-direction: column; /* 섹션을 세로로 배치 */
+      flex-direction: column; 
       gap: 15px;
       padding: 15px;
     }

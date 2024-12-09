@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     cards.forEach((card) => {
         card.addEventListener('click', () => handleCardFlip(card));
         card.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // 터치 이벤트 기본 동작 방지
+            e.preventDefault(); 
             handleCardFlip(card);
         });
     });

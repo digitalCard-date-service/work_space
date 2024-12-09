@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("modal");
     const formCheckButton = document.querySelector(".formCheckButton");

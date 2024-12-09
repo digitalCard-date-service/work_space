@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener("DOMContentLoaded", () => {
     // MBTI 그룹의 모든 div 가져오기
     const mbtiGroups = document.querySelectorAll(".mbti-group");

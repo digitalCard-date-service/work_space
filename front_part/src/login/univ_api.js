@@ -8,6 +8,7 @@
 // }
 
 'use strict';
+
 import { LOGIN_API } from '../config.js'
 const API_BASE_URL = 'https://univcert.com/api/v1';
 const API_KEY = LOGIN_API;
@@ -80,8 +81,6 @@ document.querySelector('.email__checkButton').addEventListener('click', async ()
     try {
         // 이미 인증된 사용자 확인
         const statusCheck = await fetchAPI('status', { email });
-        console.log('Status API Response:', statusCheck);
-
         if (statusCheck.success && statusCheck.certified_date) {
             alert('이미 인증된 이메일입니다. 서비스를 이용할 수 없습니다.');
             return; // 이미 인증된 경우 요청 중단
@@ -89,7 +88,6 @@ document.querySelector('.email__checkButton').addEventListener('click', async ()
 
         // 이메일 인증 요청
         const result = await fetchAPI('certify', { email, univName: schoolName, univ_check: true });
-        console.log('Certify API Response:', result);
 
         if (result.success) {
             alert('이메일 전송 성공! 이메일에서 인증코드를 확인하세요.');
@@ -126,7 +124,7 @@ document.querySelector('.prove__checkButton').addEventListener('click', async ()
                     }
 
             startSessionTimer(30); // 세션 타이머 30분 설정
-            setTimeout(() => window.location.href = './idealTypeSurvey.html', 2000);
+            setTimeout(() => window.location.href = './cardWriting.html', 2000);
         } else {
             alert(result.message || '인증번호가 잘못되었습니다.');
         }

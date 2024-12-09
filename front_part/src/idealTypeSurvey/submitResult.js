@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
     // 제출 버튼
     const submitButton = document.getElementById("submitButton");
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
           alert("전송 완료");
           setTimeout(() => {
-            window.location.href = "./cardWriting.html"; // 전송 후 이동
+            window.location.href = "./cardDrawing.html";
           }, 500);
         } else {
           throw new Error("서버 응답 오류");
