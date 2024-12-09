@@ -81,6 +81,7 @@ function matchUsers(user1, user2) {
 ### 사용자편
 
 #### 1. 홈 페이지 (`Onboarding Page`)
+![Uploading image.png…]()
 **기능**:
 - 플랫폼 소개, 사용자 환영 메시지, 간단한 사이트 이용 가이드 제공.
 
