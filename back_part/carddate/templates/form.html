@@ -3,110 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="letYuchan, guapa0girl">
+    <meta name="description" content="This service is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
+    <meta property="og:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta property="og:description" content="blind date site for University Student" />
+    <meta property="og:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <meta property="og:url" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/aisimulation.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta name="twitter:description" content="blind date site for University Student" />
+    <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../static/css/cardWritting.css">
-    <script src="../static/src/cardWritting/changeAnimalImg.js" type="module"></script>
-    <script src="../static/src/cardWritting/submitToserver.js" type="module"></script>
-    <script src="../static/src/cardWritting/changeColor.js" type="module"></script>
-    <title>card writting(카드작성)</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="./css/cardWritting.css">
+    <link rel="shortcut icon" href="./assets/teamLogo.svg">
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <script src="./src/cardWritting/changeAnimalImg.js" type="module"></script>
+    <script src="./src/cardWritting/submit.js" type="module"></script>
+    <script src="./src/cardWritting/changeColor.js" type="module"></script>
+    <script src="./src/cardWritting/modal.js" type="module"></script>   
+    <title>Card Writing(카드작성)</title>
 </head>
 <body>
+    <script src="./src/login/univ_api.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            checkAuth(); 
+        });
+    </script>
     <header id="header" aria-label="title, logo">
         <div class="header__dev-container">
-            <img class="header__img" src="../static/assets/teamLogo.svg" alt="학교로고">
+            <img class="header__img" src="./assets/teamLogo.svg" alt="학교로고">
             <h1 class="header__title">명함소개팅</h1>
         </div>
     </header>
     <main id="main" aria-label="writting card">
         <form class="form-container" method="post">
-            <img class="form_image" src="../static/assets/1.cuteDog.png" alt="동물이미지">
+            <img class="form_image" src="./assets/1.cuteDog.png" alt="동물이미지">
             <div class="form_info">
                 <div class="form_row">
                     <label>성별 :</label>
-                    <input type="text" placeholder="여성">
+                    <input type="text" name="gender" placeholder="여성" required>
                 </div>
                 <div class="form_row">
                     <label>이름 :</label>
-                    <input type="text" placeholder="김야옹">
+                    <input type="text" name="name" placeholder="김야옹" required>
                 </div>
                 <div class="form_row">
                     <label>학과 :</label>
-                    <input type="text" placeholder="컴퓨터공학과">
+                    <input type="text" name="major" placeholder="기계자동차학과" required>
                 </div>
                 <div class="form_row">
                     <label>학번(나이) :</label>
-                    <input type="text" placeholder="23학번(21살)">
+                    <input type="text" name="studentID_age" placeholder="23학번(21살)" required>
                 </div>
                 <div class="form_row">
                     <label>MBTI :</label>
-                    <input type="text" placeholder="INTJ">
+                    <input type="text" name="mbti" placeholder="INTJ" required>
                 </div>
                 <div class="form_row">
                     <label>취미 :</label>
-                    <input type="text" placeholder="축구, OTT">
+                    <input type="text" name="hobbies" placeholder="축구, OTT" required>
                 </div>
                 <div class="form_row">
                     <label>연락처 :</label>
-                    <input type="text" placeholder="insta_id01">
+                    <input type="text" name="contact" placeholder="insta_id01" required>
                 </div>
             </div>
         </form>
         <div class="card_UX">
             <div class="card_UX-topContainer">
                 <div class="color-container">
-                    <button class="color c1" data-src="../static/assets/card_gray.svg"></button>
-                    <button class="color c2" data-src="../static/assets/card_pink.svg"></button>
-                    <button class="color c3" data-src="../static/assets/card_orange.svg"></button>
-                    <button class="color c4" data-src="../static/assets/card_yellow.svg"></button>
-                    <button class="color c5" data-src="../static/assets/card_green.svg"></button>
-                    <button class="color c6" data-src="../static/assets/card_blue.svg"></button>
-                    <button class="color c7" data-src="../static/assets/card_purple.svg"></button>
-                    <button class="color c8" data-src="../static/assets/card_white.svg"></button>
+                    <button class="color c1" data-src="./assets/card_gray.svg" data-mobile="./assets/card_gray-mobile.svg"></button>
+                    <button class="color c2" data-src="./assets/card_pink.svg" data-mobile="./assets/card_pink-mobile.svg"></button>
+                    <button class="color c3" data-src="./assets/card_orange.svg" data-mobile="./assets/card_orange-mobile.svg"></button>
+                    <button class="color c4" data-src="./assets/card_yellow.svg" data-mobile="./assets/card_yellow-mobile.svg"></button>
+                    <button class="color c5" data-src="./assets/card_green.svg" data-mobile="./assets/card_green-mobile.svg"></button>
+                    <button class="color c6" data-src="./assets/card_blue.svg" data-mobile="./assets/card_blue-mobile.svg"></button>
+                    <button class="color c7" data-src="./assets/card_purple.svg" data-mobile="./assets/card_purple-mobile.svg"></button>
+                    <button class="color c8" data-src="./assets/card_white.svg" data-mobile="./assets/card_white-mobile.svg"></button>
                 </div>
                 <button class="submitButton" type="submit">제출하기</button>
+                <button class="formCheckButton">양식예시</button>
             </div>
             <hr>
             <div class="animalImg-container">
-                <img src="../static/assets/1.cuteDog.png" alt="동물사진" class="animalImg img1">
-                <img src="../static/assets/2.dengE.png" alt="동물사진" class="animalImg img2">
-                <img src="../static/assets/3.husky.png" alt="동물사진" class="animalImg img3">
-                <img src="../static/assets/4.cat.png" alt="동물사진" class="animalImg img4">
-                <img src="../static/assets/5.hamster.png" alt="동물사진" class="animalImg img5">
-                <img src="../static/assets/6.rabbit.png" alt="동물사진" class="animalImg img6">
-                <img src="../static/assets/7.fox.png" alt="동물사진" class="animalImg img7">
-                <img src="../static/assets/8.panda.png" alt="동물사진" class="animalImg img8">
-                <img src="../static/assets/9.wolf.png" alt="동물사진" class="animalImg img9">
-                <img src="../static/assets/10.lion.png" alt="동물사진" class="animalImg img10">
-                <img src="../static/assets/11.tiger.png" alt="동물사진" class="animalImg img11">
-                <img src="../static/assets/12.bear.png" alt="동물사진" class="animalImg img12">
-                <img src="../static/assets/13.dragon.png" alt="동물사진" class="animalImg img13">
-                <img src="../static/assets/14.horse.png" alt="동물사진" class="animalImg img14">
-                <img src="../static/assets/15.Monkey.png" alt="동물사진" class="animalImg img15">
-                <img src="../static/assets/16.turtle.png" alt="동물사진" class="animalImg img16">
+                <img src="./assets/1.cuteDog.png" alt="동물사진" class="animalImg img1">
+                <img src="./assets/2.dengE.png" alt="동물사진" class="animalImg img2">
+                <img src="./assets/3.husky.png" alt="동물사진" class="animalImg img3">
+                <img src="./assets/4.cat.png" alt="동물사진" class="animalImg img4">
+                <img src="./assets/5.hamster.png" alt="동물사진" class="animalImg img5">
+                <img src="./assets/6.rabbit.png" alt="동물사진" class="animalImg img6">
+                <img src="./assets/7.fox.png" alt="동물사진" class="animalImg img7">
+                <img src="./assets/8.panda.png" alt="동물사진" class="animalImg img8">
+                <img src="./assets/9.wolf.png" alt="동물사진" class="animalImg img9">
+                <img src="./assets/10.lion.png" alt="동물사진" class="animalImg img10">
+                <img src="./assets/11.tiger.png" alt="동물사진" class="animalImg img11">
+                <img src="./assets/12.bear.png" alt="동물사진" class="animalImg img12">
+                <img src="./assets/13.dragon.png" alt="동물사진" class="animalImg img13">
+                <img src="./assets/14.horse.png" alt="동물사진" class="animalImg img14">
+                <img src="./assets/15.Monkey.png" alt="동물사진" class="animalImg img15">
+                <img src="./assets/16.turtle.png" alt="동물사진" class="animalImg img16">
             </div>
         </div>
+        <div id="modal">
+            <div class="modal-content">
+              <div class="modal-title">※ 작성양식을 준수하세요! 정확히 기재하여야 추천서비스 이용시 올바른 명함이 제공됩니다.</div>
+              <div class="modal-description">"1.성별(Gender): 남성(man)/여성(woman)<br><br>2.이름(Name): 자유롭게 기입(anything)<br><br>3.학과(Major): 학교에서 지정한 이름, 단 특수기호는 생략하고 붙여씁니다. 괄호는 허용합니다.<br>Name given by the school, but don't use special symbol and stick together. Parentheses are allowed.<br><br>4.학번(나이)(ClassNum(Age)): N학번(N살)<br><br>5.mbti: 대소문자 구분X(case not separated)<br><br>6.취미(Hobby): 자유롭게 한 단어로(anything, only use keyword)<br><br>7.연락처(contact): instagramID, kakaoID, phone number etc";
+            </div>
+              <button class="modal-button">확인</button>
+            </div>
+          </div>
     </main>
     <footer id="contact" aria-label="information of rights and developer">
         <div class="max-container">
             <div class="contact-container">
                 <div class="contact_rights-container">
-                    <p>This website is copyrighted by © <strong>CHO MOON LEE JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">SVGbackgrounds</a>, other blogs.</p>
-                    <p>Lead Designer: <strong>Seo-in Lee </strong>(Assistant: Yu-chan Cho)</p>
-                    <p>Lead Front-End Developer: <strong>Yu-chan Cho</strong>(Assistant: Seo-in Lee)</p>
-                    <p>Lead Back-End Developers: <strong>Hyo-jae Moon & Da-un Jeong</strong></p>
+                    <p>This website is copyrighted by © <strong>CHO LEE MOON JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">SVGbackgrounds</a>, other blogs.</p>
+                    <p>Lead Designers: <strong>Seo-in LEE&CHO Yu-chan</strong></p>
+                    <p>Lead Front-End Developers: <strong>Yu-chan CHO&Seo-in LEE</strong></p>
+                    <p>Lead Back-End Developers: <strong>MOON Hyo-jae&JEONG Da-un</strong></p>
                 </div>
                 <div class="contact_rightPart-container">
                     <div class="contact__SNS-container">
-                        <a href="../static/contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
-                        <a href="../static/contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="../static/contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
+                        <a href="./contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
+                        <a href="./contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
                     </div>
-                    <img class="contact_img" src="../static/assets/teamLogo.svg" alt="teamLogo">
+                    <img class="contact_img" src="./assets/teamLogo.svg" alt="teamLogo">      
                 </div>
             </div>
         </div>

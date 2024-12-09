@@ -1,7 +1,7 @@
 'use strict';
 
 const images = document.querySelectorAll(".animalImg");
-const formImage = document.querySelector(".form_image");  // form_image는 여전히 body에 존재
+const formImage = document.querySelector(".form_image");  
 
 images.forEach((element) => {
     element.addEventListener("click", function(event) {
@@ -11,5 +11,5 @@ images.forEach((element) => {
 
 function changeImg(clickedImg) {
     const imgSrc = clickedImg.src;
-    formImage.src = imgSrc;  // form_image의 src를 변경
+    formImage.src = imgSrc;  
 }

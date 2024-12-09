@@ -1,9 +1,12 @@
+'use strict';
+
 document.addEventListener('DOMContentLoaded', () => {
-    const randomizeButton = document.getElementById('randomizeButton');
+    const openButton = document.getElementById('openButton');
     const confirmButton = document.getElementById('confirmButton');
-    const cardBack = document.querySelector('.card-back'); // 카드의 뒷면 요소
-    const animalImage = document.querySelector('.card-image img'); // 카드 이미지 요소
-    const infoRows = document.querySelectorAll('.info-row.hidden'); // 숨겨진 정보
+    const card = document.querySelector('.card');
+    const cardBack = document.querySelector('.card-back');
+    const animalImage = document.querySelector('.card-image img');
+    const infoRows = document.querySelectorAll('.info-row.hidden');
 
     const cardInfo = {
         gender: document.querySelector('.gender'),
@@ -15,19 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
         contact: document.querySelector('.contact'),
     };
 
-    let isRecommendationOpened = false; // 추천 오픈 상태 변수
+    let isFlipped = false; // 카드 상태 플래그
+    let isRecommendationOpened = false; // 카드 데이터를 성공적으로 가져왔는지 여부
 
-    // 서버에서 추천카드 데이터를 가져오는 함수
+    // 서버에서 추천 카드를 가져오는 함수
     async function fetchRecommendedCard() {
         try {
-            const response = await fetch('https://example.com/api/recommended-card'); // 실제 API URL
+            const response = await fetch('https://example.com/api/recommended-card'); // 서버 URL 수정 필요
             if (!response.ok) {
                 throw new Error('Failed to fetch recommended card');
             }
+            alert("명함을 가져왔습니다. 카드를 클릭해주세요.");
             return await response.json();
         } catch (error) {
-            console.error('Error fetching recommended card:', error);
-            alert('추천 데이터를 가져오는 데 실패했습니다.');
+            alert('명함을 가져오는데 실패했습니다.');
         }
     }
 
@@ -35,9 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCardUI(data) {
         if (!data) return;
 
-        // 배경 이미지 및 텍스트 데이터 업데이트
-        cardBack.style.backgroundImage = `url(${data.backgroundImage})`; // 서버에서 받은 배경 이미지 URL 설정
-        animalImage.src = data.image; // 서버에서 받은 동물 이미지 URL 설정
+        cardBack.style.backgroundImage = `url(${data.backgroundImage})`;
+        animalImage.src = data.image;
         cardInfo.gender.textContent = data.gender;
         cardInfo.name.textContent = data.name;
         cardInfo.major.textContent = data.department;
@@ -47,28 +50,52 @@ document.addEventListener('DOMContentLoaded', () => {
         cardInfo.contact.textContent = data.contact;
     }
 
-    // 추천 오픈 버튼 클릭 이벤트
-    randomizeButton.addEventListener('click', async () => {
+    // 오픈 버튼 클릭 이벤트 핸들러
+    openButton.addEventListener('click', async () => {
         if (isRecommendationOpened) {
-            alert("더 이상 추천오픈을 누를 수 없습니다."); // 경고 문구 추가
+            alert("이미 카드를 오픈했습니다."); 
             return;
         }
 
-        const recommendedCardData = await fetchRecommendedCard(); // 서버 데이터 가져오기
+        const recommendedCardData = await fetchRecommendedCard();
         if (recommendedCardData) {
-            updateCardUI(recommendedCardData); // UI 업데이트
-            randomizeButton.disabled = true; // 추천오픈 버튼 비활성화
-            confirmButton.disabled = false; // 확인 버튼 활성화
-            isRecommendationOpened = true; // 추천 오픈 상태 갱신
+            updateCardUI(recommendedCardData);
+            isRecommendationOpened = true; // 서버에서 데이터를 성공적으로 가져옴
         }
     });
 
-    // 확인 버튼 클릭 이벤트
+    // 카드 클릭 이벤트 핸들러
+    card.addEventListener('click', () => {
+        if (!isRecommendationOpened) {
+            alert("먼저 오픈 버튼을 클릭하세요."); 
+            return;
+        }
+        isFlipped = !isFlipped;
+        card.style.transform = isFlipped ? "rotateY(180deg)" : "rotateY(0deg)";
+    });
+
+    // 확정 버튼 클릭 이벤트 핸들러
     confirmButton.addEventListener('click', () => {
+        if (!isRecommendationOpened) {
+            alert("먼저 카드를 오픈하세요!");
+            return;
+        }
+
         const confirmAction = confirm("해당 카드를 확정하시겠습니까?");
         if (confirmAction) {
-            infoRows.forEach(row => row.querySelector('.value').style.visibility = 'visible'); // 숨겨진 정보 표시
-            confirmButton.disabled = true; // 확인 버튼 비활성화
+            infoRows.forEach(row => row.querySelector('.value').style.visibility = 'visible');
+            openButton.disabled = true;
+
+            // 저장된 카드 데이터를 sessionStorage에 저장
+            const confirmedCard = {
+                name: cardInfo.name.textContent,
+                age: cardInfo.studentID_age.textContent.split(' ')[0], // 예: '20살 (학번)'에서 '20'만 추출
+                mbti: cardInfo.mbti.textContent,
+                hobbies: cardInfo.hobbies.textContent,
+                image: animalImage.src,
+            };
+            sessionStorage.setItem('confirmedCard', JSON.stringify(confirmedCard));
+            alert("카드가 저장되었습니다!");
         }
     });
 });

@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="letYuchan">
-    <meta name="description" content="This page is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
+    <meta name="author" content="letYuchan, guapa0girl">
+    <meta name="description" content="This service is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
     <meta property="og:title" content="card with love(명함을 사랑을 싣고)" />
     <meta property="og:description" content="blind date site for University Student" />
-    <meta property="og:image" content="#" />
-    <meta property="og:url" content="#" />
-    <meta property="og:type" content="website" />
-    <script src="../static/src/onboarding/home_typeit.js" type="module"></script>
-    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
-    <script src="../static/src/onboarding/fortune.js" type="module"></script>
-    <script src="../static/src/onboarding/active.js" type="module"></script>
-    <script src="../static/src/onboarding//arrowUp.js" type="module"></script>
-    <script src="../static/src/onboarding/sectionImgAni.js" type="module"></script>
-    <script src="../static/src/onboarding/scrollToTop.js" type="module"></script>
-    <link rel="stylesheet" href="../static/css/onboarding.css">
+    <meta property="og:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <meta property="og:url" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/aisimulation.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
+    <meta name="twitter:description" content="blind date site for University Student" />
+    <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <link rel="stylesheet" href="./css/onboarding.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="./assets/teamLogo.svg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <script src="./src/onboarding/cardRotate.js" type="module"></script>
+    <script src="./src/onboarding/home_typeit.js" type="module"></script>
+    <script src="./src/onboarding/active.js" type="module"></script>
+    <script src="./src/onboarding//arrowUp.js" type="module"></script>
+    <script src="./src/onboarding/sectionImgAni.js" type="module"></script>
+    <script src="./src/onboarding/scrollToTop.js" type="module"></script>
+    <script src="./src/onboarding/responsiveButtonEffects.js" type="module"></script>
     <title>Card With Love(명함은 사랑을 싣고)</title>
 </head>
 <body>
     <header id="header" aria-label="title, logo, navigation bar">
         <div class="header__dev-container">
-            <img class="header__img" src="../static/assets/teamLogo.svg" alt="학교로고">
+            <img class="header__img" src="./assets/teamLogo.svg" alt="학교로고">
             <h1 class="header__title">명함소개팅</h1>
         </div>
         <nav class="nav__container">
             <ul class="nav__menu">
                 <li class="nav__menu__item"><a class=" nav__active" href="#home">Home</a></li>
                 <li class="nav__menu__item"><a href="#ad">AD</a></li>
-                <li class="nav__menu__item"><a href="#step1">Step1</a></li>
-                <li class="nav__menu__item"><a href="#step2">Step2</a></li>
-                <li class="nav__menu__item"><a href="#step3">Step3</a></li>
+                <li class="nav__menu__item"><a href="#step1_">Step1</a></li>
+                <li class="nav__menu__item"><a href="#step2_">Step2</a></li>
+                <li class="nav__menu__item"><a href="#step3_">Step3</a></li>
                 <li class="nav__menu__item"><a href="#start">Start</a></li>
                 <li class="nav__menu__item"><a href="#contact">Contact</a></li>
             </ul>
@@ -46,7 +50,7 @@
     <main id="main" aria-label="how to use this web-site">
         <section id="home">
             <div class="max-container">
-                    <img class="homeImg__Logo" src="../static/assets/teamLogo.svg">
+                    <img class="homeImg__Logo" src="./assets/teamLogo.svg">
                 <div class="home__desc-container">
                     <h1 class="home__title"></h1>
                     <p class="home__desc">
@@ -66,7 +70,7 @@
         <section id="ad">
             <div class="max-container">
                 <div class="ad-container">
-                    <img class="ad__img" src="../static/assets/ad.svg" alt="홍보이미지">
+                    <img class="ad__img" src="./assets/ad.svg" alt="홍보이미지"> 
                     <div class="ad__desc-container">
                         <h1 class="ad__title">
                             명함소개팅, 이제는 <em class="ad__title-em">온라인 </em>으로
@@ -85,11 +89,12 @@
                             <br>
                             Submit your card right now by entering simple information.
                         </p>
-                        <a class="ad__nextStep" href="#step1">NEXT</a>
-                    </div>
-                </div>
+                        <a class="ad__nextStep" href="#step1_">NEXT</a>
+                    </div>  
+                </div>     
             </div>
         </section>
+        <div id="step1_"></div> <!-- nextbutton 클릭시 헤더에 내용이 블러처리되는 예외상황을 해결하기 위한 요소-->
         <section id="step1">
             <div class="max-container">
                 <div class="step1-container">
@@ -109,45 +114,47 @@
                                 2. Enter your university, school email, and verification code.
                                 <br>
                                 3. If you have already verified, enter your email&click the button.
-                            </p>
+                            </p>        
                         </article>
-                        <a class="nextStepButton1" href="#step2">NEXT</a>
-                    </div>
-                    <img class="step__img" src="../static/assets/step1.svg" alt="step1-img">
+                        <a class="nextStepButton1" href="#step2_">NEXT</a>
+                    </div>                
+                    <img class="step__img" src="./assets/step1.svg" alt="step1-img">
                 </div>
             </div>
         </section>
+        <div id="step2_"></div>
         <section id="step2">
             <div class="max-container">
-                <div class="step2-container">
-                    <img class="step__img" src="../static/assets/step2.svg" alt="step2-img">
+                <div class="step2-container">               
+                    <img class="step__img" src="./assets/step2.svg" alt="step2-img">
                     <div class="step__text-container">
                         <article class="step2__content">
                             <h1 class="step__title">2. 명함 작성하기<br>(Create a card)</h1>
-                            <p class="step__desc-kor">
+                            <p class="step__desc-kor"> 
                                 1. 원하는 명함 색상과 동물상을 고르세요.
                                 <br>
                                 2. 순서대로 정보를 작성해주세요.
                                 <br>
-                                3. 작성이 끝났다면 제출해주세요.
+                                3. 작성이 끝났다면 제출해주세요.                           
                             </p>
-                            <p class="step__desc-eng">
+                            <p class="step__desc-eng"> 
                                 1. Choose your preferred business card color and animal icon.
                                 <br>
                                 2. Fill in the information in order.
                                 <br>
                                 3. Submit the form once you are done.
-                            </p>
+                            </p>                        
                         </article>
-                        <a class="nextStepButton2" href="#step3">NEXT</a>
+                        <a class="nextStepButton2" href="#step3_">NEXT</a>
                     </div>
                 </div>
-            </div>
+            </div>          
         </section>
+        <div id="step3_"></div>
         <section id="step3">
             <div class="max-container">
                 <div class="step3-container">
-                    <div class="step__text-container">
+                    <div class="step__text-container">  
                         <article class="step3__content">
                             <h1 class="step__title">3. 명함 뽑기<br>(Pick a card)</h1>
                             <p class="step__desc-kor">
@@ -158,60 +165,60 @@
                                3. 이제 상대방과 연락하세요!
                             </p>
                             <p class="step__desc-eng">
-                                1. Provide 1 card from the recommended service or 2 cards at random.
+                                1. Provide 1 card from the recommended service or 2 cards at random. 
                                 <br>
                                 2. When cards are confirmed, name and contact information will be revealed.
                                 <br>
                                 3. Now, get in touch with the other person!
-                            </p>
-                        </article>
-                        <a class="nextStepButton3" href="#start">NEXT</a>
+                            </p>                                                    
+                        </article>    
+                        <a class="nextStepButton3" href="#start">NEXT</a>      
                     </div>
-                    <img class="step__img" src="../static/assets/step3.svg" alt="step3-img">
-                </div>
+                    <img class="step__img" src="./assets/step3.svg" alt="step3-img">
+                </div>           
             </div>
-        </section>
+        </section>           
         <section id="start">
             <div class="max-container">
                 <div class="start-container">
                     <div class="start_fortuneCard-container">
-                        <button class="start_cardButton">포츈카드 뽑기!</button>
+                        <button class="start_cardButton">포춘카드 뽑기!</button>
                         <ul>
                             <li class="start_card card1">
                                 <div class="start_card-front"></div>
-                                <div class="start_card-back">당신의 이상형이 바로 곁에 있어요!</div>
+                                <div class="start_card-back">당신의 이상형이 바로 곁에 있어요!<br><br>True love might be right infront of you!</div>
                             </li>
                             <li class="start_card card2">
                                 <div class="start_card-front"></div>
-                                <div class="start_card-back">당신에게 특별한 사람이 곧 찾아올 거예요.</div>
+                                <div class="start_card-back">당신에게 특별한 사람이 곧 찾아올 거예요.<br><br>Someone special is destined to find their way to you.</div>
                             </li>
                             <li class="start_card card3">
                                 <div class="start_card-front"></div>
-                                <div class="start_card-back">행운이 함께하는 오늘, 사랑을 느껴보세요.</div>
+                                <div class="start_card-back">행운이 함께하는 오늘, 사랑을 느껴보세요.<br><br>With lucky by your side today, let your heart discover love.</div>
                             </li>
                             <li class="start_card card4">
                                 <div class="start_card-front"></div>
-                                <div class="start_card-back">마음의 문을 열면 사랑이 들어옵니다.</div>
+                                <div class="start_card-back">마음의 문을 열면 사랑이 들어옵니다.<br><br>When you open your heart, love will find its way in.</div>
                             </li>
                             <li class="start_card card5">
                                 <div class="start_card-front"></div>
-                                <div class="start_card-back">특별한 인연은 오늘이 시작입니다.</div>
+                                <div class="start_card-back">특별한 인연은 오늘부터 시작됩니다.<br><br>A special connection begins today.</div>
                             </li>
                             <li class="start_card card6">
                                 <div class="start_card-front"></div>
-                                <div class="start_card-back">행운이 따르는 하루, 사랑도 가득합니다.</div>
+                                <div class="start_card-back">운명의 상대가 당신을 기다립니다!<br><br>Your destined soulmate is wating for you</div>
                             </li>
                             <li class="start_card card7">
                                 <div class="start_card-front"></div>
-                                <div class="start_card-back">오늘읜 연애의 기운이 느껴지지 않네요..</div>
+                                <div class="start_card-back">용기있는 자가 미녀를 얻는다.<br><br>Boldness wins hearts</div>
                             </li>
                         </ul>
                     </div>
                     <div  class="start_nextStep-container">
-                        <p class="start_nextStep_desc">자.. 이제 떠나볼까요. 운명의 상대를 만나러!</p>
-                        <a class="start_nextStep" href="./login"><img src="../static/assets/startButton.svg" alt=""></a>
+                        <p class="start_nextStep_desc">자.. 이제 떠나볼까요.. 운명의 상대를 만나러!</p>
+                        <a class="start_nextStep" href="./login.html">START</a>
                     </div>
-                </div>
+                </div>     
             </div>
         </section>
     </main>
@@ -222,20 +229,19 @@
         <div class="max-container">
             <div class="contact-container">
                 <div class="contact_rights-container">
-                    <p>This website is copyrighted by © <strong>CHO MOON LEE JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">SVGbackgrounds</a>, other blogs.</p>
-                    <p>Lead Designer: <strong>Seo-in Lee </strong>(Assistant: Yu-chan Cho)</p>
-                    <p>Lead Front-End Developer: <strong>Yu-chan Cho</strong>(Assistant: Seo-in Lee)</p>
-                    <p>Lead Back-End Developers: <strong>Hyo-jae Moon & Da-un Jeong</strong></p>
+                    <p>This website is copyrighted by © <strong>CHO LEE MOON JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">SVGbackgrounds</a>, other blogs.</p>
+                    <p>Lead Designers: <strong>Seo-in LEE&CHO Yu-chan</strong></p>
+                    <p>Lead Front-End Developers: <strong>Yu-chan CHO&Seo-in LEE</strong></p>
+                    <p>Lead Back-End Developers: <strong>MOON Hyo-jae&JEONG Da-un</strong></p>
                 </div>
                 <div class="contact_rightPart-container">
                     <div class="contact__SNS-container">
-                        <a href="../static/contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
-                        <a href="../static/contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="../static/contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
+                        <a href="./contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
+                        <a href="./contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
                     </div>
-                    <img class="contact_img" src="../static/assets/teamLogo.svg" alt="teamLogo">
-                </div>
-
+                    <img class="contact_img" src="./assets/teamLogo.svg" alt="teamLogo">      
+                </div>            
             </div>
         </div>
     </footer>

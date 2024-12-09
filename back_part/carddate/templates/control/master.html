@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자용</title>
+    <style>
+        .control-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        .page-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .user-item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="control-container">
+        <div class="page-container">
+            <a href="../front_part/onboarding.html">온보딩</a>
+            <a href="../front_part/login.html">로그인</a>
+            <a href="../front_part/idealTypeSurvey.html">이상형조사</a>
+            <a href="../front_part/cardWriting.html">명함작성</a>
+            <a href="../front_part/cardDrawing.html">명함뽑기</a>
+            <a href="../front_part/randomOpen.html">랜덤확정</a>
+            <a href="../front_part/recommendOpen.html">추천확정</a>
+            <a href="../front_part/aiSimulation.html">마지막</a>
+        </div>
+        <button id="initbutton">인증유저 초기화</button>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const initButton = document.getElementById("initbutton");
+        const API_KEY = "0a88c9b6-497f-4236-820c-79866b6a4e08"; // 부여받은 API 키
+        const FETCH_URL = "https://univcert.com/api/v1/certifiedlist";
+        const DELETE_URL = "https://univcert.com/api/v1/certifiedlist"; // DELETE 요청을 처리하는 API URL
+
+        // 인증 유저 리스트 출력 함수
+        async function fetchCertifiedUsers() {
+            try {
+                const response = await fetch(FETCH_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        key: API_KEY // API 키 포함
+                    })
+                });
+    
+                if (!response.ok) {
+                    const errorDetails = await response.json();
+                    throw new Error(errorDetails.message || "인증된 유저 리스트 가져오기 실패");
+                }
+    
+                const result = await response.json();
+                if (result.success) {
+                    displayCertifiedUsers(result.data); // 성공적으로 가져온 데이터를 출력
+                } else {
+                    throw new Error("응답 성공 상태가 false입니다.");
+                }
+            } catch (error) {
+                console.error("유저 리스트 가져오기 중 오류:", error.message);
+                alert(`유저 리스트를 가져오는 데 실패했습니다: ${error.message}`);
+            }
+        }
+    
+        // 인증 유저 리스트 출력 함수
+        function displayCertifiedUsers(users) {
+            const container = document.createElement("div");
+            container.className = "user-list-container";
+            document.body.appendChild(container);
+    
+            // 리스트 렌더링
+            users.forEach((user, index) => {
+                const userDiv = document.createElement("div");
+                userDiv.className = "user-item";
+                userDiv.innerHTML = `
+                    <p><strong>이메일:</strong> ${user.email}</p>
+                    <p><strong>학교명:</strong> ${user.univName}</p>
+                    <p><strong>인증 날짜:</strong> ${user.certified_date}</p>
+                    <p><strong>인증 횟수:</strong> ${user.count}</p>
+                    <button class="delete-button" data-index="${index}">삭제</button>
+                `;
+                container.appendChild(userDiv);
+            });
+    
+            // 삭제 버튼 이벤트 등록
+            const deleteButtons = document.querySelectorAll(".delete-button");
+            deleteButtons.forEach((button) =>
+                button.addEventListener("click", (e) => handleDelete(users[e.target.dataset.index]))
+            );
+        }
+    
+        // 특정 유저 삭제 함수
+        async function handleDelete(user) {
+            const confirmDelete = confirm(`${user.email} 유저를 삭제하시겠습니까?`);
+            if (!confirmDelete) return;
+
+            try {
+                const response = await fetch(DELETE_URL, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        key: API_KEY, // API 키 포함
+                        email: user.email // 삭제할 유저 이메일 전달
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorDetails = await response.json();
+                    throw new Error(errorDetails.message || "유저 삭제 요청 실패");
+                }
+
+                const result = await response.json();
+                if (result.success) {
+                    alert("유저가 성공적으로 삭제되었습니다.");
+                    location.reload(); // 삭제 후 페이지 새로고침
+                } else {
+                    throw new Error("삭제 요청 응답 상태가 false입니다.");
+                }
+            } catch (error) {
+                console.error("삭제 중 오류 발생:", error.message);
+                alert(`삭제 요청 중 문제가 발생했습니다: ${error.message}`);
+            }
+        }
+    
+        // 초기화 버튼 클릭 이벤트
+        initButton.addEventListener("click", () => {
+            fetchCertifiedUsers();
+        });
+    });
+</script>
+</html>

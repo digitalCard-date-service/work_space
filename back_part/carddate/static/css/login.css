@@ -1,210 +1,250 @@
+/* Color */
 :root{
   --color-coral: #FF6F61;
   --color-peach: #FF8A80;
   --color-gray: #F5F5F5;
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-DifferentGray: #888888;
+  --color-deepGray: #333;
+  --color-light-pink: #ffe9f0;
+  --color-hot-pink: #ff85a1;
+  --color-soft-pink: #ffd9e8;
+  --color-deep-pink: #ff577f;
   --color-primary: var(--color-white);
   --color-primary-variant:var(--color-gray);
-  --color-accent: var(--color-coral);
-  --color-accent-variant: var(--color-peach);
+  --color-accent: var(--color-deep-pink);
+  --color-accent-variant: var(--color-hot-pink);
+  --color-text-variant: var(--color-DifferentGray);
+}
+
+/* animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* common */
-
-*{
-    box-sizing: border-box;
-  }
-
-  body{
-    margin: 0; 
-    background-color: var(--color-primary-variant);
-    overflow: hidden;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  ul,p,h1,h2,h3{
-    margin: 0;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  button{
-    background-color: transparent;
-    outline: 0;
-    border: 0;
-  }
-
-  .max-container{
-    max-width: 1300px;
-    margin: auto; 
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* login form */
-  body {
-    background: linear-gradient(135deg, #ffd1dc, #ffe4e1, #ffffff);
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.login__container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 400px;
-    text-align: center;
-}
-
-.login__title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.univ__container, 
-.email__container, 
-.prove__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.univ__input, 
-.email__input, 
-.prove__input {
-    width: 75%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.univ__checkButton, 
-.email__checkButton, 
-.prove__checkButton {
-    background-color: #3A99D9;
-    border: none;
-    color: white;
-    padding: 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.univ__checkButton:hover, 
-.email__checkButton:hover, 
-.prove__checkButton:hover {
-    background-color: #2a6ca7;
-}
-
-.check__container {
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.check-icon {
-    color: red;
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.check__desc {
-    font-size: 16px;
-    color: var(--color-black);
-}
-
-.login__detail {
-    margin-top: 30px;
-}
-
-.login__detail p {
-    font-size: 14px;
-    color: #555;
-}
-
-.login__button {
-    background-color: #E54067;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 0;
-    width: 100%;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login__button:hover {
-    background-color: #d13b5a;
-}
-
- 
-
-/* text */
-.text-container{
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
   height: 100%;
   width: 100%;
+  overflow-x: hidden; 
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto; 
+  scroll-behavior: smooth; 
+}
+
+/* 왼쪽 영역 */
+.left-wrap {
+  flex: 1;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-soft-pink));
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+  animation: spin 2s ease-in-out forwards;
+}
+
+.welcome-text {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+/* 오른쪽 영역 */
+.right-wrap {
+  flex: 1;
+  background: var(--color-primary);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  padding: 20px;
 }
 
-@keyframes bounce {
-  0%, 100% {
-      transform: translateY(0); /* 원래 위치 */
+.login-container {
+  width: 100%;
+  max-width: 380px;
+  background: var(--color-primary);
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--color-accent-variant);
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  width: 100%;
+  gap: 10px;
+}
+
+.input-field label {
+  font-size: 1.2rem;
+  color: var(--color-deepGray);
+  margin-bottom: 8px;
+}
+
+.input-field input {
+  width: 95%;
+  padding: 12px;
+  border: 1px solid var(--color-deepGray);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  touch-action: manipulation;
+}
+
+.input-field input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-soft-pink);
+  outline: none;
+}
+
+.btn {
+  background-color: var(--color-accent-variant);
+  color: var(--color-white);
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  touch-action: manipulation; 
+  width: 20%;
+  align-self: flex-end;
+}
+
+.btn:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0); 
+}
+
+.check__container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.check-icon {
+  font-size: 1.5rem;
+  color: red;
+}
+
+.check__desc {
+  font-size: 1.3rem;
+  color: var(--color-deepGray);
+  font-weight: 500;
+}
+
+/* responsive web */
+@media (max-width: 834px) {
+  .wrapper {
+    flex-direction: column;
+    height: auto;
   }
-  50% {
-      transform: translateY(20px); /* 아래로 이동 */
+
+  .left-wrap {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .welcome-text {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .right-wrap {
+    padding: 10px;
+  }
+
+  .login-container {
+    padding: 15px;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .login-title {
+    font-size: 1.2rem;
+  }
+
+  .input-field{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .input-field label {
+    font-size: 1.2rem;
+  }
+
+  .input-field input {
+    font-size: 0.8rem;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px;
+    width: 30%;
+    align-self: auto;
+  }
+  .btn:active {
+    background-color: var(--color-accent);
+  }
+
+  .check__desc {
+    font-size: 1.5rem;
+  }
+
+  .check-icon {
+    font-size: 1.5rem;
   }
 }
 
-.text1 {
-  font-size: 4rem;
-  font-weight: bold;
-  animation: bounce 1.5s infinite;
-}
-
-.text2 {
-  font-size: 4rem;
-  font-weight: bold;
-  animation: bounce 2s infinite;
-}
-
-.text3 {
-  font-size: 4rem;
-  font-weight: bold;
-  animation: bounce 2.5s infinite;
-}
-
-.text4 {
-  font-size: 4rem;
-  font-weight: bold;
-  animation: bounce 3s infinite;
-}
-
-.text5 {
-  font-size: 4rem;
-  font-weight: bold;
-  animation: bounce 3.5s infinite;
-}

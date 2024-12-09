@@ -5,66 +5,74 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalOverlay = document.querySelector(".modal-overlay");
     const drawButton = document.querySelector(".drawButton");
     const cardStrip = document.querySelector(".modal_card-container");
+    const modalLoading = document.querySelector(".modal_loading");
 
     const cardImages = [
-        "../static/assets/card_gray.svg",
-        "../static/assets/card_blue.svg",
-        "../static/assets/card_yellow.svg",
-        "../static/assets/card_pink.svg",
-        "../static/assets/card_orange.svg",
-        "../static/assets/card_green.svg",
-        "../static/assets/card_purple.svg",
-        "../static/assets/card_white.svg"
+        "./assets/card_gray.svg",
+        "./assets/card_blue.svg",
+        "./assets/card_yellow.svg",
+        "./assets/card_pink.svg",
+        "./assets/card_orange.svg",
+        "./assets/card_green.svg",
+        "./assets/card_purple.svg",
+        "./assets/card_white.svg"
     ];
 
     let isSpinning = false;
-    let spinDuration = 10; // 뽑기 버튼 누른 후의 애니메이션 속도
-    let slowSpeed = 20; // 평상시 천천히 움직이는 속도
+    let spinDuration = 10; 
+    let slowSpeed = 20; 
     let stripContainer;
-    const cardHeight = 400; // 카드 높이 (CSS와 맞춤)
-    let totalCardHeight; // 전체 카드 스트립의 높이
+    const cardHeight = 400; 
+    let totalCardHeight; 
     let startTime;
     let currentAction = "";
     let animationStarted = false;
     let animationCompleted = false;
+    let loadingInterval;
 
-    // 스크롤락 기능
     function lockScroll() {
-        document.body.style.overflow = "hidden"; // 스크롤 차단
-        document.body.style.height = "100%";    // 높이 고정
+        document.body.style.overflow = "hidden"; 
+        document.body.style.height = "100%";    
     }
 
     function unlockScroll() {
-        document.body.style.overflow = ""; // 스크롤 복구
-        document.body.style.height = "";   // 높이 복구
+        document.body.style.overflow = "";
+        document.body.style.height = "";   
+    }
+
+    function startLoadingAnimation() {
+        let dots = 0;
+        modalLoading.textContent = "뽑기중";
+        loadingInterval = setInterval(() => {
+            dots = (dots + 1) % 4; 
+            modalLoading.textContent = "뽑기중" + ".".repeat(dots);
+        }, 500);
+    }
+
+    function stopLoadingAnimation() {
+        clearInterval(loadingInterval);
+        modalLoading.textContent = "뽑기중...";
     }
 
     function showModal(action) {
         modal.classList.add("active");
         modalOverlay.classList.add("active");
-        lockScroll(); // 스크롤 잠금
+        lockScroll(); 
         currentAction = action;
-        setupCardStrip(); // 애니메이션 세팅
-    }
-
-    function hideModal() {
-        modal.classList.remove("active");
-        modalOverlay.classList.remove("active");
-        unlockScroll(); // 스크롤 복구
+        setupCardStrip(); 
+        startLoadingAnimation(); // 로딩 애니메이션 시작
     }
 
     function setupCardStrip() {
         stripContainer = document.createElement("div");
         stripContainer.classList.add("card-strip");
 
-        // 카드 이미지 추가
         cardImages.forEach((src) => {
             const img = document.createElement("img");
             img.src = src;
             stripContainer.appendChild(img);
         });
 
-        // 카드 반복 추가
         cardImages.forEach((src) => {
             const img = document.createElement("img");
             img.src = src;
@@ -74,15 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
         cardStrip.innerHTML = "";
         cardStrip.appendChild(stripContainer);
 
-        totalCardHeight = stripContainer.scrollHeight; // 전체 높이 계산
+        totalCardHeight = stripContainer.scrollHeight; 
 
-        // 평상시 천천히 움직이는 애니메이션 설정
         stripContainer.style.animation = `scroll ${slowSpeed}s linear infinite`;
     }
 
     function startAnimation() {
         animationStarted = true;
-        stripContainer.style.animationDuration = `${spinDuration}s`; // 빠르게 움직이도록 설정
+        stripContainer.style.animationDuration = `${spinDuration}s`; 
         stripContainer.style.animationTimingFunction = "linear";
         startTime = performance.now();
         animateScroll();
@@ -94,8 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const now = performance.now();
         const timeElapsed = (now - startTime) / 1000;
 
-        const progress = Math.min(timeElapsed / spinDuration, 1); // 진행 비율
-        const currentSpeed = Math.max(1 - progress, 0); // 속도 점차 줄이기
+        const progress = Math.min(timeElapsed / spinDuration, 1); 
+        const currentSpeed = Math.max(1 - progress, 0); 
 
         stripContainer.style.animationDuration = `${currentSpeed * spinDuration + 1}s`;
 
@@ -111,28 +118,27 @@ document.addEventListener("DOMContentLoaded", () => {
     function stopAnimation() {
         animationStarted = false;
         animationCompleted = true;
+        stopLoadingAnimation(); // 로딩 애니메이션 중지
 
-        // 현재 `translateY` 값 가져오기
         const currentTranslateY = getComputedStyle(stripContainer).transform.match(/matrix.*\((.+)\)/);
         let translateY = currentTranslateY ? parseFloat(currentTranslateY[1].split(", ")[5]) : 0;
 
-        // 카드 높이에 맞게 정렬
         const offset = Math.abs(translateY) % cardHeight;
         if (offset > 0) {
-            translateY -= offset; // 카드 높이에 맞추기
+            translateY -= offset; 
         }
 
-        stripContainer.style.animation = "none"; // 애니메이션 중지
-        stripContainer.style.transform = `translateY(${translateY}px)`; // 최종 위치 설정
+        stripContainer.style.animation = "none"; 
+        stripContainer.style.transform = `translateY(${translateY}px)`; 
 
         isSpinning = false;
 
         setTimeout(() => {
             alert("카드 뽑기 성공!");
             if (currentAction === "random") {
-                window.location.href = "/random";
+                window.location.href = "./randomOpen.html";
             } else if (currentAction === "recommend") {
-                window.location.href = "/recommend";
+                window.location.href = "./recommendOpen.html";
             }
         }, 1000);
     }
@@ -147,8 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
             startAnimation();
         }
     });
-
-    modalOverlay.addEventListener("click", () => hideModal());
 
     modal.addEventListener("click", (event) => {
         event.stopPropagation();

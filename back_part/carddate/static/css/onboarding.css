@@ -5,11 +5,16 @@
     --color-gray: #F5F5F5;
     --color-white: #ffffff;
     --color-black: #000000;
+    --color-yellow: #feffbd;
     --color-DifferentGray: #888888;
+    --color-light-pink: #ffe9f0;
+    --color-hot-pink: #ff85a1;
+    --color-soft-pink: #ffd9e8;
+    --color-deep-pink: #ff577f;
     --color-primary: var(--color-white);
     --color-primary-variant:var(--color-gray);
-    --color-accent: var(--color-coral);
-    --color-accent-variant: var(--color-peach);
+    --color-accent: var(--color-deep-pink);
+    --color-accent-variant: var(--color-hot-pink);
     --color-text-variant: var(--color-DifferentGray);
 }
 
@@ -37,14 +42,43 @@
     }
 }
 
+@keyframes glow {
+  0% {
+      box-shadow: 0 0 20px 5px rgba(255, 133, 161, 0.8), 
+                  0 0 30px 5px rgba(255, 133, 161, 0.6), 
+                  0 0 30px 8px rgba(255, 133, 161, 0.4);
+  }
+  50% {
+      box-shadow: 0 0 15px 5px rgba(255, 133, 161, 0.9), 
+                  0 0 25px 10px rgba(255, 133, 161, 0.7), 
+                  0 0 35px 15px rgba(255, 133, 161, 0.5);
+  }
+  100% {
+      box-shadow: 0 0 20px 8px rgba(255, 133, 161, 1), 
+                  0 0 30px 15px rgba(255, 133, 161, 0.8), 
+                  0 0 40px 23px rgba(255, 133, 161, 0.6);
+  }
+}
+
+
+@keyframes flicker {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.9;
+  }
+  75% {
+      opacity: 0.95;
+  }
+}
+
 /* common */
 *{
     box-sizing: border-box;
   }
   
-
-
-  body, html{
+body, html{
     font-family: "Poppins", sans-serif;
     width: 100%;
     margin: 0;
@@ -52,86 +86,92 @@
     overflow-x: hidden;
   }
 
-  a {
+a {
     text-decoration: none;
   }
 
-  ul,p,h1,h2,h3{
+ul,p,h1,h2,h3{
     margin: 0;
   }
 
-  ul {
+ul {
     list-style: none;
     padding: 0;
   }
 
-  button{
+button{
     background-color: transparent;
     outline: 0;
     border: 0;
   }
 
-  .max-container{
+.max-container{
     max-width: 1300px;
     margin: auto; 
+    @media(max-width: 834px){
+      max-width: 834px;
+    }
   }
 
-  html {
+html {
     scroll-behavior: smooth;
   }
 
   /* header */
-  #header{
+#header{
+    backdrop-filter: blur(2px);
     margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     top: 0;
-    z-index: 2;
+    z-index: 100;
     width: 100%;
-    background-color: var(--color-accent-variant);
-    border-bottom: 2px solid var(--color-accent);
   }
- .header__dev-container{
+
+.header__dev-container{
     display: flex;
     align-items: center;
     gap: 10px;
   }
-  .header__img{
+.header__img{
     width: 50px;
     height: 50px;
     padding: 3px;
   }
 
-  .header__title{
-    font-size: 1rem;
-    color: var(--color-white);
+.header__title{
+    font-size: 1.2rem;
+    color: var(--color-black);
     text-align: center;
   }
   
-  .nav__menu{
+.nav__menu{
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 15px;
+    @media (max-width: 834px) {
+      display: none;
+    }
   }
 
-  .nav__menu__item{
+.nav__menu__item{
     font-weight: 300;
     transition: all 200ms ease-out;
     padding: 10px;
   }
 
-  .nav__menu__item:hover{
+.nav__menu__item:hover{
     transform: scale(1.3);
   }
 
-  .nav__menu__item a{
-    color: var(--color-white);
+.nav__menu__item a{
+    color: var(--color-black);
   }
 
-  .nav__menu__item::after {
+.nav__menu__item::after {
     content: '';
     display: inline-block;
     position: relative;
@@ -139,22 +179,22 @@
     height: 20px;
     left: 15px;
     top: 5px;
-    background-color: var(--color-white);
+    background-color: var(--color-black);
   }
 
-  .nav__active{
-    border-bottom: 2px solid var(--color-primary-variant);
+.nav__active{
+    border-bottom: 2px solid var(--color-accent-variant);
   }
 
-  #main{
+#main{
     width: 100%;
   }
 
-  /* home */
-  #home{
+/* home */
+#home{
     width: 100%;
     background-color: var(--color-primary);
-    margin-top: 50px;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -164,21 +204,33 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    @media(max-width: 834px){
+      display: none;
+    }
   }
 
-  .homeImg__Logo{
-    margin-top: 150px;
+.homeImg__Logo{
+    margin-top: 100px;
     width: 300px;
     height: 300px;
+    @media (max-width: 834px){
+      margin-top: 50px;
+      width: 100px;
+      height: 100px;
+    }
   }
 
-  .home__title{
+.home__title{
     font-size: 3rem;
     color: black;
     margin-bottom: 20px;
+    @media (max-width: 834px){
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
   }
 
-  .home__desc{
+.home__desc{
     line-height: 40px;
     font-weight: bold;
     font-size: 1.3rem;
@@ -186,9 +238,13 @@
     margin-bottom: 20px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
     -2px -2px 5px rgba(255, 255, 255, 0.3);
+    @media (max-width: 834px){
+      font-size: 0.8rem;
+      line-height: 30px;
+    }
   }
 
-  .home__buttons{
+.home__buttons{
     margin-top: 50px;
     display: flex;
     justify-content: center;
@@ -196,22 +252,40 @@
     gap: 10px;
     position: relative;
     padding-bottom: 50px;
+    @media (max-width: 834px){
+      display: none; 
+    }
   }
 
-  .home__contact, .home__nextStep{
+.home__contact, .home__nextStep{
     border: 1px solid var(--color-accent);
     background-color: var(--color-accent-variant);
     border-radius: 5px;
     padding: 5px;
     color: var(--color-white);
+    transition: all 0.2s ease-in-out;
   }
 
-  .home__nextStep:hover::after{
+  .home__contact:hover{
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent-variant);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  }
+
+  .home__nextStep:hover{
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent-variant);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  }
+
+.home__nextStep:hover::after{
     display: block;
     content: "Go AD section"; 
     position: absolute;
-    left: 200px; 
-    transform: translateX(110%); /* 요소 크기에 따라 이동 */
+    right: 20px; 
+    transform: translateX(110%); 
     height: 15px;
     width: 100px; 
     background-color: #333; 
@@ -223,64 +297,126 @@
     z-index: 100; 
   }
 
-  /* ad */
-  #ad{
+/* ad */
+#ad{
+    padding-top: 50px;
     width: 100%;
     background-color: var(--color-primary-variant);
     padding-bottom: 100px;
+    @media (max-width: 834px){
+      padding: 0;
+      background-color: var(--color-primary);
+    }
   }
-  .ad-container{
+.ad-container{
+    margin-top: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    @media (max-width: 834px){
+      margin-top: 0;
+      gap: 10px;
+      flex-direction: column;    
+    }
   }
 
-  .ad__img{
-    width: 650px;
-    height: 750px;  
+.ad__img{
+    max-width: 650px;
+    aspect-ratio: 650 / 450;
+    @media(max-width: 834px){
+      max-width: 500px;
+    }
   }
 
-
-  .ad__desc-container{
+.ad__desc-container{
     text-align: right;
     position: relative;
-
-    line-height: 45px;
+    line-height: 30px;
+    @media (max-width: 834px){
+      text-align: center;
+      max-height: 500px;
+    }
 }
 
-  .ad__title{
+.ad__title{
     font-size: 3rem;
     margin-bottom: 50px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
     -2px -2px 5px rgba(255, 255, 255, 0.3);
+    @media (max-width: 834px){
+      margin-top: 30px;
+      visibility: hidden;
+      
+    }
+  }
+  @media (max-width: 834px){
+    .ad__title::before{
+      visibility: visible;
+      display: block;
+      content: "<온라인 명함소개팅>";
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
+      -2px -2px 5px rgba(255, 255, 255, 0.3);
+      font-size: 2.9rem;
+    }
   }
 
-  .ad__title-em{
+.ad__title-em{
     animation: blinkTextColor 1s infinite;
+    @media (max-width: 834px) {
+      animation: none;
+    }
   }
 
-  .ad__desc-kor{
+.ad__desc-kor{
     font-size: 1.2rem;
     margin-bottom: 40px;
+    @media (max-width: 834px){
+      visibility: hidden;
+    }
   }
 
-  .ad__desc-eng{
+@media (max-width: 834px){
+    .ad__desc-kor::before{
+      visibility: visible;
+      display: block;
+      white-space: pre-wrap;
+      content: "익명의 이성과 매칭되는 두근두근 명함소개팅\A온라인으로 더 간편하게!\A\A Exciting name card blind dating\Awith an anonymous match\AMore convenient online!\A\A.\A.\A.";
+      font-size: 1.3rem;
+    }
+  }
+
+.ad__desc-eng{
     font-size: 1.2rem;
     margin-bottom: 30px;
+    @media (max-width: 834px) {
+      display: none;
+    }
   }
 
 
-  .ad__nextStep{
+.ad__nextStep{
     margin-top: 50px;
     border: 1px solid var(--color-accent);
     background-color: var(--color-accent-variant);
     border-radius: 5px;
     padding: 5px;
-    color: var(--color-white);  
+    color: var(--color-white); 
+    transition: all 0.2s ease-in-out;
+    @media(max-width: 834px){
+      display: none;
+    } 
   }
 
-  .ad__nextStep:hover::after{
+  .ad__nextStep:hover{
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent-variant);
+    position: relative;
+    top: -2px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  }
+
+.ad__nextStep:hover::after{
     display: block;
     text-align: center;
     content: "Go step1 section"; 
@@ -289,7 +425,7 @@
     transform: translateX(110%); 
     width: 100px; 
     background-color: #333; 
-    color: #fff; 
+    color: var(--color-white); 
     padding: 10px; 
     border-radius: 5px; 
     font-size: 12px;
@@ -297,30 +433,59 @@
     z-index: 100; 
   }
 
-  /* steps */
+/* steps */
 #step1{
-    margin-bottom: 70px;
+    margin: 150px 0;
     width: 100%;
     background-color: var(--color-primary);
+    @media (max-width: 834px) {
+      max-height: 800px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 }
 
 #step2{
     background-color: var(--color-primary-variant);
     padding: 50px 0;
     width: 100%;
+    @media (max-width: 834px){
+      display: none;
+    }
 }
 
 #step3{
    width: 100%;
-    background-color: var(--color-primary);
+   background-color: var(--color-primary);
+   @media (max-width: 834px) {
+     display: none;
+   }
 }
 
 .step1-container, .step2-container, .step3-container{
-    margin: 0px;
+    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+}
+
+.step2-container {
+  margin: 100px 0;
+}
+
+.step3-container{
+  margin-top: 50px;
+}
+
+.step1-container {
+  margin-top: 50px;
+  @media (max-width: 834px) {
+    margin-top: 0;
+    line-height: 35px;
+  }
 }
 
 .step__text-container{
@@ -337,11 +502,30 @@
     margin-bottom: 50px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
     -2px -2px 5px rgba(255, 255, 255, 0.3);
+    @media (max-width: 834px) {
+      visibility: hidden;
+    }
+}
+
+@media (max-width: 834px) {
+  .step__title::before{
+    visibility: visible;
+    display: block;
+    text-align: center;
+    white-space: pre-wrap;
+    content: "재학인증, 카드작성, 카드뽑기\A 3step으로 서비스 이용!";
+    font-size: 2rem;
+    padding-top: 20px;
+    max-height: 50px;
+  }
 }
 
 .step__img{
-    width: 650px;
-    height: 750px;
+    max-width: 650px;
+    aspect-ratio: 650/450;
+    @media (max-width: 834px){
+      display: none;
+    }
 }
 
 .slide-down {
@@ -352,10 +536,35 @@
     line-height: 45px;
     font-size: 1.2rem;
     margin-bottom: 40px;
+    @media (max-width: 834px) {
+      visibility: hidden;
+    }
+}
+
+@media (max-width: 834px) {
+  .step__desc-kor::before{
+    visibility: visible;
+    display: block;
+    text-align: center;
+    white-space: pre-wrap;
+    content: "1. 재학인증(Accreditation): \A학교메일 인증코드 발송 \A Email code sent\A"
+    "2. 명함작성(Card Writing): \A 7가지 항목 작성, 동물이미지 선택\A Fill 7 items, Select animal image\A"
+    "3. 명함뽑기(Card Drawing): \A 랜덤 2장 또는 추천 1장 \A random or 1 recommended\A\A.\A.\A.";
+    font-size: 1.3rem;
+    padding-top: 20px;
+    padding: 10px;
+  }
+
+  .step__desc-eng{
+    display: none;
+  }
 }
 
 .step1__content{
     text-align: left;
+    @media (max-width: 834px){
+      text-align: center;
+    }
 }
 
 .step2__content{
@@ -367,7 +576,10 @@
 }
 
 .step3__content .step__title{
-    margin-top: 100px;
+    margin-top: 40px;
+    @media (max-width: 834px){
+      margin-top: 0;
+    }
 }
 
 .nextStepButton1{
@@ -378,6 +590,17 @@
     color: var(--color-white);
     position: relative;
     right: 280px;
+    transition: all 0.2s ease-in-out;
+    @media (max-width: 834px){
+      display: none;
+    }
+}
+
+.nextStepButton1:hover {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent-variant);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }
 
 .nextStepButton1:hover::after{
@@ -386,6 +609,7 @@
     content: "Go step2 section"; 
     position: absolute;
     right: 20px;
+    bottom: 20px;
     transform: translateX(110%); 
     width: 150px; 
     background-color: #333; 
@@ -405,6 +629,17 @@
     color: var(--color-white);
     position: relative;
     left: 270px;
+    transition: all 0.2s ease-in-out;
+    @media (max-width: 834px){
+      display: none;
+    }
+}
+
+.nextStepButton2:hover {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent-variant);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }
 
 .nextStepButton2:hover::after{
@@ -412,7 +647,8 @@
     text-align: center;
     content: "Go step3 section"; 
     position: absolute;
-    right: 230px; 
+    right: 230px;
+    bottom: 20px; 
     transform: translateX(110%); 
     width: 150px; 
     background-color: #333; 
@@ -423,18 +659,27 @@
     line-height: 1.4;
 }
 
-
-
 .nextStepButton3{
     border: 1px solid var(--color-accent);
     background-color: var(--color-accent-variant);
     border-radius: 5px;
     padding: 5px;
     color: var(--color-white);
-    margin-bottom: 100px;
+    margin-bottom: 70px;
     position: relative;
     right: 285px;
     top: -15px;
+    transition: all 0.2s ease-in-out;
+    @media (max-width: 834px){
+      display: none;
+    }
+}
+
+.nextStepButton3:hover {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent-variant);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }
 
 .nextStepButton3:hover::after{
@@ -443,6 +688,7 @@
     content: "Go start section"; 
     position: absolute;
     right: 20px; 
+    bottom: 20px;
     transform: translateX(110%); 
     width: 100px; 
     background-color: #333; 
@@ -456,13 +702,22 @@
 #start{
     width: 100%;
     background-color: var(--color-primary-variant);
-    padding: 50px;
+    padding: 170px;
+    @media (max-width: 834px) {
+      padding: 30px;
+      background-color: var(--color-primary);
+    }
 }
 
 .start-container{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  @media (max-width: 834px){
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 .start_fortuneCard-container{
@@ -471,6 +726,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .start_card {
   width: 300px;
   height: 400px;
@@ -479,29 +735,28 @@
   cursor: pointer;
   margin: 10px;
   transform-style: preserve-3d;
-  transition: transform 0.6s;
-  display: none; /* 기본 상태는 숨김 */
+  transition: transform 1s;
+  display: none; 
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: var(--color-white); 
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  @media (max-width: 834px){
+    width: 200px;
+    height: 300px;
+  }
 }
 
 .start_card.active {
-  display: block; /* 선택된 카드만 표시 */
-}
-
-.start_card:hover {
-  transform: rotateY(180deg);
+  display: block; 
 }
 
 .start_card-front, .start_card-back {
   width: 100%;
   height: 100%;
   position: absolute;
-  backface-visibility: hidden; /* 카드가 뒤집혔을 때만 보이도록 설정 */
-  border-radius: 8px;
+  backface-visibility: hidden; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -512,17 +767,21 @@
   background-image: url('../assets/fortuneCard.png');
   background-size: cover;
   background-position: center;
-  transform: rotateY(0deg); /* 전면 초기 상태 */
+  transform: rotateY(0deg); 
+  border-radius: 10px;
 }
 
 .start_card-back {
-  transform: rotateY(180deg); /* 뒷면 초기 상태 */
-  background-color: var(--color-yello);
+  text-align: center;
+  transform: rotateY(180deg);
+  background-color: var(--color-white);
   color: var(--color-accent);
   font-size: 16px;
   font-weight: bold;
   padding: 20px;
   box-sizing: border-box;
+  border-radius: 10px;
+
 }
 
 .start_cardButton {
@@ -530,25 +789,36 @@
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  background-color: var(--color-primary-variant); /* 버튼 배경 색 */
-  color: var(--color-black); /* 버튼 글자 색 */
+  background-color: var(--color-primary-variant); 
+  color: var(--color-black); 
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   text-align: center;
+  @media (max-width: 834px) {
+    /* 모바일환경에서 클릭되지 않는 오류 수정 */
+    z-index: 50;
+    pointer-events: auto; 
+  }
 }
 
 .start_cardButton:hover {
-  color: var(--color-primary);
-  background-color: yellowgreen; /* Hover 시 색상 변경 */
-  transform: translateY(-3px); /* Hover 시 살짝 위로 이동 */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Hover 시 그림자 강화 */
+  background-color: var(--color-accent-variant); 
+  color: var(--color-white);
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  @media (max-width: 834px) {
+    background-color: none;
+    color: none;
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 .start_cardButton:active {
-  transform: translateY(0); /* 클릭 시 원래 위치로 돌아옴 */
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 감소 */
+  transform: translateY(0); 
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .start_nextStep-container {
@@ -564,33 +834,70 @@
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
   -2px -2px 5px rgba(255, 255, 255, 0.3);
   font-style: italic;
+  @media (max-width: 834px){
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 834px) {
+  .start_nextStep_desc::before {
+    visibility: visible;
+    display: block;
+    text-align: center;
+    white-space: pre-wrap;
+    content: "자.. 이제 떠나볼까요..\A운명의 상대를 만나러!";
+    font-size: 1.5rem;
+    padding-top: 20px;
+    padding: 10px;
+  }
 }
 
 .start_nextStep {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s ease;
   border-radius: 50%;
-}
-
-.start_nextStep img {
   width: 300px;
   height: 300px;
-  object-fit: cover;
+  font-size: 3rem;
+  color: var(--color-accent);
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
 }
 
 .start_nextStep:hover {
-  transform: translateY(-3px); /* Hover 시 살짝 위로 이동 */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Hover 시 그림자 강화 */
+  animation: glow 2s infinite alternate, flicker 0.1s infinite;
+  @media (max-width: 834px) {
+    animation: none;
+  }
+}
+
+.start_nextStep:active{
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 834px) {
+  .start_nextStep{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .start_nextStep:active{
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 
 
-
-
-/* arrow - up */
 #arrow-up {
   position: fixed;
   bottom: 50px;
-  right: 30px;
+  right: 20px;
   display: none;
   background-color: var(--color-accent-variant);
   color: var(--color-primary);
@@ -605,7 +912,12 @@
   align-items: center;      
   justify-content: center;   
   font-size: 24px;
-  opacity: 0.8;          
+  opacity: 0.8;     
+  @media (max-width: 834px) {
+    font-size: 15px;
+    width: 50px;
+    height: 50px;
+  }     
 }
 
 #arrow-up i {
@@ -616,26 +928,43 @@
   background-color: var(--color-accent);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-3px);
+  @media (max-width: 834px) {
+    background-color: none;
+    box-shadow: none;
+    transform: none;
+  }
 }
 #arrow-up:active {
-  
   transform: translateY(1px);
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  @media (max-width: 834px) {
+    background-color: var(--color-accent);
+    transform: translateY(3px);
+  }
 }
 
 /* contact */
-
 #contact{
+  background-color: var(--color-primary);
   color: var(--color-text-variant);
 }
 .contact-container{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 834px){
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
 }
 
 .contact_rights-container{
   font-size: 0.8rem;
+  @media (max-width: 834px) {
+    font-size: 0.5rem;
+  }
 }
 
 .contact_rightPart-container {
@@ -659,17 +988,28 @@
 
 .contact__SNS-container a:hover{
   color: var(--color-accent);
+  @media (max-width: 834px){
+    color: none;
+  }
 }
 
-
-
+@media (max-width: 834px) {
+  .contact__SNS-container a:active{
+      color: var(--color-accent);
+  }
+}
+           
 .contact_img{
   object-fit: cover;
   width: 120px;
   height: 120px;
   opacity: 0.5;
+  @media (max-width: 834px){
+    display: none;
+  }
 }
   
+
   
 
 
