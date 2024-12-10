@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, jsonify, session, request
 from sqlalchemy import func
 
 from ..models import Profile
+from .. import db
 
 bp = Blueprint('random', __name__, url_prefix='/random')
 
