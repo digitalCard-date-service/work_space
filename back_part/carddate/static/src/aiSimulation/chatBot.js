@@ -1,7 +1,5 @@
 'use strict';
 
-const apiKey = 'sk-proj-fuwFbs70rGn5J2pxyb_6PFQGBcyE4—Y14-GIqJRe0chOsSvNDoQRdebOa4Zjkuf7ntyIwnKPaT3BlbkFJhjIXYEmtU-3ezSqbfqMyEVs7UtbFIUpqiTwqHJqE6_xIPrmxmJol6oyRVNKh8ILKcUXTacaJYA'; // ChatGPT API 키
-
 let selectedCharacter = null;
 let confirmedCard = null; // 확정된 카드 정보 저장
 const modal = document.getElementById("modal");

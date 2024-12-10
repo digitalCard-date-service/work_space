@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, jsonify, session, request
-from crypt import methods
 from sqlalchemy import func
+
 from ..models import Profile
+from .. import db
 
 bp = Blueprint('random', __name__, url_prefix='/random')
 
@@ -11,12 +12,14 @@ def index():
 
 @bp.route('/card/public', methods=['GET'])
 def get_public_details():
+
+    id = session.get('id')
     gender = session.get('gender')
 
     if(gender == '남성'):
-        randomProfiles = Profile.query.filter(Profile.gender == '여성').order_by(func.random()).limit(2).all()
+        randomProfiles = Profile.query.filter(Profile.gender == '여성', Profile.id != id).order_by(func.random()).limit(2).all()
     else:
-        randomProfiles = Profile.query.filter(Profile.gender == '남성').order_by(func.random()).limit(2).all()
+        randomProfiles = Profile.query.filter(Profile.gender == '남성', Profile.id != id).order_by(func.random()).limit(2).all()
     # 선택한 프로필들을 JSON 형식으로 변환하여 반환
     profiles_data = [{
         'id': profile.id,

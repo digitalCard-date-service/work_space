@@ -27,7 +27,6 @@ def check():
 
 @bp.route('/status', methods=['POST'])
 def status():
-    API_KEY = current_app.config['UNIV_API']
     data = request.get_json()
     email = data['email']
 
@@ -63,7 +62,6 @@ def certify():
 
 @bp.route('certifycode', methods=['POST'])
 def certifycode():
-    API_KEY = current_app.config['UNIV_API']
     data = request.get_json()
     email = data['email']
     univName = data['univName']

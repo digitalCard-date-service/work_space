@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('카드 데이터를 가져오지 못했습니다.');
             }
             const data = await response.json();
-            console.log(data);
 
             // 중복 검사 및 카드 저장
             if (data[0].id !== data[1].id) {
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    id: cardId
+                    'id': cardId
                 })
             }); // 상세 정보 요청
             if (!response.ok) {
@@ -164,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 confirmButton.disabled = true;
                 nextButton.disabled = false;
 
-//                fetchDeleteCard(cardId);
+                fetchDeleteCard(cards[currentCardIndex].id);
 
                 // 확정된 카드 정보를 sessionStorage에 저장
                 const confirmedCard = {
@@ -175,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     contact: detailedInfo.contact,
                     image: animalImage.src,
                 };
+
                 sessionStorage.setItem('confirmedCard', JSON.stringify(confirmedCard));
                 alert('카드가 성공적으로 확정되어 저장되었습니다!');
             } catch (error) {

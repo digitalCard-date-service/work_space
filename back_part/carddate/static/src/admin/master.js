@@ -1,9 +1,5 @@
 'use strict';
 
-const FETCH_URL = "https://univcert.com/api/v1/certifiedlist";
-const CLEAR_ALL_URL = "https://univcert.com/api/v1/clear";
-const CLEAR_USER_URL = "https://univcert.com/api/v1/clear";
-
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -30,10 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchCertifiedUsers() {
         try {
-            const response = await fetch(FETCH_URL, {
+            const response = await fetch('control/certifiedList', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ key: API_KEY }),
+                body: JSON.stringify({}),
             });
 
             if (!response.ok) {
@@ -83,10 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!confirm(`${email} 유저를 초기화하시겠습니까?`)) return;
 
         try {
-            const response = await fetch(`${CLEAR_USER_URL}/${email}`, {
+            const response = await fetch('control/clear', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ key: API_KEY }),
+                body: JSON.stringify({
+                'email': email }),
             });
 
             const data = await response.json();
@@ -105,10 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!confirm("모든 유저를 초기화하시겠습니까?")) return;
 
         try {
-            const response = await fetch(CLEAR_ALL_URL, {
+            const response = await fetch('control/clear', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ key: API_KEY }),
+                body: JSON.stringify({}),
             });
 
             const data = await response.json();

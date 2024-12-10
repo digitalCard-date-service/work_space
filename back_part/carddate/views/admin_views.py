@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, jsonify, request
+import requests
 import os
 
+API_BASE_URL = 'https://univcert.com/api/v1'
 API_KEY = os.environ.get('UNIV_KEY')
 PASSWORD = os.environ.get('PASSWORD')
 
@@ -29,5 +31,30 @@ def control():
 
 @bp.route('/control/clear', methods=['POST'])
 def clear():
-    password = request.get_json()['password']
-    return jsonify()
+    data = request.get_json()
+
+    if data:
+        email = data['email']
+        response = requests.post(f'{API_BASE_URL}/clear/{email}', headers={
+            'Content-Type': 'application/json'
+        }, json=({
+            'key': API_KEY,
+        }))
+    else:
+        response = requests.post(f'{API_BASE_URL}/clear', headers={
+            'Content-Type': 'application/json'
+        }, json=({
+            'key': API_KEY,
+        }))
+    result = response.json()
+    return jsonify(result)
+
+@bp.route('/control/certifiedList', methods=['POST'])
+def certifiedList():
+    response = requests.post(f'{API_BASE_URL}/certifiedlist', headers={
+        'Content-Type': 'application/json'
+    }, json=({
+        'key': API_KEY,
+    }))
+    result = response.json()
+    return jsonify(result)

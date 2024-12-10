@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isFlipped = false; // 카드 상태 플래그
     let isRecommendationOpened = false; // 카드 데이터를 성공적으로 가져왔는지 여부
+    let cardId = 0;
 
     // 서버에서 추천 카드를 가져오는 함수
     async function fetchRecommendedCard() {
@@ -38,13 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchDeleteCard(cardId) {
         try {
-            const response = await fetch('/recommend/delete', {
+            const response = await fetch('delete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    id: cardId
+                    'id': cardId
                 })
             }); // 상세 정보 요청
             if (!response.ok) {
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 카드 UI 업데이트 함수
     function updateCardUI(data) {
         if (!data) return;
-
+        cardId = data.id;
         cardBack.style.backgroundImage = `url(${data.backgroundImage})`;
         animalImage.src = data.image;
         cardInfo.gender.textContent = data.gender;
@@ -109,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             infoRows.forEach(row => row.querySelector('.value').style.visibility = 'visible');
             openButton.disabled = true;
 
-//            fetchDeleteCard(cardId);
+            fetchDeleteCard(cardId);
 
             // 저장된 카드 데이터를 sessionStorage에 저장
             const confirmedCard = {

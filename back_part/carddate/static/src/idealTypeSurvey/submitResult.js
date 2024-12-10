@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // JSON 데이터 출력 (디버깅용)
-      console.log("보낼 데이터:", JSON.stringify(surveyData));
+//      console.log("보낼 데이터:", JSON.stringify(surveyData));
 
       // 서버로 데이터 전송
       try {
