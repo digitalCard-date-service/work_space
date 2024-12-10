@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify, current_app
 import requests
+import os
 
 model = "gpt-3.5-turbo";
 API_BASE_URL = 'https://api.openai.com/v1/chat/completions'
@@ -12,7 +13,7 @@ def index():
 
 @bp.route('/chat', methods=['POST'])
 def chat():
-    API_KEY = current_app.config['GPT_KEY']
+    API_KEY = os.environ.get('GPT_KEY')
     messages = request.get_json()
     response = requests.post(f'{API_BASE_URL}', headers={
         'Content-Type': 'application/json',

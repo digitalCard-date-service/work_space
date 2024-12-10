@@ -11,7 +11,6 @@ from .. import db
 
 bp = Blueprint('recommend', __name__, url_prefix='/recommend')
 
-
 @bp.route('/')
 def index():
     return render_template('recommendOpen.html')
@@ -173,10 +172,10 @@ def getRandomProfile():
             16 if mostSimilarProfile.image == 'turtle' else 0) + '.' + mostSimilarProfile.image + '.png',
         'color': '../static/assets/card_' + mostSimilarProfile.color + '.svg'
     }
-    print('age: ', userProfile.age, ageFilter, 'than', mostSimilarProfile.age)
-    print('major: ', majorList, ': ' ,result['major'])
-    print('mbti: ', mbti, ': ', result['mbti'])
-    print('hobby: ', hobbyList, ': ', result['hobby'])
+    # print('age: ', userProfile.age, ageFilter, 'than', mostSimilarProfile.age)
+    # print('major: ', majorList, ': ' ,result['major'])
+    # print('mbti: ', mbti, ': ', result['mbti'])
+    # print('hobby: ', hobbyList, ': ', result['hobby'])
     return jsonify(result)
 
 

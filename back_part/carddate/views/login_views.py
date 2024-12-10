@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template, jsonify, request, current_app
 import requests
+import os
 
 API_BASE_URL = 'https://univcert.com/api/v1'
-#
+API_KEY = os.environ.get('UNIV_KEY')
 
 bp = Blueprint('login', __name__, url_prefix='/login')
 
