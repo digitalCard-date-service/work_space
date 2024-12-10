@@ -245,6 +245,7 @@ function matchUsers(user1, user2) {
 ## 백엔드 API 설계 및 응답방식
 
 내용 추가
+
 --- 
 
 ## 👥 역할 분담
