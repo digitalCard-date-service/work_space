@@ -7,6 +7,7 @@ migrate = Migrate()
 def create_app():
     app = Flask(__name__)
     app.config.from_object('config.Config')
+    app.config.from_object('config.Config')
 
     # ORM
     db.init_app(app)
@@ -16,15 +17,14 @@ def create_app():
     from . import models
 
     # 블루프린트
-    from .views import onBoarding, login_views, writing_views, drawing_views, random_views, recommend_views, idealType_views, aiSimulation_views, admin_views
-    app.register_blueprint(onBoarding.bp)
+    from .views import home_views, login_views, form_views, drawing_views, random_views, recommend_views, idealType_views, admin_views
+    app.register_blueprint(home_views.bp)
     app.register_blueprint(login_views.bp)
     app.register_blueprint(writing_views.bp)
     app.register_blueprint(drawing_views.bp)
     app.register_blueprint(random_views.bp)
     app.register_blueprint(recommend_views.bp)
     app.register_blueprint(idealType_views.bp)
-    app.register_blueprint(aiSimulation_views.bp)
     app.register_blueprint(admin_views.bp)
 
     return app

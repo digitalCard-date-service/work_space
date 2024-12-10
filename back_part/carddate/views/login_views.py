@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request, current_app
+from flask import Blueprint, render_template, jsonify, request
 import requests
 import os
 
@@ -42,7 +42,6 @@ def status():
 
 @bp.route('certify', methods=['POST'])
 def certify():
-    API_KEY = current_app.config['UNIV_API']
     data = request.get_json()
     email = data['email']
     univName = data['univName']
