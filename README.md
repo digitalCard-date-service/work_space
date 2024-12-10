@@ -1,5 +1,5 @@
 
-# 디지털 명함 소개팅
+# 💌디지털 명함 소개팅💌
 
 > 디지털 명함을 활용하여 자신을 소개하고 이성을 매칭시켜주는 혁신적인 소개팅 플랫폼입니다.
 
@@ -25,7 +25,19 @@
 
 ## 💻 기술 스택
 
-### 프론트엔드
+<div align="left">
+	<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
+	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
+   <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white" />
+	<img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=Flask&logoColor=white" />
+	<img src="https://img.shields.io/badge/SQLite-003B57?style=flat&logo=SQLite&logoColor=white" />
+   <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=white" />
+	<img src="https://img.shields.io/badge/PyCharm-000000?style=flat&logo=PyCharm&logoColor=white" />
+	<img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=Heroku&logoColor=white" />
+</div>
+
+### 프론트엔드 
 - **VanillaJS**: 클라이언트 측 동작을 제어하며, REST API 요청 및 DOM 조작 구현
 - **CSS Modules**: 사용자 인터페이스(UI)의 스타일링 및 반응형 디자인 적용
 - **HTML**: 애플리케이션의 구조와 콘텐츠 작성
@@ -34,6 +46,7 @@
 ### 백엔드
 - **Flask**: 경량 Python 웹 프레임워크로 서버 구축, API 설계, 라우팅을 간편하게 관리
 - **SQLite**: 경량화된 관계형 데이터베이스로 빠르고 독립적인 데이터 저장소 제공
+- **Python**: 설명추가
 
 ### 기타
 - **PyCharm**: 프로젝트별 독립적인 가상환경(Virtual Environment) 관리를 지원하는 Python 전용 IDE
@@ -41,7 +54,7 @@
 
 ---
 
-## 🛠️ 설계 및 구현
+## 📝 설계 및 구현
 
 ### 시스템 구조
 - **클라이언트-서버 구조**: VanillaJS 기반 클라이언트와 Flask 백엔드 간 REST API 통신
@@ -76,9 +89,8 @@ function matchUsers(user1, user2) {
 
 서비스 제공 페이지는 사용자 편과 관리자 편으로 나뉘어 각각 사용자 경험 향상과 서비스 안정적 운영을 목표로 설계되었습니다.
 
----
 
-### 사용자편
+### 사용자 편
 
 #### 1. 홈 페이지 (`Onboarding Page`)
 ![Uploading image.png…]()
@@ -92,7 +104,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
----
+
 
 #### 2. 로그인 페이지 (`Login Page`)
 **기능**:
@@ -107,7 +119,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
----
+
 
 #### 3. 명함 작성 페이지 (`Writing Page`)
 **기능**:
@@ -127,7 +139,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
----
+
 
 #### 4. 이상형 조사 페이지 (`Survey Page`)
 **기능**:
@@ -145,7 +157,7 @@ function matchUsers(user1, user2) {
  
 **[테스트영상]()**
 
----
+
 
 #### 5. 매칭 서비스 선택 페이지 (`Drawing Page`)
 **기능**:
@@ -157,7 +169,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
----
+
 
 #### 6-1. 랜덤 뽑기 페이지 (`Random Page`)
 **기능**:
@@ -170,7 +182,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
----
+
 
 #### 6-2. 추천 뽑기 페이지 (`Recommend Page`)
 **기능**:
@@ -183,7 +195,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
----
+
 
 #### 7. AI 챗봇 페이지 (`AISimulation Page`)
 **기능**:
@@ -199,12 +211,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
----
 
-### 설명 마무리
-각 페이지는 사용자 경험과 편의성을 극대화하도록 설계되었으며, 안정적인 서비스 운영을 목표로 개발되었습니다.
-
----
 
 ### 관리자 편
 
@@ -217,7 +224,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
----
+
 
 #### **2. 사용자 관리 및 모니터링 페이지 (`master Page`)**
 **기능**: 인증 사용자 관리, 전체 초기화, 사이트 상태 모니터링
@@ -228,20 +235,26 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
+
+### 설명 마무리
+
+각 페이지는 사용자 경험과 편의성을 극대화하도록 설계되었으며, 안정적인 서비스 운영을 목표로 개발되었습니다.
+
 ---
 
 ## 백엔드 API 설계 및 응답방식
 
+내용 추가
 --- 
 
 ## 👥 역할 분담
 
-| 역할                | 이름       | 세부역할                    |
-|--------------------|-----------|---------------------------|
-| **🌐, 🔍프론트엔드**  | 조유찬      | 서버와의 통신연결, 동적 웹페이지 구현, QA(소프트웨어 품질 관리), 추천 알고리즘을 위한 필터링 코드 설계, 최적화 및 디자인 통일작업|
-| **🌐, 🎨프론트엔드**  | 이서인      | 이미지 제작, 디자인 설계, 프론트 마감작업, 반응형 웹 구현, 레이아웃 설계, 페이지 별 세부 기획, 동적 웹 페이지 구현|
-| **🗄️, 📈백엔드**     | 정다운      | 추천 알고리즘 설계, 백엔드 API 설계, JavaScript 코드를 Flask로 변환하여 서버 측 처리 구현|
-| **🗄️, 🛢️백엔드**     | 문효재      | DB 시스템 구축, 쿼리 최적화, 데이터 마이그레이션, DB 관리 |
+|      역할      |   이름   |                                                              세부역할                                                             |
+|------------|------|---------------------------------------------------------------------------------------------------------------------------------|
+| **🌐프론트엔드🔍** | 조유찬 | 서버와의 통신연결, 동적 웹페이지 구현, QA(소프트웨어 품질 관리), 추천 알고리즘을 위한 필터링 코드 설계, 최적화 및 디자인 통일작업 |
+| **🌐프론트엔드🎨** | 이서인 |         이미지 제작, 디자인 설계, 레이아웃 설계, 페이지 별 세부 기획, 동적 웹페이지 구현, 반응형 웹 구현, 프론트 마감작업         |
+|   **🗄️백엔드📈**   | 정다운 |                     추천 알고리즘 설계, 백엔드 API 설계, JavaScript 코드를 Flask로 변환하여 서버 측 처리 구현                     |
+|   **🗄️백엔드🛢️**   | 문효재 |                              DB 시스템 구축, 쿼리 최적화, 데이터 마이그레이션, DB 관리, 웹사이트 배포                             |
 
 ---
 
