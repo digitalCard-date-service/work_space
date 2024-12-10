@@ -13,26 +13,26 @@
     <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
     <meta name="twitter:description" content="blind date site for University Student" />
     <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
-    <link rel="stylesheet" href="./css/onboarding.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/onboarding.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" href="./assets/teamLogo.svg">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/teamLogo.svg') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
-    <script src="./src/onboarding/cardRotate.js" type="module"></script>
-    <script src="./src/onboarding/home_typeit.js" type="module"></script>
-    <script src="./src/onboarding/active.js" type="module"></script>
-    <script src="./src/onboarding//arrowUp.js" type="module"></script>
-    <script src="./src/onboarding/sectionImgAni.js" type="module"></script>
-    <script src="./src/onboarding/scrollToTop.js" type="module"></script>
-    <script src="./src/onboarding/responsiveButtonEffects.js" type="module"></script>
+    <script src="{{ url_for('static', filename='src/onboarding/cardRotate.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='src/onboarding/home_typeit.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='src/onboarding/active.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='src/onboarding/arrowUp.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='src/onboarding/sectionImgAni.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='src/onboarding/scrollToTop.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='src/onboarding/responsiveButtonEffects.js') }}" type="module"></script>
     <title>Card With Love(명함은 사랑을 싣고)</title>
 </head>
 <body>
     <header id="header" aria-label="title, logo, navigation bar">
         <div class="header__dev-container">
-            <img class="header__img" src="./assets/teamLogo.svg" alt="학교로고">
+            <img class="header__img" src="{{ url_for('static', filename='assets/teamLogo.svg') }}" alt="학교로고">
             <h1 class="header__title">명함소개팅</h1>
         </div>
         <nav class="nav__container">
@@ -50,13 +50,13 @@
     <main id="main" aria-label="how to use this web-site">
         <section id="home">
             <div class="max-container">
-                    <img class="homeImg__Logo" src="./assets/teamLogo.svg">
+                    <img class="homeImg__Logo" src="{{ url_for('static', filename='assets/teamLogo.svg') }}">
                 <div class="home__desc-container">
                     <h1 class="home__title"></h1>
                     <p class="home__desc">
                         We provide you with better blind date services.
                         <br>
-                        The joy of getting to know someone you don’t know.
+                        The joy of getting to know someone you don't know.
                         <br>
                         We provide you with excitement.
                     </p>
@@ -70,7 +70,7 @@
         <section id="ad">
             <div class="max-container">
                 <div class="ad-container">
-                    <img class="ad__img" src="./assets/ad.svg" alt="홍보이미지"> 
+                    <img class="ad__img" src="{{ url_for('static', filename='assets/ad.svg') }}" alt="홍보이미지">
                     <div class="ad__desc-container">
                         <h1 class="ad__title">
                             명함소개팅, 이제는 <em class="ad__title-em">온라인 </em>으로
@@ -90,11 +90,11 @@
                             Submit your card right now by entering simple information.
                         </p>
                         <a class="ad__nextStep" href="#step1_">NEXT</a>
-                    </div>  
-                </div>     
+                    </div>
+                </div>
             </div>
         </section>
-        <div id="step1_"></div> <!-- nextbutton 클릭시 헤더에 내용이 블러처리되는 예외상황을 해결하기 위한 요소-->
+        <div id="step1_"></div>
         <section id="step1">
             <div class="max-container">
                 <div class="step1-container">
@@ -114,47 +114,47 @@
                                 2. Enter your university, school email, and verification code.
                                 <br>
                                 3. If you have already verified, enter your email&click the button.
-                            </p>        
+                            </p>
                         </article>
                         <a class="nextStepButton1" href="#step2_">NEXT</a>
-                    </div>                
-                    <img class="step__img" src="./assets/step1.svg" alt="step1-img">
+                    </div>
+                    <img class="step__img" src="{{ url_for('static', filename='assets/step1.svg') }}" alt="step1-img">
                 </div>
             </div>
         </section>
         <div id="step2_"></div>
         <section id="step2">
             <div class="max-container">
-                <div class="step2-container">               
-                    <img class="step__img" src="./assets/step2.svg" alt="step2-img">
+                <div class="step2-container">
+                    <img class="step__img" src="{{ url_for('static', filename='assets/step2.svg') }}" alt="step2-img">
                     <div class="step__text-container">
                         <article class="step2__content">
                             <h1 class="step__title">2. 명함 작성하기<br>(Create a card)</h1>
-                            <p class="step__desc-kor"> 
+                            <p class="step__desc-kor">
                                 1. 원하는 명함 색상과 동물상을 고르세요.
                                 <br>
                                 2. 순서대로 정보를 작성해주세요.
                                 <br>
-                                3. 작성이 끝났다면 제출해주세요.                           
+                                3. 작성이 끝났다면 제출해주세요.
                             </p>
-                            <p class="step__desc-eng"> 
+                            <p class="step__desc-eng">
                                 1. Choose your preferred business card color and animal icon.
                                 <br>
                                 2. Fill in the information in order.
                                 <br>
                                 3. Submit the form once you are done.
-                            </p>                        
+                            </p>
                         </article>
                         <a class="nextStepButton2" href="#step3_">NEXT</a>
                     </div>
                 </div>
-            </div>          
+            </div>
         </section>
         <div id="step3_"></div>
         <section id="step3">
             <div class="max-container">
                 <div class="step3-container">
-                    <div class="step__text-container">  
+                    <div class="step__text-container">
                         <article class="step3__content">
                             <h1 class="step__title">3. 명함 뽑기<br>(Pick a card)</h1>
                             <p class="step__desc-kor">
@@ -165,19 +165,19 @@
                                3. 이제 상대방과 연락하세요!
                             </p>
                             <p class="step__desc-eng">
-                                1. Provide 1 card from the recommended service or 2 cards at random. 
+                                1. Provide 1 card from the recommended service or 2 cards at random.
                                 <br>
                                 2. When cards are confirmed, name and contact information will be revealed.
                                 <br>
                                 3. Now, get in touch with the other person!
-                            </p>                                                    
-                        </article>    
-                        <a class="nextStepButton3" href="#start">NEXT</a>      
+                            </p>
+                        </article>
+                        <a class="nextStepButton3" href="#start">NEXT</a>
                     </div>
-                    <img class="step__img" src="./assets/step3.svg" alt="step3-img">
-                </div>           
+                    <img class="step__img" src="{{ url_for('static', filename='assets/step3.svg') }}" alt="step3-img">
+                </div>
             </div>
-        </section>           
+        </section>
         <section id="start">
             <div class="max-container">
                 <div class="start-container">
@@ -216,9 +216,9 @@
                     </div>
                     <div  class="start_nextStep-container">
                         <p class="start_nextStep_desc">자.. 이제 떠나볼까요.. 운명의 상대를 만나러!</p>
-                        <a class="start_nextStep" href="./login.html">START</a>
+                        <a class="start_nextStep" href="{{ url_for('login') }}">START</a>
                     </div>
-                </div>     
+                </div>
             </div>
         </section>
     </main>
@@ -229,21 +229,4 @@
         <div class="max-container">
             <div class="contact-container">
                 <div class="contact_rights-container">
-                    <p>This website is copyrighted by © <strong>CHO LEE MOON JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">SVGbackgrounds</a>, other blogs.</p>
-                    <p>Lead Designers: <strong>Seo-in LEE&CHO Yu-chan</strong></p>
-                    <p>Lead Front-End Developers: <strong>Yu-chan CHO&Seo-in LEE</strong></p>
-                    <p>Lead Back-End Developers: <strong>MOON Hyo-jae&JEONG Da-un</strong></p>
-                </div>
-                <div class="contact_rightPart-container">
-                    <div class="contact__SNS-container">
-                        <a href="./contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
-                        <a href="./contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="./contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                    <img class="contact_img" src="./assets/teamLogo.svg" alt="teamLogo">      
-                </div>            
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+                    <p>This website is copyrighted by © <strong>CHO LEE MOON JEONG</strong>. <br>Image credits for non-design elements: <a href="https://kr.freepik.com/">Freepik</a>, <a href="https://www.svgrepo.com/">SVGrepo</a>, <a href="https://www.svgbackgrounds.com/">
