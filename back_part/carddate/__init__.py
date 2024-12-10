@@ -22,10 +22,10 @@ def create_app():
     app.register_blueprint(login_views.bp)
     app.register_blueprint(writing_views.bp)
     app.register_blueprint(drawing_views.bp)
-    app.register_blueprint(random_views.bp)
+    app.register_blueprint(random_views.bp)  
     app.register_blueprint(recommend_views.bp)
     app.register_blueprint(idealType_views.bp)
     app.register_blueprint(aiSimulation_views.bp)
     app.register_blueprint(admin_views.bp)
 
-    return app
+    return app  
