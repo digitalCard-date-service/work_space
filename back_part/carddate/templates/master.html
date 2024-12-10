@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/assets/favicon.svg">
+    <link rel="stylesheet" href="../static/css/master.css">
+    <script src="../static/src/master.js" type="module"></script>
+    <title>관리자페이지</title>
+</head>
+<body>
+    <div class="pages-container">
+        <a href="/">온보딩</a>
+        <a href="/login">로그인</a>
+        <a href="/survey">이상형조사</a>
+        <a href="/writing">명함작성</a>
+        <a href="/drawing">명함뽑기</a>
+        <a href="/random">랜덤view</a>
+        <a href="/recommend">추천view</a>
+        <a href="/chatbot">연애시뮬</a>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>인증 유저 관리</h1>
+        </div>
+        <div class="button-container">
+            <button id="clearAllButton">전체 초기화</button>
+            <button id="fetchUsersButton">인증 유저 가져오기</button>
+        </div>
+        <div id="user-list" class="user-list-container"></div>
+    </div>
+</body>
+</html>

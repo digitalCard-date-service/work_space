@@ -2,12 +2,12 @@ from flask import Blueprint, request, render_template, jsonify, session
 from ..models import Profile
 from .. import db
 from datetime import datetime
-bp = Blueprint('form', __name__, url_prefix='/form')
+bp = Blueprint('writing', __name__, url_prefix='/writing')
 
 
 @bp.route('/')
 def index():
-    return render_template('form.html')
+    return render_template('cardWriting.html')
 
 @bp.route('/submit', methods=['POST'])
 def create():
@@ -44,6 +44,7 @@ def create():
         db.session.commit()
 
         session['id'] = profile.id
+        session['gender'] = profile.gender
 
         return jsonify({
             'status': 'success',
@@ -53,7 +54,6 @@ def create():
 
     except Exception as e:
         db.session.rollback()
-        print(f"에러 발생: {str(e)}")  # 디버깅용 로그
         return jsonify({
             'status': 'error',
             'message': '서버 오류가 발생했습니다.',

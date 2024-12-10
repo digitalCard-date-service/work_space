@@ -22,7 +22,7 @@ document.getElementById("loginButton").addEventListener("click", async function 
         if (response.ok && data.success) {
             setCookie("authToken", "valid", 1);
             alert("로그인 성공");
-            window.location.href = "master.html"; 
+            window.location.href = "/master";
         } else {
             errorMessage.textContent = data.message || "비밀번호가 틀렸습니다. 다시 시도하세요.";
         }

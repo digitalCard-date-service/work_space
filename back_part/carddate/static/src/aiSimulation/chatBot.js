@@ -1,8 +1,6 @@
 'use strict';
-import { CHATGPT_API } from "../config.js";
 
-const apiKey = CHATGPT_API; // ChatGPT API 키
-const model = "gpt-3.5-turbo";
+const apiKey = 'sk-proj-fuwFbs70rGn5J2pxyb_6PFQGBcyE4—Y14-GIqJRe0chOsSvNDoQRdebOa4Zjkuf7ntyIwnKPaT3BlbkFJhjIXYEmtU-3ezSqbfqMyEVs7UtbFIUpqiTwqHJqE6_xIPrmxmJol6oyRVNKh8ILKcUXTacaJYA'; // ChatGPT API 키
 
 let selectedCharacter = null;
 let confirmedCard = null; // 확정된 카드 정보 저장
@@ -32,9 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (storedCard) {
         setConfirmedCard(storedCard);
     } else {
-        alert("확정한 카드가 존재하지 않습니다. 다시 뽑아주세요.");
-        // window.location.href = "./Drawing.html";
-        
+        alert("확정한 카드가 존재하지 않습니다. 랜덤뽑기로 이동합니다.");
+        window.location.href = "/random";
     }
 });
 
@@ -48,7 +45,7 @@ function setConfirmedCard(card) {
     personCard.dataset.description = `${card.age}살, ${card.mbti} 성격. ${card.hobbies}을(를) 좋아합니다.`;
 
     // characterSettings에 추가
-    characterSettings[card.name] = `You are ${card.name}, a ${card.age}-year-old individual with a ${card.mbti} personality. You enjoy ${card.hobbies}. Match the user's tone and respond naturally, avoiding overly formal expressions.`;
+    characterSettings[card.name] = `You are ${card.name}, a ${card.age}-year-old individual with a ${card.mbti} personality. You enjoy ${card.hobbies}. Match the users tone and respond naturally, avoiding overly formal expressions. 너는 지금 처음 만난 상대와 대화해. 조금의 호기심을 가지고 대화해줘.`;
 }
 
 // 캐릭터 선택 이벤트
@@ -69,7 +66,7 @@ startChatButton.addEventListener("click", () => {
     }
     modal.style.display = "none";
     chatBox.style.display = "block";
-    messages.innerHTML = `<div class="bot">안녕하세요! 저는 ${selectedCharacter}입니다.<br>Hello! I'm ${selectedCharacter}.</div>`;
+    messages.innerHTML = `<div class="bot">안녕하세요, 저는 ${selectedCharacter}입니다.</div>`;
 });
 
 // 메시지 전송 이벤트
@@ -87,18 +84,14 @@ sendButton.addEventListener("click", async () => {
 
     // API 요청
     try {
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        const response = await fetch("/chatbot/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-                model: model,
-                messages: [
-                    { role: "system", content: characterSettings[selectedCharacter] },
-                    { role: "user", content: userMessage },
-                ],
+                'setting': characterSettings[selectedCharacter],
+                'message': userMessage,
             }),
         });
 
@@ -113,9 +106,8 @@ sendButton.addEventListener("click", async () => {
         botDiv.textContent = botMessage;
         messages.appendChild(botDiv);
 
-        messages.scrollTop = messages.scrollHeight; // 스크롤 자동 하단 이동
+        messages.scrollTop = messages.scrollHeight;
     } catch (error) {
-        console.error("Error:", error);
         alert("메시지를 전송하는 중 오류가 발생했습니다.");
     }
 });

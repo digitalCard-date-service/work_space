@@ -9,7 +9,6 @@ def index():
 @bp.route('/submit', methods=['POST'])
 def submit():
     data = request.get_json()
-    print(data)
     session['age'] = data['age']
     session['major'] = data['major']
     session['mbti'] = data['mbti']

@@ -1,15 +1,15 @@
-// //인증 상태 확인
-// function checkAuth() {
-//     const authToken = getCookie('authToken');
-//     if (!authToken) {
-//         alert('로그인이 필요합니다.');
-//         window.location.href = '/login'; // 로그인 페이지로 리디렉션
-//     }
-// }
+ //인증 상태 확인
+ function checkAuth() {
+     const authToken = getCookie('authToken');
+     if (!authToken) {
+         alert('로그인이 필요합니다.');
+         window.location.href = '/login'; // 로그인 페이지로 리디렉션
+     }
+ }
 
 'use strict';
 //import { LOGIN_API } from '../config.js'
-const API_BASE_URL = 'https://univcert.com/api/v1';
+//const API_BASE_URL = 'https://univcert.com/api/v1';
 
 /**
  * 공통 Fetch 함수
@@ -17,7 +17,6 @@ const API_BASE_URL = 'https://univcert.com/api/v1';
  * @param {Object} body - 요청 데이터
  */
 async function fetchAPI(endpoint, body = {}) {
-
     try {
         const response = await fetch(`/login/${endpoint}`, {
             method: 'POST',
@@ -79,7 +78,6 @@ document.querySelector('.email__checkButton').addEventListener('click', async ()
     try {
         // 이미 인증된 사용자 확인
         const statusCheck = await fetchAPI('status', { email });
-
         if (statusCheck.success && statusCheck.certified_date) {
             alert('이미 인증된 이메일입니다. 서비스를 이용할 수 없습니다.');
             return; // 이미 인증된 경우 요청 중단
@@ -123,7 +121,7 @@ document.querySelector('.prove__checkButton').addEventListener('click', async ()
                     }
 
             startSessionTimer(30); // 세션 타이머 30분 설정
-            setTimeout(() => window.location.href = './idealTypeSurvey.html', 2000);
+            setTimeout(() => window.location.href = '/writting', 2000);
         } else {
             alert(result.message || '인증번호가 잘못되었습니다.');
         }

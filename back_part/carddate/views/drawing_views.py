@@ -10,4 +10,4 @@ bp = Blueprint('drawing', __name__, url_prefix='/drawing')
 
 @bp.route('/')
 def index():
-    return render_template('drawing.html')
+    return render_template('cardDrawing.html')

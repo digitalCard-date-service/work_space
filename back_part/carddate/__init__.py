@@ -21,13 +21,15 @@ def create_app():
     from . import models
 
     # 블루프린트
-    from .views import home_views, login_views, form_views, drawing_views, random_views, recommend_views, idealType_views
-    app.register_blueprint(home_views.bp)
+    from .views import onBoarding, login_views, writing_views, drawing_views, random_views, recommend_views, idealType_views, aiSimulation_views, master_views
+    app.register_blueprint(onBoarding.bp)
     app.register_blueprint(login_views.bp)
-    app.register_blueprint(form_views.bp)
+    app.register_blueprint(writing_views.bp)
     app.register_blueprint(drawing_views.bp)
     app.register_blueprint(random_views.bp)
     app.register_blueprint(recommend_views.bp)
     app.register_blueprint(idealType_views.bp)
+    app.register_blueprint(aiSimulation_views.bp)
+    app.register_blueprint(master_views.bp)
 
     return app

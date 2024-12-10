@@ -7,21 +7,23 @@
     <meta name="description" content="This service is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
     <meta property="og:title" content="card with love(명함을 사랑을 싣고)" />
     <meta property="og:description" content="blind date site for University Student" />
-    <meta property="og:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
-    <meta property="og:url" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/aisimulation.html" />
+    <meta property="og:image" content="https://95db-203-246-85-194.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png"/>
+    <meta property="og:url" content="https://95db-203-246-85-194.ngrok-free.app/digitalCard-date-service/front_part/cardWriting.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:url" content="https://95db-203-246-85-194.ngrok-free.app/digitalCard-date-service/front_part/cardWriting.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
     <meta name="twitter:description" content="blind date site for University Student" />
-    <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+    <meta name="twitter:image" content="https://95db-203-246-85-194.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../static/css/cardWritting.css">
+    <link rel="stylesheet" href="../static/css/cardWriting.css">
     <link rel="shortcut icon" href="../static/assets/teamLogo.svg">
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
-    <script src="../static/src/cardWritting/changeAnimalImg.js" type="module"></script>
-    <script src="../static/src/cardWritting/submit.js" type="module"></script>
-    <script src="../static/src/cardWritting/changeColor.js" type="module"></script>
-    <script src="../static/src/cardWritting/modal.js" type="module"></script>
+    <script src="../static/src/cardWriting/changeAnimalImg.js" type="module"></script>
+    <script src="../static/src/cardWriting/submit.js" type="module"></script>
+    <script src="../static/src/cardWriting/changeColor.js" type="module"></script>
+    <script src="../static/src/cardWriting/modal.js" type="module"></script>
     <title>Card Writing(카드작성)</title>
 </head>
 <body>
@@ -55,11 +57,11 @@
                 </div>
                 <div class="form_row">
                     <label>학번(나이) :</label>
-                    <input type="text" name="studentID_age" placeholder="23학번(21살)" required>
+                    <input type="text" name="studentID_age" placeholder="23(21)" required>
                 </div>
                 <div class="form_row">
                     <label>MBTI :</label>
-                    <input type="text" name="mbti" placeholder="INTJ" required>
+                    <input type="text" name="mbti" placeholder="intj" required>
                 </div>
                 <div class="form_row">
                     <label>취미 :</label>
@@ -75,8 +77,8 @@
             <div class="card_UX-topContainer">
                 <div class="color-container">
                     <button class="color c1" data-src="../static/assets/card_gray.svg" data-mobile="../static/assets/card_gray-mobile.svg"></button>
-                    <button class="color c3" data-src="../static/assets/card_orange.svg" data-mobile="../static/assets/card_orange-mobile.svg"></button>
                     <button class="color c2" data-src="../static/assets/card_pink.svg" data-mobile="../static/assets/card_pink-mobile.svg"></button>
+                    <button class="color c3" data-src="../static/assets/card_orange.svg" data-mobile="../static/assets/card_orange-mobile.svg"></button>
                     <button class="color c4" data-src="../static/assets/card_yellow.svg" data-mobile="../static/assets/card_yellow-mobile.svg"></button>
                     <button class="color c5" data-src="../static/assets/card_green.svg" data-mobile="../static/assets/card_green-mobile.svg"></button>
                     <button class="color c6" data-src="../static/assets/card_blue.svg" data-mobile="../static/assets/card_blue-mobile.svg"></button>
@@ -109,7 +111,7 @@
         <div id="modal">
             <div class="modal-content">
               <div class="modal-title">※ 작성양식을 준수하세요! 정확히 기재하여야 추천서비스 이용시 올바른 명함이 제공됩니다.</div>
-              <div class="modal-description">"1.성별(Gender): 남성(man)/여성(woman)<br><br>2.이름(Name): 자유롭게 기입(anything)<br><br>3.학과(Major): 학교에서 지정한 이름, 단 특수기호는 생략하고 붙여씁니다. 괄호는 허용합니다.<br>Name given by the school, but don't use special symbol and stick together. Parentheses are allowed.<br><br>4.학번(나이)(ClassNum(Age)): N학번(N살)<br><br>5.mbti: 대소문자 구분X(case not separated)<br><br>6.취미(Hobby): 자유롭게 한 단어로(anything, only use keyword)<br><br>7.연락처(contact): instagramID, kakaoID, phone number etc";
+              <div class="modal-description">"1.성별(Gender): 남성(man)/여성(woman)<br><br>2.이름(Name): 자유롭게 기입(anything)<br><br>3.학과(Major): 학교에서 지정한 이름, 단 특수기호는 생략하고 붙여씁니다. 괄호는 허용합니다.<br>Name given by the school, but don't use special symbol and stick together. Parentheses are allowed.<br><br>4.학번(나이)(ClassNum(Age)): N(N)<br><br>5.mbti: 소문자로만(only lowercase)<br><br>6.취미(Hobby): 자유롭게 한 단어로쓰되 동사형X(only use keyword, The verb form is not allowed) ex)축구하기X<br><br>7.연락처(contact): 단 한개만(only one ID) instagramID, kakaoID, phone number etc";
             </div>
               <button class="modal-button">확인</button>
             </div>
