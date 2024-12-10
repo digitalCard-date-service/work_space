@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
-from sqlalchemy import Integer
-from wtforms import StringField, IntegerField, TextAreaField
-from wtforms.validators import DataRequired, Length, Regexp
+from wtforms import StringField, IntegerField
+from wtforms.validators import DataRequired, Length
 
 class ProfileForm(FlaskForm):
     name = StringField('이름', validators=[DataRequired(), Length(max=10)])  # 이름
