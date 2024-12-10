@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template, jsonify, request
+from flask import Blueprint, render_template, jsonify, request, current_app
 import requests
 
 API_BASE_URL = 'https://univcert.com/api/v1'
-API_KEY = '3ff92442-2fa8-4115-9902-9454f05fcdb9'
+#
 
 bp = Blueprint('login', __name__, url_prefix='/login')
 
@@ -26,6 +26,7 @@ def check():
 
 @bp.route('/status', methods=['POST'])
 def status():
+    API_KEY = current_app.config['UNIV_API']
     data = request.get_json()
     email = data['email']
 
@@ -41,6 +42,7 @@ def status():
 
 @bp.route('certify', methods=['POST'])
 def certify():
+    API_KEY = current_app.config['UNIV_API']
     data = request.get_json()
     email = data['email']
     univName = data['univName']
@@ -60,6 +62,7 @@ def certify():
 
 @bp.route('certifycode', methods=['POST'])
 def certifycode():
+    API_KEY = current_app.config['UNIV_API']
     data = request.get_json()
     email = data['email']
     univName = data['univName']

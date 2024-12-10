@@ -1,17 +1,12 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from datetime import timedelta
-import os
 
-import config
 db = SQLAlchemy()
 migrate = Migrate()
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(config)
-    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
-    app.config['API_KEY'] = os.getenv('API_KEY')
+    app.config.from_object('config.Config')
 
     # ORM
     db.init_app(app)

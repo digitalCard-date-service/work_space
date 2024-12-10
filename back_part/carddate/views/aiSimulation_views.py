@@ -1,9 +1,8 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, current_app
 import requests
 
 model = "gpt-3.5-turbo";
 API_BASE_URL = 'https://api.openai.com/v1/chat/completions'
-API_KEY = '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'
 
 bp = Blueprint('chatbot', __name__, url_prefix='/chatbot')
 
@@ -13,6 +12,7 @@ def index():
 
 @bp.route('/chat', methods=['POST'])
 def chat():
+    API_KEY = current_app.config['GPT_KEY']
     messages = request.get_json()
     response = requests.post(f'{API_BASE_URL}', headers={
         'Content-Type': 'application/json',
