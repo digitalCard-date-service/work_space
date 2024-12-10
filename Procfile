@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$PORT back_part.carddate:app
+web: PYTHONPATH=$PYTHONPATH:back_part gunicorn --bind 0.0.0.0:$PORT back_part.carddate:app
