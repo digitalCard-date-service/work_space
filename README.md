@@ -1,16 +1,15 @@
+# 💌 디지털 명함 소개팅 💌
 
-# 💌디지털 명함 소개팅💌
-
-> 디지털 명함을 활용하여 자신을 소개하고 이성을 매칭시켜주는 혁신적인 소개팅 플랫폼입니다.
+> 디지털 명함을 활용하여 자신을 소개하고 이성을 매칭시켜주는 혁신적인 대학생 소개팅 플랫폼
 
 ---
 
 ## 📋 프로젝트 개요
 
 ### 프로젝트 목적
-- 디지털 명함을 활용하여 현대인의 라이프스타일에 맞는 효율적이고 편리한 소개팅 플랫폼 제공
+- 디지털 명함을 활용하여 MZ 대학생의 라이프스타일에 맞는 효율적이고 편리한 소개팅 플랫폼 제공
 - 관심사 공유를 통해 선택의 폭을 좁히고 대상 선택의 어려움을 해소
-- 오프라인 명함 소개팅의 시간적, 공간적 제약을 극복하여 접근성을 높임
+- 오프라인 명함 소개팅의 시간적, 공간적 제약을 극복하여 접근성 확장
 - 대면 만남의 부담감을 줄이고 디지털 기반의 안전하고 편안한 소통 환경을 제공
 
 ### 타겟층
@@ -18,8 +17,17 @@
 
 ### 주요 기능
 - **디지털 명함 생성**: 사용자 프로필과 관심사를 기반으로 한 맞춤형 디지털 명함 생성
-- **명함 매칭**: 랜덤으로 2장의 명함 추천 또는 개인화된 알고리즘을 통해 최적의 명함 1장 제공
+- **명함 매칭**: 랜덤으로 2장의 명함 추천 또는 개인화된 알고리즘을 통해 최상의 명함 1장 제공
 - **AI 챗봇 시뮬레이션**: 소통이 어려운 사용자를 위해 자연스러운 대화 연습 환경을 제공하는 AI 기반 챗봇 지원
+
+---
+
+## 🔫 사이트 이용 링크
+
+### 사용자 버전
+<배포 링크>
+### 개발자 버전
+<개발자 버전>
 
 ---
 
@@ -28,11 +36,11 @@
 <div align="left">
 	<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
 	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
-   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
-   <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white" />
+   	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
+   	<img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=Figma&logoColor=white" />
 	<img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=Flask&logoColor=white" />
 	<img src="https://img.shields.io/badge/SQLite-003B57?style=flat&logo=SQLite&logoColor=white" />
-   <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=white" />
+   	<img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=white" />
 	<img src="https://img.shields.io/badge/PyCharm-000000?style=flat&logo=PyCharm&logoColor=white" />
 	<img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=Heroku&logoColor=white" />
 </div>
@@ -46,7 +54,7 @@
 ### 백엔드
 - **Flask**: 경량 Python 웹 프레임워크로 서버 구축, API 설계, 라우팅을 간편하게 관리
 - **SQLite**: 경량화된 관계형 데이터베이스로 빠르고 독립적인 데이터 저장소 제공
-- **Python**: 설명추가
+- **Python**: 설명추가!
 
 ### 기타
 - **PyCharm**: 프로젝트별 독립적인 가상환경(Virtual Environment) 관리를 지원하는 Python 전용 IDE
@@ -87,13 +95,14 @@ function matchUsers(user1, user2) {
 
 ## 🛠️ 페이지별 세부 구현
 
-서비스 제공 페이지는 사용자 편과 관리자 편으로 나뉘어 각각 사용자 경험 향상과 서비스 안정적 운영을 목표로 설계되었습니다.
+서비스 제공 페이지는 사용자 편과 관리자 편으로 나눠, 각각 사용자 경험 향상과 서비스 안정적 운영에 목표를 두어 설계
 
 
 ### 사용자 편
 
 #### 1. 홈 페이지 (`Onboarding Page`)
 ![Uploading image.png…]()
+
 **기능**:
 - 플랫폼 소개, 사용자 환영 메시지, 간단한 사이트 이용 가이드 제공
 
@@ -211,8 +220,7 @@ function matchUsers(user1, user2) {
 
 **[테스트영상]()**
 
-
-
+__
 ### 관리자 편
 
 #### **1. 관리자 로그인 페이지 (`adminLogin Page`)**
@@ -231,42 +239,55 @@ function matchUsers(user1, user2) {
 
 **세부 구현 설명**:
 - **UI/UX**: 직관적인 디자인으로 손쉬운 사용편의 제공
-- **API를 통한 유저 관리**: Univecert API를 활용하여 인증유저를 출력하고, 삭제 버튼을 통해 개별유저 초기화 및 전체 초기화 버튼 제공
+- **API를 통한 유저 관리**: Univecert API를 활용하여 인증유저를 출력, 삭제 버튼을 통해 개별유저 초기화 및 전체 초기화 버튼 제공
 
 **[테스트영상]()**
 
 
-### 설명 마무리
+<!--### 설명 마무리
 
-각 페이지는 사용자 경험과 편의성을 극대화하도록 설계되었으며, 안정적인 서비스 운영을 목표로 개발되었습니다.
+각 페이지는 사용자 경험과 편의성을 극대화하도록 설계되었으며 안정적인 서비스 운영을 목표로 개발
+(추가 설명!)-->
 
 ---
 
-## 백엔드 API 설계 및 응답방식
+## 📚 백엔드 API 설계 및 응답방식
 
-내용 추가
+내용 추가!
 
 --- 
+
+## 🔎 개선 및 발전
+
+내용추가!
+
+---
 
 ## 👥 역할 분담
 
 | 역할 | 이름 | 세부역할 |
 |:------------:|:-----------:|------------------------------------------------------------------------------------------------------|
-| **🌐프론트엔드🔍** | 조유찬 | 서버와의 통신연결, 동적 웹페이지 구현, QA(소프트웨어 품질 관리), 추천 알고리즘을 위한 필터링 코드 설계, 최적화 및 디자인 통일작업 |
-| **🌐프론트엔드🎨** | 이서인 | 디자인 설계, 레이아웃 설계, 페이지 별 세부 기획, 동적 웹페이지 구현, 반응형 웹 구현, 프론트 마감작업, 이미지 및 로고 제작 |
-|   **🗄️백엔드📈**   | 정다운 | 추천 알고리즘 설계, 백엔드 API 설계, JavaScript 코드를 Flask로 변환하여 서버 측 처리 구현 |
-|   **🗄️백엔드🛢️**   | 문효재 | DB 시스템 구축, 쿼리 최적화, 데이터 마이그레이션, DB 관리, 웹사이트 배포 |
+| **🌐 프론트엔드 🔍** | 조유찬 | 서버 통신연결, 동적 웹페이지 구현, QA(소프트웨어 품질 관리), 추천 알고리즘 필터링 코드 설계, 최적화 및 디자인 통일 작업 |
+| **🌐 프론트엔드 🎨** | 이서인 | 디자인 설계, 레이아웃 설계, 페이지 별 세부 기획, 동적 웹페이지 구현, 반응형 웹 구현, 프론트 마감작업, 이미지 및 로고 제작 |
+|   **🗄️ 백엔드 📈**   | 정다운 | 추천 알고리즘 설계, 백엔드 API 설계, JavaScript 코드를 Flask로 변환하여 서버 측 처리 구현 |
+|   **🗄️ 백엔드 🛢️**   | 문효재 | DB 시스템 구축, 쿼리 최적화, 데이터 마이그레이션, DB 관리, 웹사이트 배포 |
 
 ---
 
-## 📑 외부 문서
+## 📑 외부 참고 자료
 
 - [Univcert API 문서](https://univcert.com/)
 - [ChatGPT API 문서](https://platform.openai.com/docs/overview)
 
 ---
 
-## 🚀 설치 및 실행 방법
+## 💣 제한 및 한계
+
+내용 추가!
+
+---
+
+<!--## 🚀 설치 및 실행 방법
 
 1. **저장소 클론**
    ```bash
@@ -284,7 +305,7 @@ function matchUsers(user1, user2) {
    python app.py
    ```
 
----
+--- -->
 
 ## 🤝 기여 방법
 
@@ -305,7 +326,7 @@ function matchUsers(user1, user2) {
 
 ---
 
-## 📞 연락처
+## ✉️ E-mail
 
 - Frontend Developers
   - 조유찬: (yuchancho174@gmail.com)
