@@ -325,7 +325,7 @@ __
 
 ---
 
-## ✉️ E-mail
+## ✉️ Contact
 
 - Frontend Developers
   - 조유찬: (yuchancho174@gmail.com)
