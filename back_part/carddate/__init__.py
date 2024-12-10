@@ -28,4 +28,4 @@ def create_app():
     app.register_blueprint(aiSimulation_views.bp)
     app.register_blueprint(admin_views.bp)
 
-    return app  
+    return app            
