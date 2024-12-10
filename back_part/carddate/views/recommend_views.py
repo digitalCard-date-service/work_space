@@ -1,10 +1,7 @@
-from random import random
-
 from flask import Blueprint, jsonify, render_template, session, request
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import OneHotEncoder
-from sqlalchemy.orm import query_expression
 
 from ..models import Profile
 from .. import db

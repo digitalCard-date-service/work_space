@@ -11,10 +11,11 @@ document.getElementById("loginButton").addEventListener("click", async function 
     const errorMessage = document.getElementById("errorMessage");
 
     try {
-        const response = await fetch("https://your-backend-api.com/validate-password", {
+        const response = await fetch("/admin/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ password }) 
+            body: JSON.stringify({
+            'password': password })
         });
 
         const data = await response.json();
@@ -22,7 +23,7 @@ document.getElementById("loginButton").addEventListener("click", async function 
         if (response.ok && data.success) {
             setCookie("authToken", "valid", 1);
             alert("로그인 성공");
-            window.location.href = "master.html"; 
+            window.location.href = "/admin/control";
         } else {
             errorMessage.textContent = data.message || "비밀번호가 틀렸습니다. 다시 시도하세요.";
         }
@@ -32,9 +33,8 @@ document.getElementById("loginButton").addEventListener("click", async function 
     }
 });
 
-
 // 명세서 폼
-// POST /validate-password
+// POST /submit
 // Content-Type: application/json
 
 // {

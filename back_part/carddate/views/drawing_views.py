@@ -1,10 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash, session
-import requests
-from werkzeug.utils import redirect
-
-from ..forms import ProfileForm
-from ..models import Profile
-from .. import db
+from flask import Blueprint, render_template
 
 bp = Blueprint('drawing', __name__, url_prefix='/drawing')
 

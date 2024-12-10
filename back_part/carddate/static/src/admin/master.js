@@ -1,7 +1,5 @@
 'use strict';
-import { LOGIN_API } from '../../front_part/src/config';
 
-const API_KEY = LOGIN_API;
 const FETCH_URL = "https://univcert.com/api/v1/certifiedlist";
 const CLEAR_ALL_URL = "https://univcert.com/api/v1/clear";
 const CLEAR_USER_URL = "https://univcert.com/api/v1/clear";
@@ -16,7 +14,7 @@ function authCheck() {
     const authToken = getCookie("authToken");
     if (!authToken) {
         alert("로그인이 필요합니다.");
-        window.location.href = "./adminLogin.html";
+        window.location.href = "/admin";
     }
 }
 

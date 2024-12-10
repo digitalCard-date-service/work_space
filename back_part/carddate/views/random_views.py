@@ -1,7 +1,6 @@
 import random
 from flask import Blueprint, render_template, jsonify
 from ..models import Profile
-from .. import db
 
 bp = Blueprint('random', __name__, url_prefix='/random')
 
