@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, jsonify
 import requests
 import os
 
-model = "gpt-4";
+model = "gpt-4"
 API_BASE_URL = 'https://api.openai.com/v1/chat/completions'
 
 bp = Blueprint('chatbot', __name__, url_prefix='/chatbot')
