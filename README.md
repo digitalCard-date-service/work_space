@@ -919,7 +919,7 @@ LIMIT 10 OFFSET 0;
 ---
 
 <details>
-<summary><h2>🔎 개선 및 발전</h2></summary>
+<summary><h2>⚙️ 프로젝트 개선 프로세스</h2></summary>
 	
 내용추가!
 </details>
@@ -927,7 +927,7 @@ LIMIT 10 OFFSET 0;
 ---
 
 <details>
-<summary><h2>💣 제한 및 한계</h2></summary>
+<summary><h2>💣 한계 및 발전</h2></summary>
 
 내용 추가!
 </details>
