@@ -607,12 +607,12 @@ __
 
 ## 👥 역할 분담
 
-| **분야** | **이름** | **담당역할** |
-|:------------:|:-----------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| **🌐 Frontend 🔍** | 조유찬 | Server Communication Integration, Dynamic Webpage Development, Quality Assurance (QA), Optimization, Algorithm Design, Project Management, Release Finalization, Code Freeze, Post-Deployment Verification, Final Report Documentation |
-| **🌐 Frontend 🎨** | 이서인 | Design Planning, Content Creation for Individual Pages, Responsive Web Implementation, Finalization Tasks, Image and Logo Production, Final Report Documentation |
-| **🗄️ Backend 📈** | 정다운 | Algorithm Design, Backend API Development, Conversion of JavaScript Code to Flask for Server-side Processing, Release Finalization, Code Freeze, Post-Deployment Verification |
-| **🗄️ Backend 🛢️** | 문효재 | Database System Architecture, Query Optimization, Data Migration, Database Administration, Website Deployment, Deployment Preparation |
+| **분야** | **이름** | **담당 역할** |
+|:------------:|:-----------:|-------------------------------------------------------------------------------------------------------------------------------------|
+| **🌐 Frontend 🔍** | 조유찬 | 서버 통신 통합, 동적 웹페이지 개발, 품질 보증(QA), 최적화, 알고리즘 설계, 프로젝트 관리, 릴리스 마감, 코드 프리즈, 배포 후 검증, 최종 보고서 작성 |
+| **🌐 Frontend 🎨** | 이서인 | 디자인 기획, 페이지별 콘텐츠 제작, 서버 통신 통합, 반응형 웹 구현, 동적 웹페이지 개발, 마감 작업, 이미지 및 로고 제작, 코드 프리즈, 최종 보고서 작성 |
+| **🗄️ Backend 📈** | 정다운 | 알고리즘 설계, 백엔드 API 개발, 자바스크립트 코드의 서버 요청을 Flask 기반으로 처리할 수 있도록 연동하는 파이썬 서버 코드 작성, 릴리스 마감, 코드 프리즈, 배포 후 검증 |
+| **🗄️ Backend 🛢️** | 문효재 | 데이터베이스 시스템 설계, 쿼리 최적화, 데이터 마이그레이션, 데이터베이스 관리, 배포 준비, 웹사이트 배포 |
 
 
 ### 세부역할
