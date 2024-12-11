@@ -605,8 +605,6 @@ SELECT * FROM profile;
 SELECT name, age, major, mbti FROM profile;
 ```
 
----
-
 ### 2. **조건별 필터링**
 #### **성별 기준 조회**
 ```sql
@@ -628,8 +626,6 @@ SELECT * FROM profile WHERE age = 21(23);
 SELECT * FROM profile WHERE mbti LIKE 'istp';
 ```
 
----
-
 ### 3. **정렬**
 #### **나이순 정렬**
 ```sql
@@ -640,8 +636,6 @@ SELECT * FROM profile ORDER BY age ASC;
 ```sql
 SELECT * FROM profile ORDER BY create_date DESC;
 ```
-
----
 
 ### 4. **그룹화 및 통계**
 #### **학과별 학생 수**
@@ -665,8 +659,6 @@ FROM profile
 GROUP BY gender;
 ```
 
----
-
 ### 5. **검색**
 #### **이름으로 검색**
 ```sql
@@ -677,8 +669,6 @@ SELECT * FROM profile WHERE name LIKE '문효재';
 ```sql
 SELECT * FROM profile WHERE hobby LIKE '축구';
 ```
-
----
 
 ### 6. **복합조건 쿼리**
 #### **컴퓨터공학과의 23세 이상 학생**
@@ -696,8 +686,6 @@ WHERE major = '컴퓨터공학과'
 GROUP BY mbti;
 ```
 
----
-
 ### 7. **제한 및 오프셋**
 #### **최근 가입한 5명만 조회**
 ```sql
@@ -711,7 +699,6 @@ LIMIT 5;
 SELECT * FROM profile
 LIMIT 10 OFFSET 0;
 ```
-
 
 ---
 
