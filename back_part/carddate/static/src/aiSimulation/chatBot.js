@@ -92,7 +92,6 @@ sendButton.addEventListener("click", async () => {
                 'message': userMessage,
             }),
         });
-        console.log(response.json());
 
         if (!response.ok) throw new Error("API 요청 실패");
 
