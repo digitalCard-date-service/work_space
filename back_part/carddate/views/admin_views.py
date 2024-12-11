@@ -58,3 +58,7 @@ def certifiedList():
     }))
     result = response.json()
     return jsonify(result)
+
+@bp.route('/control/cardList', methods=['POST'])
+def cardList():
+    return jsonify()
