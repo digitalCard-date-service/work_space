@@ -592,6 +592,128 @@ __
     ```
 
 ---
+## 🛢️ SQL 쿼리 정리: 프로필 데이터 조회 및 관리
+
+### 1. **기본 조회 쿼리**
+#### **전체 프로필 조회**
+```sql
+SELECT * FROM profile;
+```
+
+#### **특정 컬럼만 조회**
+```sql
+SELECT name, age, major, mbti FROM profile;
+```
+
+---
+
+### 2. **조건별 필터링**
+#### **성별 기준 조회**
+```sql
+SELECT * FROM profile WHERE gender = '남성';
+```
+
+#### **특정 학과 학생 조회**
+```sql
+SELECT * FROM profile WHERE major = '컴퓨터공학과';
+```
+
+#### **특정 학번(나이) 학생 조회**
+```sql
+SELECT * FROM profile WHERE age = 21(23);
+```
+
+#### **MBTI별 조회**
+```sql
+SELECT * FROM profile WHERE mbti LIKE 'istp';
+```
+
+---
+
+### 3. **정렬**
+#### **나이순 정렬**
+```sql
+SELECT * FROM profile ORDER BY age ASC;
+```
+
+#### **최근 가입자순 정렬**
+```sql
+SELECT * FROM profile ORDER BY create_date DESC;
+```
+
+---
+
+### 4. **그룹화 및 통계**
+#### **학과별 학생 수**
+```sql
+SELECT major, COUNT(*) as student_count
+FROM profile
+GROUP BY major;
+```
+
+#### **MBTI 유형별 학생 수**
+```sql
+SELECT mbti, COUNT(*) as mbti_count
+FROM profile
+GROUP BY mbti;
+```
+
+#### **성별 평균 나이**
+```sql
+SELECT gender, AVG(age) as avg_age
+FROM profile
+GROUP BY gender;
+```
+
+---
+
+### 5. **검색**
+#### **이름으로 검색**
+```sql
+SELECT * FROM profile WHERE name LIKE '문효재';
+```
+
+#### **취미로 검색**
+```sql
+SELECT * FROM profile WHERE hobby LIKE '축구';
+```
+
+---
+
+### 6. **복합조건 쿼리**
+#### **컴퓨터공학과의 23세 이상 학생**
+```sql
+SELECT * FROM profile
+WHERE major = '컴퓨터공학과'
+AND age >= 23;
+```
+
+#### **특정 학과의 MBTI 분포**
+```sql
+SELECT mbti, COUNT(*) as count
+FROM profile
+WHERE major = '컴퓨터공학과'
+GROUP BY mbti;
+```
+
+---
+
+### 7. **제한 및 오프셋**
+#### **최근 가입한 5명만 조회**
+```sql
+SELECT * FROM profile
+ORDER BY create_date DESC
+LIMIT 5;
+```
+
+#### **페이지네이션 (예: 한 페이지당 10명)**
+```sql
+SELECT * FROM profile
+LIMIT 10 OFFSET 0;
+```
+
+
+---
 
 ## 🔎 개선 및 발전
 
