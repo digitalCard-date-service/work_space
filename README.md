@@ -75,7 +75,9 @@
 - **클라이언트-서버 구조**: VanillaJS 기반 클라이언트와 Flask 백엔드 간 REST API 통신
 - **데이터베이스 설계**: SQLite를 이용하여 사용자 정보와 매칭 데이터를 효율적으로 관리
 
-웹 아키텍처
+### 웹 아키텍처
+![KakaoTalk_Photo_2024-12-11-23-50-52](https://github.com/user-attachments/assets/2ae84af3-1b82-4c5c-8d2f-8a92690dbc36)
+
 
 ### 데이터 흐름
 - **사용자 프로필 등록**
@@ -339,6 +341,8 @@ def getRandomProfile():
 
 
 #### 2. 로그인 페이지 (`Login Page`)
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-48 004" src="https://github.com/user-attachments/assets/1b7d5ff6-6ab4-4b70-a34a-6a8d7ab754bb" />
+
 **기능**:
 - Univcert API를 활용한 간편한 로그인 및 학교 인증 서비스 제공
 
@@ -354,6 +358,8 @@ def getRandomProfile():
 
 
 #### 3. 명함 작성 페이지 (`Writing Page`)
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-48 005" src="https://github.com/user-attachments/assets/5a36c3ec-b9b9-4ed2-b252-8943912bdab9" />
+
 **기능**:
 - 사용자 맞춤형 디지털 명함 작성 및 제출
 
@@ -374,6 +380,8 @@ def getRandomProfile():
 
 
 #### 4. 이상형 조사 페이지 (`Survey Page`)
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-48 006" src="https://github.com/user-attachments/assets/1fd6f16a-3c38-4396-93db-047d653a4d8c" />
+
 **기능**:
 - 이상형 데이터를 수집하여 추천 매칭 알고리즘에 반영
 
@@ -392,6 +400,8 @@ def getRandomProfile():
 
 
 #### 5. 매칭 서비스 선택 페이지 (`Drawing Page`)
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-49 007" src="https://github.com/user-attachments/assets/699bad69-3942-4d89-b8ca-279880a89490" />
+
 **기능**:
 - 랜덤 또는 추천 명함 매칭 선택
 
@@ -404,6 +414,8 @@ def getRandomProfile():
 
 
 #### 6-1. 랜덤 뽑기 페이지 (`Random Page`)
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-46 003" src="https://github.com/user-attachments/assets/aff5a2ca-0629-41ea-bff9-d7e863d62b7c" />
+
 **기능**:
 - 랜덤 명함 2장을 제공하고 선택할 수 있는 기능
 
@@ -417,6 +429,8 @@ def getRandomProfile():
 
 
 #### 6-2. 추천 뽑기 페이지 (`Recommend Page`)
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-49 008" src="https://github.com/user-attachments/assets/19c907cf-a837-49b0-bed0-b8fb4ef323b3" />
+
 **기능**:
 - 사용자 데이터를 기반으로 최적의 명함 1장을 추천
 
@@ -430,6 +444,8 @@ def getRandomProfile():
 
 
 #### 7. AI 챗봇 페이지 (`Chatbot Page`)
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-44 001" src="https://github.com/user-attachments/assets/99725514-a034-436d-8da8-58ed33abf7c4" />
+
 **기능**:
 - 대화 연습을 위한 AI 챗봇 제공
 - 격려 메시지
@@ -447,6 +463,8 @@ __
 ### 관리자 편
 
 #### **1. 관리자 로그인 페이지 (`adminLogin Page`)**
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-47-48 001" src="https://github.com/user-attachments/assets/2195f439-2d18-418d-9e5b-f46e28083a1c" />
+
 **기능**: 관리자 전용 페이지 접근을 위한 안전한 로그인
 
 **세부 구현 설명**:
@@ -458,11 +476,14 @@ __
 
 
 #### **2. 사용자 관리 및 모니터링 페이지 (`master Page`)**
-**기능**: 인증 사용자 관리, 전체 초기화, 사이트 상태 모니터링
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-47-50 002" src="https://github.com/user-attachments/assets/93b865b8-6d15-44a0-9f99-cdb76bba9e69" />
+
+**기능**: 인증 사용자 관리, 전체 초기화, 사이트 상태 모니터링, DB관리
 
 **세부 구현 설명**:
 - **UI/UX**: 직관적인 디자인으로 손쉬운 사용편의 제공
 - **API를 통한 유저 관리**: Univecert API를 활용하여 인증유저를 출력, 삭제 버튼을 통해 개별유저 초기화 및 전체 초기화 버튼 제공
+- **DB관리**: DB를 HTML에 가져와서 조회 및 삭제 가능
 
 **[테스트영상]()**
 </details>
