@@ -103,12 +103,215 @@
 
 ### 매칭 알고리즘
 사용자 관심사와 선호 데이터를 기반으로 최적의 매칭을 수행합니다.
-```javascript
-function matchUsers(user1, user2) {
-    const commonInterests = user1.interests.filter(interest => user2.interests.includes(interest));
-    return commonInterests.length > 0; // 공통 관심사가 있는 경우 매칭 성공
-}
+```python
+@bp.route('/card', methods=['GET'])
+def getRandomProfile():
+    # 세션 변수 설정
+    userId = session.get('id')
+    ageFilter = session.get('age', [])
+    majorList = session.get('major', [])
+    mbti = session.get('mbti', [])
+    hobbyList = session.get('hobbies', [])
+    isMobile = session.get('isMobile', [])
+
+    # 유저 프로필 가져오기
+    userProfile = Profile.query.filter_by(id=userId).first()
+
+    if not userProfile:
+        return jsonify({'error': 'User profile not found'}), 404
+
+    userGender = userProfile.gender
+
+    # 기본 쿼리 설정: 본인 제외
+    query = Profile.query.filter(Profile.id != userId)
+
+    # 성별 필터
+    if userGender == '남성':
+        query = query.filter(Profile.gender == '여성')
+    else:
+        query = query.filter(Profile.gender == '남성')
+
+    # 나이 조건 처리
+    for ageCondition in ageFilter:
+        if ageCondition == 'older':
+            query = query.filter(Profile.age > userProfile.age)
+        elif ageCondition == 'same':
+            query = query.filter(Profile.age == userProfile.age)
+        elif ageCondition == 'younger':
+            query = query.filter(Profile.age < userProfile.age)
+
+    # 전공, MBTI, 취미 조건 처리
+    if majorList:
+        query = query.filter(Profile.major.in_(majorList))
+    if mbti:
+        query = query.filter(Profile.mbti == mbti)
+    if hobbyList:
+        query = query.filter(Profile.hobby.in_(hobbyList))
+
+    # 조건에 맞는 데이터 중 랜덤 1개 가져오기
+    recommendProfile = query.order_by(db.func.random()).first()
+    if recommendProfile:
+        # 로그 확인
+        '''print('recommendProfile: ', recommendProfile.name)
+        print('age: ', ageFilter, ' than ', userProfile.age, ': ', recommendProfile.age)
+        print('major: ', majorList, ': ', recommendProfile.major)
+        print('mbti: ', mbti, ': ', recommendProfile.mbti)
+        print('hobby: ', hobbyList, ': ', recommendProfile.hobby)'''
+
+        # 결과 반환
+        result = {
+            'id': recommendProfile.id,
+            'name': recommendProfile.name,
+
+            'gender': recommendProfile.gender,
+            'studentID_age': f"{recommendProfile.classNumber}({recommendProfile.age})",
+            'major': recommendProfile.major,
+            'mbti': recommendProfile.mbti,
+            'hobby': recommendProfile.hobby,
+            'contact': recommendProfile.contact,
+            'image': '../static/assets/' + str(
+                1 if recommendProfile.image == 'cuteDog' else
+                2 if recommendProfile.image == 'dengE' else
+                3 if recommendProfile.image == 'husky' else
+                4 if recommendProfile.image == 'cat' else
+                5 if recommendProfile.image == 'hamster' else
+                6 if recommendProfile.image == 'rabbit' else
+                7 if recommendProfile.image == 'fox' else
+                8 if recommendProfile.image == 'panda' else
+                9 if recommendProfile.image == 'wolf' else
+                10 if recommendProfile.image == 'lion' else
+                11 if recommendProfile.image == 'tiger' else
+                12 if recommendProfile.image == 'bear' else
+                13 if recommendProfile.image == 'dragon' else
+                14 if recommendProfile.image == 'horse' else
+                15 if recommendProfile.image == 'Monkey' else
+                16 if recommendProfile.image == 'turtle' else 0) + '.' + recommendProfile.image + '.png',
+            'color': '../static/assets/card_' + recommendProfile.color + ('-mobile' if isMobile else '') + '.svg'
+        }
+        return jsonify(result)
+
+    # 조건에 맞는 데이터가 없는 경우, 이상형 데이터 생성
+    idealAge = userProfile.age
+    if 'older' in ageFilter:
+        idealAge += 1
+    elif 'younger' in ageFilter:
+        idealAge -= 1
+
+    idealProfile = {
+        'age': idealAge,
+        'major': majorList[0] if majorList else 'DefaultMajor',
+        'mbti': mbti if mbti else 'DefaultMBTI',
+        'hobby': hobbyList[0] if hobbyList else 'DefaultHobby'
+    }
+
+    # 이상형 데이터 벡터화 준비
+    if userGender == '남성':
+        allProfiles = Profile.query.filter(Profile.gender == '여성').all()
+    else:
+        allProfiles = Profile.query.filter(Profile.gender == '남성').all()
+    if not allProfiles:
+        return jsonify({'error': 'No profiles available in database'}), 500
+
+    def profileToVector(profile):
+        # 벡터화 함수
+        age = int(profile.age)
+        categoricalData = [[profile.major, profile.mbti, profile.hobby]]
+        return np.concatenate(([age], encoder.transform(categoricalData).flatten()))
+
+    encoder = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
+    categoricalData = [[p.major, p.mbti, p.hobby] for p in allProfiles]
+    encoder.fit(categoricalData)
+
+    # 벡터화
+    idealVector = np.concatenate((
+        [idealProfile['age']],
+        encoder.transform([[idealProfile['major'], idealProfile['mbti'], idealProfile['hobby']]]).flatten()
+    ))
+    allVectors = np.array([profileToVector(profile) for profile in allProfiles])
+
+    # 코사인 유사도 계산
+    similarities = cosine_similarity([idealVector], allVectors).flatten()
+    mostSimilarIndex = np.argmax(similarities)
+    mostSimilarProfile = allProfiles[mostSimilarIndex]
+
+    result = {
+        'id': mostSimilarProfile.id,
+        'name': mostSimilarProfile.name,
+        'gender': mostSimilarProfile.gender,
+        'studentID_age': str(mostSimilarProfile.classNumber) + '(' + str(mostSimilarProfile.age) + ')',
+        'major': mostSimilarProfile.major,
+        'mbti': mostSimilarProfile.mbti,
+        'hobby': mostSimilarProfile.hobby,
+        'contact': mostSimilarProfile.contact,
+        'image': '../static/assets/' + str(
+            1 if mostSimilarProfile.image == 'cuteDog' else
+            2 if mostSimilarProfile.image == 'dengE' else
+            3 if mostSimilarProfile.image == 'husky' else
+            4 if mostSimilarProfile.image == 'cat' else
+            5 if mostSimilarProfile.image == 'hamster' else
+            6 if mostSimilarProfile.image == 'rabbit' else
+            7 if mostSimilarProfile.image == 'fox' else
+            8 if mostSimilarProfile.image == 'panda' else
+            9 if mostSimilarProfile.image == 'wolf' else
+            10 if mostSimilarProfile.image == 'lion' else
+            11 if mostSimilarProfile.image == 'tiger' else
+            12 if mostSimilarProfile.image == 'bear' else
+            13 if mostSimilarProfile.image == 'dragon' else
+            14 if mostSimilarProfile.image == 'horse' else
+            15 if mostSimilarProfile.image == 'Monkey' else
+            16 if mostSimilarProfile.image == 'turtle' else 0) + '.' + mostSimilarProfile.image + '.png',
+        'color': '../static/assets/card_' + mostSimilarProfile.color + ('-mobile' if isMobile else '') + '.svg'
+    }
+    # print('age: ', userProfile.age, ageFilter, 'than', mostSimilarProfile.age)
+    # print('major: ', majorList, ': ' ,result['major'])
+    # print('mbti: ', mbti, ': ', result['mbti'])
+    # print('hobby: ', hobbyList, ': ', result['hobby'])
+    return jsonify(result)
+
 ```
+### 1. 세션 정보 가져오기
+- 세션에서 사용자 정보를 가져옴
+  - `userId`: 사용자 ID
+  - `ageFilter`: 나이 필터 조건
+  - `majorList`: 선호 전공 목록
+  - `mbti`: 선호 MBTI
+  - `hobbyList`: 선호 취미 목록
+  - `isMobile`: 모바일 여부
+- `userId`를 기반으로 현재 사용자의 프로필을 데이터베이스에서 조회
+
+### 2. 사용자 프로필 확인
+- 사용자 프로필이 없으면 404 에러 `User profile not found`를 반환
+- 사용자의 성별을 확인해 상대 성별로 필터링
+
+### 3. 기본 쿼리 구성
+- 사용자 본인을 제외하는 필터 `Profile.id != userId` 설정
+- 조건별 필터링
+  - **성별**: 사용자의 상대 성별로 필터링
+  - **나이 조건**
+    - `older`: 사용자보다 나이가 많은 프로필
+    - `same`: 사용자와 같은 나이의 프로필
+    - `younger`: 사용자보다 나이가 어린 프로필
+  - **전공, MBTI, 취미**: 각각 사용자가 선호하는 값으로 필터링
+
+### 4. 추천 프로필 가져오기
+- 필터 조건에 맞는 데이터 중 랜덤으로 1개를 조회
+- 조회된 프로필이 있으면 다음 데이터를 반환
+  - ID, 이름, 성별, 학번/나이, 전공, MBTI, 취미, 연락처, 이미지, 카드 색상
+
+### 5. 이상형 데이터 생성 (대체 프로필)
+- 조건에 맞는 데이터가 없으면 이상형 데이터를 생성
+  - 나이: 사용자 나이 +1 `older` 또는 -1 `younger`
+  - 전공, MBTI, 취미: 세션 데이터에서 첫 번째 값 사용 또는 기본값 설정
+
+### 6. 벡터화 및 유사도 계산
+- 이상형 데이터를 포함한 모든 프로필 데이터를 벡터화
+  - `age`, `major`, `mbti`, `hobby`를 사용
+  - OneHotEncoder를 통해 카테고리 데이터를 벡터로 변환
+- 코사인 유사도를 계산하여 이상형 데이터와 가장 유사한 프로필을 선택
+
+### 7. 최종 결과 반환
+- 가장 유사한 프로필 데이터를 JSON 형식으로 반환
+  - ID, 이름, 성별, 학번/나이, 전공, MBTI, 취미, 연락처, 이미지 경로, 카드 색상
 </details>
 
 ---
