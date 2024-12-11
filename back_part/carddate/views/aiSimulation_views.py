@@ -25,5 +25,4 @@ def chat():
         ],
     }))
     result = response.json()
-    print(result)
     return jsonify(result)

@@ -20,6 +20,7 @@ def getRandomProfile():
     majorList = session.get('major', [])
     mbti = session.get('mbti', [])
     hobbyList = session.get('hobbies', [])
+    isMobile = session.get('isMobile', [])
 
     # 유저 프로필 가져오기
     userProfile = Profile.query.filter_by(id=userId).first()
@@ -93,7 +94,7 @@ def getRandomProfile():
                 14 if recommendProfile.image == 'horse' else
                 15 if recommendProfile.image == 'Monkey' else
                 16 if recommendProfile.image == 'turtle' else 0) + '.' + recommendProfile.image + '.png',
-            'color': '../static/assets/card_' + recommendProfile.color + '.svg'
+            'color': '../static/assets/card_' + recommendProfile.color + ('-mobile' if isMobile else '') + '.svg'
         }
         return jsonify(result)
 
@@ -167,7 +168,7 @@ def getRandomProfile():
             14 if mostSimilarProfile.image == 'horse' else
             15 if mostSimilarProfile.image == 'Monkey' else
             16 if mostSimilarProfile.image == 'turtle' else 0) + '.' + mostSimilarProfile.image + '.png',
-        'color': '../static/assets/card_' + mostSimilarProfile.color + '.svg'
+        'color': '../static/assets/card_' + mostSimilarProfile.color + ('-mobile' if isMobile else '') + '.svg'
     }
     # print('age: ', userProfile.age, ageFilter, 'than', mostSimilarProfile.age)
     # print('major: ', majorList, ': ' ,result['major'])

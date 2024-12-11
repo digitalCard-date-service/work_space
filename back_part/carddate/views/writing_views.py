@@ -14,6 +14,7 @@ def create():
     try:
         # 클라이언트에서 전송한 JSON 데이터 받기
         data = request.get_json()
+        session['isMobile'] = data['isMobileImg']
 
         # 데이터 유효성 검사
         required_fields = ['gender', 'name', 'major', 'age', 'classNumber', 'mbti', 'hobbies', 'contact']

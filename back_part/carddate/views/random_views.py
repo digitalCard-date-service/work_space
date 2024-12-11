@@ -15,6 +15,7 @@ def get_public_details():
 
     id = session.get('id')
     gender = session.get('gender')
+    isMobile = session.get('isMobile')
 
     if(gender == '남성'):
         randomProfiles = Profile.query.filter(Profile.gender == '여성', Profile.id != id).order_by(func.random()).limit(2).all()
@@ -45,7 +46,7 @@ def get_public_details():
             14 if profile.image == 'horse' else
             15 if profile.image == 'Monkey' else
             16 if profile.image == 'turtle' else 0) + '.'+ profile.image +'.png',
-        'color': '../static/assets/card_' + profile.color +'.svg'
+        'color': '../static/assets/card_' + profile.color + ('-mobile' if isMobile else '') + '.svg'
     } for profile in randomProfiles]
     session.clear()
     return jsonify(profiles_data)
