@@ -18,11 +18,11 @@ def submit():
     if password == PASSWORD:
         return jsonify({
             "status": 200,
-            "success": "true"
+            "success": True
         })
     return jsonify({
         "status": 401,
-        "success": "false"
+        "success": False
     })
 
 @bp.route('/control')

@@ -28,7 +28,6 @@ document.getElementById("loginButton").addEventListener("click", async function 
             errorMessage.textContent = data.message || "비밀번호가 틀렸습니다. 다시 시도하세요.";
         }
     } catch (error) {
-        console.error("Error during login:", error);
         alert("야레야레 못말리는 개발자. 다시 시도하세요.");
     }
 });
