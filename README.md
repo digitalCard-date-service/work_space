@@ -28,7 +28,9 @@
 	
 <summary><h2>🔫 사이트 이용</h2></summary>	
 
-<배포 링크>
+[배포 링크](https://morning-sands-38586-8c5d0863d417.herokuapp.com/)
+
+[테스트 영상](https://youtu.be/rtmiQ2zEn14)
 
 </details>
 
