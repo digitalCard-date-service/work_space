@@ -65,7 +65,7 @@
 - **클라이언트-서버 구조**: VanillaJS 기반 클라이언트와 Flask 백엔드 간 REST API 통신
 - **데이터베이스 설계**: SQLite를 이용하여 사용자 정보와 매칭 데이터를 효율적으로 관리
 
-![시스템 구조도](./assets/system_architecture.png) <!-- 시스템 구조도 이미지 링크 -->
+웹 아키텍처
 
 ### 데이터 흐름
 - **사용자 프로필 등록**
@@ -341,8 +341,6 @@ __
     { "status": 400, "success": false, "message": "string" }
     ```
 
----
-
 ### **2. writing\_views.py (카드 작성)**
 
 - **목표**: 사용자가 작성한 카드 정보를 데이터베이스에 저장
@@ -378,8 +376,6 @@ __
     { "status": "error", "message": "string", "error": "string" }
     ```
 
----
-
 ### **3. idealType\_views.py (이상형 설문)**
 
 - **목표**: 사용자의 이상형 데이터를 저장
@@ -408,8 +404,6 @@ __
     "message": "string"
   }
   ```
-
----
 
 ### **4. random\_views.py (랜덤 프로필 생성)**
 
@@ -471,8 +465,6 @@ __
     { "error": "string" }
     ```
 
----
-
 ### **5. recommend\_views.py (추천 시스템)**
 
 - **목표**: 사용자의 프로필을 바탕으로 추천 프로필을 생성하는 뷰
@@ -502,8 +494,6 @@ __
     "color": "string"
   }
   ```
-
----
 
 ### **6. aiSimulation\_views.py (AI 챗봇)**
 
@@ -537,8 +527,6 @@ __
     ]
   }
   ```
-
----
 
 ### **7. admin\_views.py (관리자 기능)**
 
@@ -603,7 +591,7 @@ __
     { "error": "string" }
     ```
 
---- 
+---
 
 ## 🔎 개선 및 발전
 
@@ -611,14 +599,24 @@ __
 
 ---
 
+## 💣 제한 및 한계
+
+내용 추가!
+
+---
+
 ## 👥 역할 분담
 
-| 역할 | 이름 | 세부역할 |
-|:------------:|:-----------:|------------------------------------------------------------------------------------------------------|
-| **🌐 프론트엔드 🔍** | 조유찬 | 서버 통신연결, 동적 웹페이지 구현, QA(소프트웨어 품질 관리), 추천 알고리즘 필터링 코드 설계, 최적화 및 디자인 통일 작업 |
-| **🌐 프론트엔드 🎨** | 이서인 | 디자인 설계, 레이아웃 설계, 페이지 별 세부 기획, 동적 웹페이지 구현, 반응형 웹 구현, 프론트 마감작업, 이미지 및 로고 제작 |
-|   **🗄️ 백엔드 📈**   | 정다운 | 추천 알고리즘 설계, 백엔드 API 설계, JavaScript 코드를 Flask로 변환하여 서버 측 처리 구현 |
-|   **🗄️ 백엔드 🛢️**   | 문효재 | DB 시스템 구축, 쿼리 최적화, 데이터 마이그레이션, DB 관리, 웹사이트 배포 |
+| **분야** | **이름** | **담당역할** |
+|:------------:|:-----------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **🌐 Frontend 🔍** | 조유찬 | Server Communication Integration, Dynamic Webpage Development, Quality Assurance (QA), Optimization, Algorithm Design, Project Management, Release Finalization, Code Freeze, Post-Deployment Verification, Final Report Documentation |
+| **🌐 Frontend 🎨** | 이서인 | Design Planning, Content Creation for Individual Pages, Responsive Web Implementation, Finalization Tasks, Image and Logo Production, Final Report Documentation |
+| **🗄️ Backend 📈** | 정다운 | Algorithm Design, Backend API Development, Conversion of JavaScript Code to Flask for Server-side Processing, Release Finalization, Code Freeze, Post-Deployment Verification |
+| **🗄️ Backend 🛢️** | 문효재 | Database System Architecture, Query Optimization, Data Migration, Database Administration, Website Deployment, Deployment Preparation |
+
+
+### 세부역할
+1. 조유찬
 
 ---
 
@@ -629,56 +627,30 @@ __
 
 ---
 
-## 💣 제한 및 한계
-
-내용 추가!
-
----
-
-<!--## 🚀 설치 및 실행 방법
-
-1. **저장소 클론**
-   ```bash
-   git clone https://github.com/digitalCard-date-service/work_space.git
-   cd work_space
-   ```
-
-2. **의존성 설치**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **애플리케이션 실행**
-   ```bash
-   python app.py
-   ```
-
---- -->
-
 ## 🤝 기여 방법
 
 1. 저장소를 포크합니다.
-2. 새 브랜치를 생성합니다.
+2. 새 브랜치를 생성합니다
    ```bash
    git checkout -b feature/new-feature
    ```
-3. 변경 사항을 커밋합니다.
+3. 변경 사항을 커밋합니다
    ```bash
    git commit -m "Add new feature"
    ```
-4. 브랜치를 푸시합니다.
+4. 브랜치를 푸시합니다
    ```bash
    git push origin feature/new-feature
    ```
-5. 풀 리퀘스트를 제출합니다.
+5. 풀 리퀘스트를 제출합니다
 
 ---
 
 ## ✉️ Contact
 
 - Frontend Developers
-  - 조유찬: (yuchancho174@gmail.com)
-  - 이서인: (guapapamama@gmail.com)
+  - 조유찬: yuchancho174@gmail.com
+  - 이서인: guapapamama@gmail.com
 - Backend Developers
-  - 정다운: (example@email.com)
-  - 문효재: ()
+  - 정다운: daun5535@gmail.com
+  - 문효재: dsdk1088@gmail.com
