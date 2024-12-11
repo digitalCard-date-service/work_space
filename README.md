@@ -4,7 +4,8 @@
 
 ---
 
-## 📋 프로젝트 개요
+<details>
+<summary><h2>📋 프로젝트 개요</h2></summary>
 
 ### 프로젝트 목적
 - 디지털 명함을 활용하여 MZ 대학생의 라이프스타일에 맞는 효율적이고 편리한 소개팅 플랫폼 제공
@@ -19,16 +20,22 @@
 - **디지털 명함 생성**: 사용자 프로필과 관심사를 기반으로 한 맞춤형 디지털 명함 생성
 - **명함 매칭**: 랜덤으로 2장의 명함 추천 또는 개인화된 알고리즘을 통해 최상의 명함 1장 제공
 - **AI 챗봇 시뮬레이션**: 소통이 어려운 사용자를 위해 자연스러운 대화 연습 환경을 제공하는 AI 기반 챗봇 지원
+</details>
 
 ---
 
-## 🔫 사이트 이용 링크
+<details>
+	
+<summary><h2>🔫 사이트 이용</h2></summary>	
 
 <배포 링크>
 
+</details>
+
 ---
 
-## 💻 기술 스택
+<details>
+<summary><h2>💻 기술 스택</h2></summary>
 
 <div align="left">
 	<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
@@ -57,10 +64,13 @@
 - **PyCharm**: 프로젝트별 독립적인 가상환경(Virtual Environment) 관리를 지원하는 Python 전용 IDE
 - **Heroku**: 클라우드 플랫폼으로 간편한 서버 배포와 확장성 제공
 
+</details>
+
 ---
 
-## 📝 설계 및 구현
-
+<details>
+<summary><h2>📝 설계 및 구현</h2></summary>
+	
 ### 시스템 구조
 - **클라이언트-서버 구조**: VanillaJS 기반 클라이언트와 Flask 백엔드 간 REST API 통신
 - **데이터베이스 설계**: SQLite를 이용하여 사용자 정보와 매칭 데이터를 효율적으로 관리
@@ -84,10 +94,12 @@
   	1. 서버가 DB에서 랜덤으로 2개의 명함 데이터를 조회함
   	2. 조회된 데이터를 브라우저로 전송함
   	3. 사용자가 명함을 확정하면, 해당 명함 데이터는 DB에서 삭제됨
+</details>
 
 ---
 
-## 🧩 주요 로직
+<details>
+<summary><h2>🧩 주요 로직</h2></summary>
 
 ### 매칭 알고리즘
 사용자 관심사와 선호 데이터를 기반으로 최적의 매칭을 수행합니다.
@@ -97,11 +109,13 @@ function matchUsers(user1, user2) {
     return commonInterests.length > 0; // 공통 관심사가 있는 경우 매칭 성공
 }
 ```
+</details>
 
 ---
 
-## 🛠️ 페이지별 세부 구현
-
+<details>
+<summary><h2>🛠️ 페이지별 세부 구현</h2></summary>	
+	
 서비스 제공 페이지는 사용자 편과 관리자 편으로 나눠, 각각 사용자 경험 향상과 서비스 안정적 운영에 목표를 두어 설계
 
 
@@ -248,17 +262,12 @@ __
 - **API를 통한 유저 관리**: Univecert API를 활용하여 인증유저를 출력, 삭제 버튼을 통해 개별유저 초기화 및 전체 초기화 버튼 제공
 
 **[테스트영상]()**
-
-
-<!--### 설명 마무리
-
-각 페이지는 사용자 경험과 편의성을 극대화하도록 설계되었으며 안정적인 서비스 운영을 목표로 개발
-(추가 설명!)-->
+</details>
 
 ---
 
-## 📚 백엔드 API 설계 및 응답 방식
-
+<details>
+<summary><h2>📚 백엔드 API 설계 및 응답 방식</h2></summary>
 ### **1. login\_views.py (로그인)**
 
 - **목표**: 대학 이메일 인증 및 관련 기능을 처리하는 뷰
@@ -590,9 +599,12 @@ __
     ```json
     { "error": "string" }
     ```
+</details>
 
 ---
-## 🛢️ SQL 쿼리 정리: 프로필 데이터 조회 및 관리
+
+<details>
+<summary><h2>🛢️ SQL 쿼리 정리: 프로필 데이터 조회 및 관리</h2></summary>
 
 ### 1. **기본 조회 쿼리**
 #### **전체 프로필 조회**
@@ -699,18 +711,23 @@ LIMIT 5;
 SELECT * FROM profile
 LIMIT 10 OFFSET 0;
 ```
+</details>
 
 ---
 
-## 🔎 개선 및 발전
-
+<details>
+<summary><h2>🔎 개선 및 발전</h2></summary>
+	
 내용추가!
+</details>
 
 ---
 
-## 💣 제한 및 한계
+<details>
+<summary>💣 제한 및 한계</summary>
 
 내용 추가!
+</details>
 
 ---
 <details>
@@ -737,14 +754,17 @@ LIMIT 10 OFFSET 0;
 
 ---
 
-## 📑 외부 참고 자료
+<details>
+<summary><h2>📑 외부 참고 자료</h2></summary>
 
 - [Univcert API 문서](https://univcert.com/)
 - [ChatGPT API 문서](https://platform.openai.com/docs/overview)
+</details>
 
 ---
 
-## 🤝 기여 방법
+<details>
+<summary><h2>🤝 기여 방법</h2></summary>
 
 1. 저장소를 포크합니다.
 2. 새 브랜치를 생성합니다
@@ -760,14 +780,18 @@ LIMIT 10 OFFSET 0;
    git push origin feature/new-feature
    ```
 5. 풀 리퀘스트를 제출합니다
+</details>
 
 ---
 
-## ✉️ Contact
-
+<details>
+<summary><h2>✉️ Contact</h2></summary>
+	
 - Frontend Developers
   - 조유찬: yuchancho174@gmail.com
   - 이서인: guapapamama@gmail.com
 - Backend Developers
   - 정다운: daun5535@gmail.com
   - 문효재: dsdk1088@gmail.com
+ </details>
+
