@@ -1,22 +1,55 @@
+/* 전체 초기화 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 html, body {
-    width: 100%;
-    overflow-x: hidden; 
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f4f4f9;
+    color: #333;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 전체 화면에 스크롤 제한 */
 }
 
+/* 페이지 상단 메뉴 스타일 */
+.pages-container {
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.pages-container a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
+}
+.pages-container a:hover {
+    background-color: #003f8c;
+}
+
+/* 메인 컨테이너 스타일 */
 .container {
-    max-width: 800px;
+    width: 70%;
     margin: 20px auto;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    overflow-y: auto; /* 내부 스크롤 활성화 */
 }
 
 .header {
@@ -26,52 +59,49 @@ html, body {
 .header h1 {
     font-size: 24px;
     color: #333;
+    margin-bottom: 10px;
 }
 
+/* 버튼 섹션 스타일 */
 .button-container {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     margin-bottom: 20px;
 }
 .button-container button {
+    flex: 1;
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 .button-container button:hover {
     background-color: #0056b3;
 }
 
-.user-list-container {
+.list-container {
     margin-top: 20px;
-}
-.user-item {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-between;
-    align-items: center;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f7f7f7;
-    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-height: 300px; /* 리스트의 최대 높이 제한 */
+    overflow-y: auto; /* 내부 스크롤 활성화 */
 }
-.user-item:last-child {
-    border-bottom: none;
-}
-.user-info {
-    flex: 1 1 60%;
+.list-container p {
+    margin: 5px 0;
     font-size: 14px;
-    word-wrap: break-word; 
 }
-.delete-button {
-    background-color: #dc3545;
+
+/* 삭제 버튼 스타일 */
+.list-container button {
+    background-color: #dc3545; /* 빨간색 배경 */
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -80,87 +110,43 @@ html, body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.delete-button:hover {
-    background-color: #b52b37;
+.list-container button:hover {
+    background-color: #b52b37; /* 어두운 빨간색 배경 */
 }
 
-.pages-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-.pages-container a {
-    text-decoration: none;
-    color: #fff;
-    background-color: #007bff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    transition: all 0.3s ease;
-    display: inline-block;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.pages-container a:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
+/* 반응형 디자인 */
 @media (max-width: 768px) {
-    .pages-container a {
-        font-size: 12px;
-        padding: 8px 12px;
-    }
-
     .button-container {
         flex-direction: column;
-        gap: 10px;
     }
-
     .button-container button {
         width: 100%;
-        text-align: center;
-    }
-
-    .user-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .delete-button {
-        align-self: flex-start;
+        margin-bottom: 10px;
     }
 }
 
 @media (max-width: 400px) {
+    .pages-container a {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
     .header h1 {
         font-size: 20px;
     }
-
-    .pages-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .pages-container a {
-        width: 100%;
-        text-align: center;
-    }
-
     .button-container button {
         font-size: 14px;
-        padding: 8px 12px;
     }
+}
 
-    .user-info {
-        font-size: 12px;
-    }
+.profile-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.profile-item p {
+    margin: 5px 0;
+    font-size: 14px;
 }

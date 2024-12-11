@@ -1,36 +1,17 @@
-'use strict';
-
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function authCheck() {
-    const authToken = getCookie("authToken");
-    if (!authToken) {
-        alert("로그인이 필요합니다.");
-        window.location.href = "/admin";
-        window.location.href = "/admin";
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-    authCheck();
-
-    const clearAllButton = document.getElementById("clearAllButton");
     const fetchUsersButton = document.getElementById("fetchUsersButton");
-    const userListContainer = document.getElementById("user-list");
+    const fetchDataButton = document.getElementById("fetchDataButton");
+    const listContainer = document.getElementById("list-container");
 
     fetchUsersButton.addEventListener("click", fetchCertifiedUsers);
-    clearAllButton.addEventListener("click", clearAllUsers);
+    fetchDataButton.addEventListener("click", fetchDatabaseData);
 
     async function fetchCertifiedUsers() {
         try {
             const response = await fetch('control/certifiedList', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({}),
+                body: JSON.stringify({})
             });
 
             if (!response.ok) {
@@ -39,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await response.json();
             if (data.success) {
-                displayCertifiedUsers(data.data);
+                displayList(data.data, "유저");
             } else {
                 alert("유저 리스트를 가져오는 데 실패했습니다.");
             }
@@ -48,33 +29,73 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function displayCertifiedUsers(users) {
-        userListContainer.innerHTML = "";
+    async function fetchDatabaseData() {
+        try {
+            const response = await fetch('control/cardList', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({})
+            });
 
-        if (!users.length) {
-            userListContainer.innerHTML = "<p>현재 인증된 유저가 없습니다.</p>";
-            return;
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            if (data.success) {
+                displayList(data.data, "데이터");
+            } else {
+                alert("데이터를 가져오는 데 실패했습니다.");
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
         }
+    }
 
-        users.forEach((user) => {
-            const userDiv = document.createElement("div");
-            userDiv.className = "user-item";
-            userDiv.innerHTML = `
-                <div class="user-info">
-                    <p><strong>이메일:</strong> ${user.email}</p>
-                    <p><strong>학교명:</strong> ${user.univName}</p>
-                    <p><strong>인증 날짜:</strong> ${user.certified_date}</p>
-                    <p><strong>인증 횟수:</strong> ${user.count}</p>
-                </div>
-                <button class="delete-button" data-email="${user.email}">초기화</button>
+    function displayList(items, type) {
+    listContainer.innerHTML = ""; // 기존 내용을 비웁니다.
+
+    if (!items.length) {
+        listContainer.innerHTML = `<p>현재 ${type}가 없습니다.</p>`;
+        return;
+    }
+
+    items.forEach(item => {
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "list-item";
+        itemDiv.innerHTML = type === "유저"
+            ? `
+                <p><strong>이메일:</strong> ${item.email}</p>
+                <p><strong>학교명:</strong> ${item.univName}</p>
+                <p><strong>인증 날짜:</strong> ${item.certified_date}</p>
+                <button class="delete-button" data-email="${item.email}">초기화</button>
+            `
+            : `
+                <p><strong>ID:</strong> ${item.id}</p>
+                <p><strong>이름:</strong> ${item.name}</p>
+                <p><strong>성별:</strong> ${item.gender}</p>
+                <p><strong>학번:</strong> ${item.classNumber}</p>
+                <p><strong>나이:</strong> ${item.age}</p>
+                <p><strong>전공:</strong> ${item.major}</p>
+                <p><strong>MBTI:</strong> ${item.mbti}</p>
+                <p><strong>취미:</strong> ${item.hobby}</p>
+                <p><strong>연락처:</strong> ${item.contact}</p>
+                <p><strong>이미지:</strong> ${item.image}</p>
+                <p><strong>색상:</strong> ${item.color}</p>
+                <p><strong>생성 날짜:</strong> ${item.create_date}</p>
+                <button class="delete-button" data-id="${item.id}">삭제</button>
             `;
 
-            const deleteButton = userDiv.querySelector(".delete-button");
-            deleteButton.addEventListener("click", () => clearUser(user.email));
+        listContainer.appendChild(itemDiv);
 
-            userListContainer.appendChild(userDiv);
-        });
-    }
+        const deleteButton = itemDiv.querySelector(".delete-button");
+        if (type === "유저") {
+            deleteButton.addEventListener("click", () => clearUser(item.email));
+        } else {
+            deleteButton.addEventListener("click", () => deleteDatabaseData(item.id));
+        }
+    });
+}
 
     async function clearUser(email) {
         if (!confirm(`${email} 유저를 초기화하시겠습니까?`)) return;
@@ -83,8 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch('control/clear', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                'email': email }),
+                body: JSON.stringify({ email })
             });
 
             const data = await response.json();
@@ -99,25 +119,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    async function clearAllUsers() {
-        if (!confirm("모든 유저를 초기화하시겠습니까?")) return;
+    async function deleteDatabaseData(id) {
+        if (!confirm(`${id} 데이터를 삭제하시겠습니까?`)) return;
 
         try {
-            const response = await fetch('control/clear', {
+            const response = await fetch('control/delete', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({}),
+                body: JSON.stringify({ id })
             });
 
             const data = await response.json();
             if (data.success) {
-                alert("모든 유저가 성공적으로 초기화되었습니다.");
-                fetchCertifiedUsers();
+                alert("데이터가 성공적으로 삭제되었습니다.");
+                fetchDatabaseData();
             } else {
-                alert(`전체 초기화 실패: ${data.message}`);
+                alert(`데이터 삭제 실패: ${data.message}`);
             }
         } catch (error) {
-            console.error("Error clearing all users:", error);
+            console.error("Error deleting data:", error);
         }
     }
 });
