@@ -325,7 +325,7 @@ def getRandomProfile():
 ### 사용자 편
 
 #### 1. 홈 페이지 (`Onboarding Page`)
-![Uploading image.png…]()
+<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-45 002" src="https://github.com/user-attachments/assets/93f1f7ac-0d49-4f24-811e-f16f117ae570" />
 
 **기능**: 플랫폼 소개, 사용자 환영 메시지, 간단한 사이트 이용 가이드 제공
 
