@@ -111,11 +111,17 @@ async function submitCard(event) {
     const selectedImage = document.querySelector('.form_image').src;
     formObj.image = getImageName(selectedImage);
 
-    // 카드 색상 처리
+        // 카드 색상 처리
     const formContainer = document.querySelector('.form-container');
     const backgroundImage = window.getComputedStyle(formContainer).getPropertyValue('background-image');
-    formObj.color = backgroundImage.match(/card_(\w+)\.svg/)[1];
-    console.log(formObj);
+
+    // card_color 또는 card_color-mobile에서 color 부분과 -mobile 여부 추출
+    const match = backgroundImage.match(/card_(\w+)(-mobile)?\.svg/);
+
+    if (match) {
+        formObj.color = match[1]; // color 값을 추출하여 저장
+        formObj.isMobileImg = !!match[2]; // -mobile 여부 확인하여 플래그 설정
+    } 
 
     // 서버로 전송
     try {

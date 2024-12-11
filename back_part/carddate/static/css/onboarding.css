@@ -188,6 +188,9 @@ html {
 
 #main{
     width: 100%;
+    @media (max-width: 834px){
+        font-family: 'Noto Sans KR', sans-serif;
+    }
   }
 
 /* home */
@@ -236,8 +239,7 @@ html {
     font-size: 1.3rem;
     color: black;
     margin-bottom: 20px;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
-    -2px -2px 5px rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     @media (max-width: 834px){
       font-size: 0.8rem;
       line-height: 30px;
@@ -342,8 +344,7 @@ html {
 .ad__title{
     font-size: 3rem;
     margin-bottom: 50px;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
-    -2px -2px 5px rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     @media (max-width: 834px){
       margin-top: 30px;
       visibility: hidden;
@@ -354,10 +355,13 @@ html {
     .ad__title::before{
       visibility: visible;
       display: block;
-      content: "<온라인 명함소개팅>";
+      font-style: italic;
+      content: "온라인 명함소개팅";
+      color: var(--color-deep-pink);
       text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
       -2px -2px 5px rgba(255, 255, 255, 0.3);
       font-size: 2.9rem;
+      animation: blinkTextColor 1s infinite;
     }
   }
 
@@ -444,6 +448,7 @@ html {
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: #FFFAFA;
     }
 }
 
@@ -500,8 +505,7 @@ html {
 .step__title{
     font-size: 3rem;
     margin-bottom: 50px;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
-    -2px -2px 5px rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     @media (max-width: 834px) {
       visibility: hidden;
     }
@@ -514,7 +518,7 @@ html {
     text-align: center;
     white-space: pre-wrap;
     content: "재학인증, 카드작성, 카드뽑기\A 3step으로 서비스 이용!";
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding-top: 20px;
     max-height: 50px;
   }
@@ -831,8 +835,7 @@ html {
 
 .start_nextStep_desc {
   font-size: 2rem;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), 
-  -2px -2px 5px rgba(255, 255, 255, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   font-style: italic;
   @media (max-width: 834px){
     visibility: hidden;
@@ -878,6 +881,7 @@ html {
 .start_nextStep:active{
   transform: none;
   box-shadow: none;
+  animation: glow 2s infinite alternate, flicker 0.1s infinite;
 }
 
 @media (max-width: 834px) {
@@ -945,6 +949,9 @@ html {
 #contact{
   background-color: var(--color-primary);
   color: var(--color-text-variant);
+  @media (max-width:834px){
+    background-color: #FFFAFA;
+  }
 }
 .contact-container{
   display: flex;

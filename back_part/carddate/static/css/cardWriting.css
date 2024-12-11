@@ -212,6 +212,13 @@ html {
   }
 }
 
+@media (max-width: 834px){
+  #ageInput{
+      width: 70%; /* border-bottom 길이를 줄이기 */
+    margin: 0 auto; /* 가운데 정렬 */
+    display: block; /* margin 적용을 위해 block 요소로 변경 */}
+}
+
 .card_UX {
   position: relative;
   width: 650px;
