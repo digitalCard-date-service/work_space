@@ -274,7 +274,6 @@ html {
   }
 }
 
-
 @media (max-width: 834px) {
   .card_UX-topContainer {
     flex-direction: row; 
@@ -289,7 +288,6 @@ html {
     padding: 10px; 
   }
 }
-
 
 .submitButton:hover{
   transform: translateY(-2px);
@@ -323,7 +321,6 @@ html {
     }
   }
   
-
 .color{
   width: 30px;
   height: 30px;

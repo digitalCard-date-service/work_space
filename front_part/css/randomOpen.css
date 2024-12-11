@@ -156,7 +156,6 @@ html {
   gap: 50px;
 }
 
-
 .card-container {
   margin-top: 50px;
   animation: glow 2s infinite alternate, flicker 0.1s infinite, zoom-in 3s ease-out forwards;

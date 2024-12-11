@@ -1,23 +1,13 @@
-from flask import Blueprint, request, render_template, redirect, url_for, jsonify, session
+from flask import Blueprint, request, render_template, jsonify, session
 from ..models import Profile
 from .. import db
 from datetime import datetime
-bp = Blueprint('form', __name__, url_prefix='/form')
+bp = Blueprint('writing', __name__, url_prefix='/writing')
 
 
 @bp.route('/')
 def index():
-    '''
-    if 'user_email' in session:
-        return render_template('form.html')
-    return redirect(url_for('login.index'))
-    '''
-    return render_template('form.html')
-
-@bp.route('/drawing')  # 새로운 라우트 추가
-def drawing():
-    return render_template('card_drawing.html')
-
+    return render_template('cardWriting.html')
 
 @bp.route('/submit', methods=['POST'])
 def create():
@@ -26,7 +16,7 @@ def create():
         data = request.get_json()
 
         # 데이터 유효성 검사
-        required_fields = ['gender', 'name', 'major', 'age', 'mbti', 'hobby', 'contact']
+        required_fields = ['gender', 'name', 'major', 'age', 'classNumber', 'mbti', 'hobbies', 'contact']
         for field in required_fields:
             if not data.get(field):
                 return jsonify({
@@ -40,11 +30,12 @@ def create():
             name=data['name'],
             major=data['major'],
             age=data['age'],
+            classNumber=data['classNumber'],
             mbti=data['mbti'],
-            hobby=data['hobby'],
+            hobby=data['hobbies'],
             contact=data['contact'],
-            image_data=data['image_data'],  # 이미지 경로 저장
-            color=data['color'],  # 색상 경로 저장
+            image=data['image'],
+            color=data['color'],
             create_date=datetime.now()
         )
 
@@ -52,7 +43,8 @@ def create():
         db.session.add(profile)
         db.session.commit()
 
-        print(f"저장된 프로필: ID={profile.id}")  # 디버깅용 로그
+        session['id'] = profile.id
+        session['gender'] = profile.gender
 
         return jsonify({
             'status': 'success',
@@ -62,7 +54,6 @@ def create():
 
     except Exception as e:
         db.session.rollback()
-        print(f"에러 발생: {str(e)}")  # 디버깅용 로그
         return jsonify({
             'status': 'error',
             'message': '서버 오류가 발생했습니다.',

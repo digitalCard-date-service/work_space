@@ -7,22 +7,24 @@
   <meta name="description" content="This service is a blind date site where you can find out the other person's information through random cards and develop into lovers through contact.">
   <meta property="og:title" content="card with love(명함을 사랑을 싣고)" />
   <meta property="og:description" content="blind date site for University Student" />
-  <meta property="og:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
-  <meta property="og:url" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/aisimulation.html" />
+  <meta property="og:image" content="https://95db-203-246-85-194.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png"/>
+  <meta property="og:url" content="https://95db-203-246-85-194.ngrok-free.app/digitalCard-date-service/front_part/aiSimulation.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:url" content="https://95db-203-246-85-194.ngrok-free.app/digitalCard-date-service/front_part/aiSimulation.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="card with love(명함을 사랑을 싣고)" />
   <meta name="twitter:description" content="blind date site for University Student" />
-  <meta name="twitter:image" content="https://e293-203-246-85-181.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
+  <meta name="twitter:image" content="https://95db-203-246-85-194.ngrok-free.app/digitalCard-date-service/front_part/assets/teamLogo.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="./css/aiSimulation.css">
+  <link rel="stylesheet" href="../static/css/aiSimulation.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="./assets/teamLogo.svg">
-  <script src="./src/aiSimulation/chatBot.js" type="module"></script>
-  <script src="./src/aiSimulation/textSlide.js" type="module"></script>
+  <link rel="shortcut icon" href="../static/assets/teamLogo.svg">
+  <script src="../static/src/aiSimulation/chatBot.js" type="module"></script>
+  <script src="../static/src/aiSimulation/textSlide.js" type="module"></script>
   <title>AI Love Simulation(AI 연애 시뮬)</title>
 </head>
 <body>
-  <script src="./src/login/univ_api.js" defer></script>
+  <script src="../static/src/login/univ_api.js" defer></script>
   <script>
       document.addEventListener("DOMContentLoaded", () => {
          checkAuth(); 
@@ -30,7 +32,7 @@
   </script>
   <header id="header" aria-label="title, logo">
     <div class="header__dev-container">
-        <img class="header__img" src="./assets/teamLogo.svg" alt="학교로고">
+        <img class="header__img" src="../static/assets/teamLogo.svg" alt="학교로고">
         <h1 class="header__title">명함소개팅</h1>
     </div>
 </header>
@@ -45,49 +47,49 @@
     <main id="main" aria-label="Select the AI chatbot character you want and chat with them">
       <div class="character-list">
         <div class="character-card" data-character="방민정" data-description="20살, 밝고 활발한 성격. ENFP. 서울숲을 걷는 걸 좋아해요.">
-          <img src="./assets/방민정.png" alt="방민정">
+          <img src="../static/assets/방민정.png" alt="방민정">
           <div class="character-info">
             <div class="character-name">방민정</div>
           </div>
         </div>
         <div class="character-card" data-character="임가현" data-description="25살, 차분하고 내성적. INTJ. OTT 감상이 취미에요.">
-          <img src="./assets/임가현.png" alt="임가현">
+          <img src="../static/assets/임가현.png" alt="임가현">
           <div class="character-info">
             <div class="character-name">임가현</div>
           </div>
         </div>
         <div class="character-card" data-character="공민혁" data-description="22살, 친절하고 열정적. ENFJ. 축구를 좋아해요.">
-          <img src="./assets/공민혁.png" alt="공민혁">
+          <img src="../static/assets/공민혁.png" alt="공민혁">
           <div class="character-info">
             <div class="character-name">공민혁</div>
           </div>
         </div>
         <div class="character-card" data-character="차현우" data-description="24살, 강인하고 믿음직스러운 성격. ESTJ. 헬스가 취미에요.">
-          <img src="./assets/차현우.png" alt="차현우">
+          <img src="../static/assets/차현우.png" alt="차현우">
           <div class="character-info">
             <div class="character-name">차현우</div>
           </div>
         </div> 
         <div class="character-card" data-character="김하늘" data-description="23살, 순진하지만 질투가 많은 성격. INFP. 책 읽는 것을 좋아해요.">
-          <img src="./assets/김하늘.png" alt="김하늘">
+          <img src="../static/assets/김하늘.png" alt="김하늘">
           <div class="character-info">
             <div class="character-name">김하늘</div>
           </div>
         </div>
         <div class="character-card" data-character="이지나" data-description="21살, 당돌하고 기가 센 성격. ENTJ. 그림 그리는걸 좋아해요.">
-          <img src="./assets/이지나.png" alt="이지나">
+          <img src="../static/assets/이지나.png" alt="이지나">
           <div class="character-info">
             <div class="character-name">이지나</div>
           </div>
         </div>
         <div class="character-card" data-character="최성현" data-description="27살, 배려심 깊고 너드미 있는. ESTJ. 코딩하는걸 좋아해요.">
-          <img src="./assets/최성현.png" alt="최성현">
+          <img src="../static/assets/최성현.png" alt="최성현">
           <div class="character-info">
             <div class="character-name">최성현</div>
           </div>
         </div>
         <div class="character-card" data-character="" data-description="">
-          <img src="./assets/person.svg" alt="person">
+          <img src="../static/assets/person.svg" alt="person">
           <div class="character-info">
             <div class="character-name">운명의 상대</div>
           </div>
@@ -122,11 +124,11 @@
             </div>
             <div class="contact_rightPart-container">
                 <div class="contact__SNS-container">
-                    <a href="./contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
-                    <a href="./contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="./contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
+                    <a href="../static/contact/blog.html" title="link to blog"><i class="fa-solid fa-blog"></i></a>
+                    <a href="../static/contact/insta.html" title="link to instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="../static/contact/github.html" title="link to github"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <img class="contact_img" src="./assets/teamLogo.svg" alt="teamLogo">      
+                <img class="contact_img" src="../static/assets/teamLogo.svg" alt="teamLogo">
             </div>            
         </div>
     </div>

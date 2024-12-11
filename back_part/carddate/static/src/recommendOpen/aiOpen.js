@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardBack = document.querySelector('.card-back');
     const animalImage = document.querySelector('.card-image img');
     const infoRows = document.querySelectorAll('.info-row.hidden');
+    const nextButton = document.getElementById('nextButton');
 
     const cardInfo = {
         gender: document.querySelector('.gender'),
@@ -20,11 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isFlipped = false; // 카드 상태 플래그
     let isRecommendationOpened = false; // 카드 데이터를 성공적으로 가져왔는지 여부
+    let cardId = 0;
 
     // 서버에서 추천 카드를 가져오는 함수
     async function fetchRecommendedCard() {
         try {
-            const response = await fetch('https://example.com/api/recommended-card'); // 서버 URL 수정 필요
+            const response = await fetch('card'); // 서버 URL 수정 필요
             if (!response.ok) {
                 throw new Error('Failed to fetch recommended card');
             }
@@ -35,18 +37,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function fetchDeleteCard(cardId) {
+        try {
+            const response = await fetch('delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'id': cardId
+                })
+            }); // 상세 정보 요청
+            if (!response.ok) {
+                throw new Error('카드 삭제에 실패했습니다.');
+            }
+            return await response.json();
+        } catch (error) {
+            alert('카드 삭제에 실패했습니다.');
+            throw error;
+        }
+    }
+
     // 카드 UI 업데이트 함수
     function updateCardUI(data) {
         if (!data) return;
-
+        cardId = data.id;
         cardBack.style.backgroundImage = `url(${data.backgroundImage})`;
         animalImage.src = data.image;
         cardInfo.gender.textContent = data.gender;
         cardInfo.name.textContent = data.name;
-        cardInfo.major.textContent = data.department;
-        cardInfo.studentID_age.textContent = data.yearAge;
+        cardInfo.major.textContent = data.major;
+        cardInfo.studentID_age.textContent = data.studentID_age;
         cardInfo.mbti.textContent = data.mbti;
-        cardInfo.hobbies.textContent = data.hobbies;
+        cardInfo.hobbies.textContent = data.hobby;
         cardInfo.contact.textContent = data.contact;
     }
 
@@ -61,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (recommendedCardData) {
             updateCardUI(recommendedCardData);
             isRecommendationOpened = true; // 서버에서 데이터를 성공적으로 가져옴
+            confirmButton.disabled = false;
         }
     });
 
@@ -86,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
             infoRows.forEach(row => row.querySelector('.value').style.visibility = 'visible');
             openButton.disabled = true;
 
+            fetchDeleteCard(cardId);
+
             // 저장된 카드 데이터를 sessionStorage에 저장
             const confirmedCard = {
                 name: cardInfo.name.textContent,
@@ -96,6 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             sessionStorage.setItem('confirmedCard', JSON.stringify(confirmedCard));
             alert("카드가 저장되었습니다!");
+            nextButton.disabled = false;
         }
     });
+    nextButton.addEventListener('click', () => {
+        window.location.href = '/chatbot';
+    })
 });

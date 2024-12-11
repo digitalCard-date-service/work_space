@@ -1,36 +1,84 @@
-import random
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, session, request
+from sqlalchemy import func
+
 from ..models import Profile
 from .. import db
 
 bp = Blueprint('random', __name__, url_prefix='/random')
 
-@bp.route('/', methods=['GET'])
-def get_random_profile():
-    # Profile 모델에서 모든 데이터를 조회
-    profiles = Profile.query.all()
+@bp.route('/')
+def index():
+    return render_template('randomOpen.html')
 
-    # 프로필이 2개 이상일 경우, 랜덤으로 2개를 선택
-    if len(profiles) >= 2:
-        random_profiles = random.sample(profiles, 2)  # 랜덤으로 2개 선택
+@bp.route('/card/public', methods=['GET'])
+def get_public_details():
 
-        # 선택한 프로필들을 JSON 형식으로 변환하여 반환
-        profiles_data = [{
-            'gender': profile.gender,
-            'age': profile.age,
-            'major': profile.major,
-            'mbti': profile.mbti,
-            'hobby': profile.hobby
-        } for profile in random_profiles]
+    id = session.get('id')
+    gender = session.get('gender')
 
-        # 선택된 프로필들을 데이터베이스에서 삭제
-        for profile in random_profiles:
-            db.session.delete(profile)
-
-        # 변경 사항을 커밋하여 데이터베이스에 반영
-        db.session.commit()
-
-        # 랜덤 프로필 데이터와 함께 randomOpen.html 파일을 렌더링
-        return render_template('randomOpen.html', profiles=profiles_data)
+    if(gender == '남성'):
+        randomProfiles = Profile.query.filter(Profile.gender == '여성', Profile.id != id).order_by(func.random()).limit(2).all()
     else:
-        return jsonify({'error': '2개 이상의 프로필이 존재하지 않습니다.'}), 400
+        randomProfiles = Profile.query.filter(Profile.gender == '남성', Profile.id != id).order_by(func.random()).limit(2).all()
+    # 선택한 프로필들을 JSON 형식으로 변환하여 반환
+    profiles_data = [{
+        'id': profile.id,
+        'gender': profile.gender,
+        'studentID_age': str(profile.classNumber)+'('+str(profile.age)+')',
+        'major': profile.major,
+        'mbti': profile.mbti,
+        'hobby': profile.hobby,
+        'image': '../static/assets/' + str(
+            1 if profile.image == 'cuteDog' else
+            2 if profile.image == 'dengE' else
+            3 if profile.image == 'husky' else
+            4 if profile.image == 'cat' else
+            5 if profile.image == 'hamster' else
+            6 if profile.image == 'rabbit' else
+            7 if profile.image == 'fox' else
+            8 if profile.image == 'panda' else
+            9 if profile.image == 'wolf' else
+            10 if profile.image == 'lion' else
+            11 if profile.image == 'tiger' else
+            12 if profile.image == 'bear' else
+            13 if profile.image == 'dragon' else
+            14 if profile.image == 'horse' else
+            15 if profile.image == 'Monkey' else
+            16 if profile.image == 'turtle' else 0) + '.'+ profile.image +'.png',
+        'color': '../static/assets/card_' + profile.color +'.svg'
+    } for profile in randomProfiles]
+    session.clear()
+    return jsonify(profiles_data)
+
+@bp.route('/card/private', methods=['POST'])
+def get_private_details():
+    id = request.get_json()
+    id = id.get('id')
+    profile = Profile.query.filter(Profile.id == id).first()
+    profile_data = {
+        'name': profile.name,
+        'contact': profile.contact
+    }
+    return jsonify(profile_data)
+
+@bp.route('card/delete', methods=['POST'])
+def delete_card():
+    try:
+        # 요청에서 ID 추출
+        id = request.get_json().get('id')
+        if not id:
+            return jsonify({"error": "ID is required"}), 400
+
+        # ID로 프로필 찾기
+        profile = Profile.query.filter_by(id=id).first()
+        if not profile:
+            return jsonify({"error": "Profile not found"}), 404
+
+        # 데이터 삭제
+        db.session.delete(profile)
+        db.session.commit()
+        return jsonify({"message": "Profile deleted successfully"}), 200
+
+    except Exception as e:
+        db.session.rollback()  # 오류 발생 시 롤백
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500

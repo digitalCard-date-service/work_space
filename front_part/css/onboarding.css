@@ -1,4 +1,4 @@
-/* Color */
+/* color */
 :root{
     --color-coral: #FF6F61;
     --color-peach: #FF8A80;
@@ -891,8 +891,6 @@ html {
     box-shadow: none;
   }
 }
-
-
 
 #arrow-up {
   position: fixed;
