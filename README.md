@@ -793,7 +793,7 @@ __
 ---
 
 <details>
-<summary><h2>🛢️ SQL 쿼리 정리: 프로필 데이터 조회 및 관리</h2></summary>
+<summary><h2>🛢️ SQL 쿼리 정리</h2></summary>
 
 ### 1. **기본 조회 쿼리**
 #### **전체 프로필 조회**
