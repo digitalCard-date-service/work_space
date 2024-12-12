@@ -999,9 +999,11 @@ LIMIT 10 OFFSET 0;
 ---
 
 <details>
-<summary><h2>사용 라이선스 📜<h2></summary>
+<summary><h2>📜사용 라이선스<h2></summary>
 ###이 프로젝트는 MIT License를 따릅니다. 😊
 </details>
+
+---
 
 <details>
 <summary><h2>📑 외부 참고 자료</h2></summary>
