@@ -80,7 +80,6 @@
 ### 웹 아키텍처
 ![KakaoTalk_Photo_2024-12-11-23-50-52](https://github.com/user-attachments/assets/2ae84af3-1b82-4c5c-8d2f-8a92690dbc36)
 
-
 ### 데이터 흐름
 - **사용자 프로필 등록**
   	1. 사용자가 클라이언트에서 데이터를 입력함
@@ -325,7 +324,6 @@ def getRandomProfile():
 	
 서비스 제공 페이지는 사용자 편과 관리자 편으로 나눠, 각각 사용자 경험 향상과 서비스 안정적 운영에 목표를 두어 설계
 
-
 ### 사용자 편
 
 #### 1. 홈 페이지 (`Onboarding Page`)
@@ -337,10 +335,6 @@ def getRandomProfile():
 - **페이지 레이아웃**: 7개의 섹션으로 구성된 하향식 레이아웃 제공
 - **미니 콘텐츠 제공**: 사용자가 리프레쉬할 수 있도록 포춘카드 미니 콘텐츠 추가
 - **스타일**: 직접 디자인한 이미지를 활용하여 산뜻하고 직관적인 UI 구성
-
-
-
-
 
 #### 2. 로그인 페이지 (`Login Page`)
 <img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-48 004" src="https://github.com/user-attachments/assets/1b7d5ff6-6ab4-4b70-a34a-6a8d7ab754bb" />
@@ -373,9 +367,6 @@ def getRandomProfile():
 - **개성 표현**: 기존 오프라인에는 없던 카드 색상 및 동물 이미지 선택 옵션 추가하여 개성표현의 범위를 확장
 - **명함 저장**: 백엔드와 통신하여 폼 data를 JSON형식으로 서버로 전송. 서버에서 다시 DB에 저장
 
-
-
-
 #### 4. 이상형 조사 페이지 (`Survey Page`)
 <img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-48 006" src="https://github.com/user-attachments/assets/1fd6f16a-3c38-4396-93db-047d653a4d8c" />
 
@@ -392,10 +383,6 @@ def getRandomProfile():
   - mbti: 선택한 문자들을 조합하여 string 형식으로 전송
   - 취미: 키워드별로 나누어 배열에 저장하여 전송
  
-
-
-
-
 #### 5. 매칭 서비스 선택 페이지 (`Drawing Page`)
 <img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-49 007" src="https://github.com/user-attachments/assets/699bad69-3942-4d89-b8ca-279880a89490" />
 
@@ -405,10 +392,6 @@ def getRandomProfile():
 **세부 구현 설명**:
 - **UI/UX**: 사용자에게 두 가지 옵션을 직관적으로 제공
 - **애니메이션**: 명함 뽑기 시 회전 효과를 추가하여 역동적인 경험 제공
-
-
-
-
 
 #### 6-1. 랜덤 뽑기 페이지 (`Random Page`)
 <img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-46 003" src="https://github.com/user-attachments/assets/aff5a2ca-0629-41ea-bff9-d7e863d62b7c" />
@@ -421,10 +404,6 @@ def getRandomProfile():
 - **정보 보호**: 이름과 SNS ID는 사용자가 확정하기 버튼을 누를 때만 노출
 - **사용자 흐름 제어**: 오픈버튼을 누르기전까진 카드를 볼 수 없고, 확정하기 버튼을 누르기 전까진 다음페이지로 이동 불가능
 
-
-
-
-
 #### 6-2. 추천 뽑기 페이지 (`Recommend Page`)
 <img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-49 008" src="https://github.com/user-attachments/assets/19c907cf-a837-49b0-bed0-b8fb4ef323b3" />
 
@@ -435,10 +414,6 @@ def getRandomProfile():
 - **매칭 알고리즘**: 작성된 명함과 이상형 조사 데이터를 기반으로 필터링 및 매칭 알고리즘을 실행하여 최적의 명함 추천
 - **정보 보호**: 이름과 SNS ID는 사용자가 확정하기 버튼을 누를 때만 노출
 - **사용자 흐름 제어**: 오픈버튼을 누르기전까진 카드를 볼 수 없고, 확정하기 버튼을 누르기 전까진 다음페이지로 이동 불가능
-
-
-
-
 
 #### 7. AI 챗봇 페이지 (`Chatbot Page`)
 <img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-44 001" src="https://github.com/user-attachments/assets/99725514-a034-436d-8da8-58ed33abf7c4" />
@@ -454,8 +429,6 @@ def getRandomProfile():
 - **실시간 응답**: 사용자 입력에 따라 즉각적인 응답 생성
 - **하이퍼 링크**:
 
-**[테스트영상]()**
-
 __
 ### 관리자 편
 
@@ -468,10 +441,6 @@ __
 - **백엔드 기반 로그인**: 입력한 비밀번호 검증을 안전하게 백엔드에서 구현 
 - **링크 악용방지**: URL을 이용한 강제 사이트 이동을 막기 위해 checkAuth 함수로 세션이 부과되지 않은 이용자들은 로그인 페이지로 리다이렉션
 
-**[테스트영상]()**
-
-
-
 #### **2. 사용자 관리 및 모니터링 페이지 (`master Page`)**
 <img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-47-50 002" src="https://github.com/user-attachments/assets/93b865b8-6d15-44a0-9f99-cdb76bba9e69" />
 
@@ -482,7 +451,6 @@ __
 - **API를 통한 유저 관리**: Univecert API를 활용하여 인증유저를 출력, 삭제 버튼을 통해 개별유저 초기화 및 전체 초기화 버튼 제공
 - **DB관리**: DB를 HTML에 가져와서 조회 및 삭제 가능
 
-**[테스트영상]()**
 </details>
 
 ---
