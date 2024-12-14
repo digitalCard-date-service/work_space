@@ -58,7 +58,7 @@ document.querySelector('.univ__checkButton').addEventListener('click', async () 
         if (result.success) {
             alert('학교 확인 완료!');
         } else {
-            alert(result.message || '유효한 학교명이 아닙니다.');
+            alert('유효한 학교명이 아닙니다.');
         }
     } catch (error) {
         alert('학교 확인 중 오류가 발생했습니다.');
@@ -89,7 +89,7 @@ document.querySelector('.email__checkButton').addEventListener('click', async ()
         if (result.success) {
             alert('이메일 전송 성공! 이메일에서 인증코드를 확인하세요.');
         } else {
-            alert(result.message || '이메일 전송에 실패했습니다.');
+            alert('이메일 전송에 실패했습니다.');
         }
     } catch (error) {
         alert(`오류: ${error.message || '이메일 인증 요청 중 문제가 발생했습니다.'}`);
@@ -123,7 +123,7 @@ document.querySelector('.prove__checkButton').addEventListener('click', async ()
             startSessionTimer(30); // 세션 타이머 30분 설정
             setTimeout(() => window.location.href = '/writing', 2000);
         } else {
-            alert(result.message || '인증번호가 잘못되었습니다.');
+            alert('잘못된 인증번호입니다.');
         }
     } catch (error) {
         alert('인증 처리 중 오류가 발생했습니다.');
