@@ -405,7 +405,8 @@ def getRandomProfile():
 - **사용자 흐름 제어**: 오픈버튼을 누르기전까진 카드를 볼 수 없고, 확정하기 버튼을 누르기 전까진 다음페이지로 이동 불가능
 
 #### 6-2. 추천 뽑기 페이지 (`Recommend Page`)
-<img width="1710" alt="KakaoTalk_Photo_2024-12-11-23-41-49 008" src="https://github.com/user-attachments/assets/19c907cf-a837-49b0-bed0-b8fb4ef323b3" />
+<img width="1710" alt="스크린샷 2024-12-14 오후 5 40 02" src="https://github.com/user-attachments/assets/aace3c89-2194-48d9-9749-903e391da0cd" />
+
 
 **기능**:
 - 사용자 데이터를 기반으로 최적의 명함 1장을 추천
