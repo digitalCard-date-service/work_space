@@ -458,6 +458,7 @@ __
 
 <details>
 <summary><h2>📚 백엔드 API 설계 및 응답 방식</h2></summary>
+	
 ### **1. login\_views.py (로그인)**
 
 - **목표**: 대학 이메일 인증 및 관련 기능을 처리하는 뷰
