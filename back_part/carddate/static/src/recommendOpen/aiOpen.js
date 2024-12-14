@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCardUI(data) {
         if (!data) return;
         cardId = data.id;
-        cardBack.style.backgroundImage = `url(${data.backgroundImage})`;
+        cardBack.style.backgroundImage = `url(${data.color})`;
         animalImage.src = data.image;
         cardInfo.gender.textContent = data.gender;
         cardInfo.name.textContent = data.name;

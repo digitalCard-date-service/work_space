@@ -130,13 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
             await fetchCards();
             if (hasFetchedCards) {
                 updateCardUI(cards[currentCardIndex]); // 첫 번째 카드 표시
-                openButton.textContent = '카드1오픈';
+                openButton.textContent = '명함1오픈';
                 confirmButton.disabled = false; // 확정 버튼 활성화
             }
         } else {
             currentCardIndex = currentCardIndex === 0 ? 1 : 0;
             updateCardUI(cards[currentCardIndex]); // 다음 카드 표시
-            openButton.textContent = `카드${currentCardIndex + 1}오픈`;
+            openButton.textContent = `명함${currentCardIndex + 1}오픈`;
         }
     });
 
