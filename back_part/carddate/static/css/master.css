@@ -87,7 +87,7 @@ html, body {
     border-radius: 5px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    max-height: 300px;
+    max-height: 900px;
     overflow-y: auto;
 }
 .list-container p {
@@ -116,6 +116,9 @@ html, body {
     .button-container button {
         width: 100%;
         margin-bottom: 10px;
+    }
+    .list-container {
+        max-height: 600px;
     }
 }
 

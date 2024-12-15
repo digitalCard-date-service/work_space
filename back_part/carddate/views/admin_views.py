@@ -32,28 +32,41 @@ def submit():
 def control():
     return render_template('master.html')
 
-@bp.route('/control/clear', methods=['POST'])
-def clear():
-    data = request.get_json()
-
-    if data:
-        email = data['email']
-        response = requests.post(f'{API_BASE_URL}/clear/{email}', headers={
-            'Content-Type': 'application/json'
-        }, json=({
-            'key': API_KEY,
-        }))
-    else:
+@bp.route('/control/clearCertifiedList', methods=['POST'])
+def clear_certified_list():
+    try:
         response = requests.post(f'{API_BASE_URL}/clear', headers={
             'Content-Type': 'application/json'
-        }, json=({
-            'key': API_KEY,
-        }))
-    result = response.json()
-    return jsonify(result)
+        }, json={'key': API_KEY})
+        result = response.json()
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({
+            "status": 500,
+            "success": False,
+            "message": f"An error occurred: {str(e)}"
+        })
+
+@bp.route('/control/clearCardList', methods=['POST'])
+def clear_card_list():
+    try:
+        # 모든 데이터를 삭제
+        Profile.query.delete()
+        db.session.commit()
+        return jsonify({
+            "status": 200,
+            "success": True,
+            "message": "All records have been deleted"
+        })
+    except Exception as e:
+        return jsonify({
+            "status": 500,
+            "success": False,
+            "message": f"An error occurred: {str(e)}"
+        })
 
 @bp.route('/control/certifiedList', methods=['POST'])
-def certifiedList():
+def certified_list():
     response = requests.post(f'{API_BASE_URL}/certifiedlist', headers={
         'Content-Type': 'application/json'
     }, json=({
@@ -63,7 +76,7 @@ def certifiedList():
     return jsonify(result)
 
 @bp.route('/control/cardList', methods=['POST'])
-def cardList():
+def card_list():
     try:
         # 모든 Profile 데이터를 id 기준으로 오름차순 정렬
         all_profiles = Profile.query.order_by(Profile.id).all()

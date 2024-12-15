@@ -1,10 +1,72 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const clearAllButton = document.getElementById("clearAllButton")
     const fetchUsersButton = document.getElementById("fetchUsersButton");
     const fetchDataButton = document.getElementById("fetchDataButton");
     const listContainer = document.getElementById("list-container");
 
-    fetchUsersButton.addEventListener("click", fetchCertifiedUsers);
-    fetchDataButton.addEventListener("click", fetchDatabaseData);
+    clearAllButton.addEventListener("click", () => {
+        if (clearAllTarget === "certifiedList") {
+            clearCertifiedList();
+        } else if (clearAllTarget === "cardList") {
+            clearCardList();
+        }
+    });
+
+    fetchUsersButton.addEventListener("click", () => {
+        fetchCertifiedUsers();
+        clearAllTarget = "certifiedList"; // 인증 유저 초기화 타겟 설정
+    });
+
+    fetchDataButton.addEventListener("click", () => {
+        fetchDatabaseData();
+        clearAllTarget = "cardList"; // 데이터베이스 초기화 타겟 설정
+    });
+
+    let clearAllTarget = " ";
+
+    async function clearCertifiedList() {
+        if (!confirm('인증 유저를 모두 초기화하시겠습니까?')) return;
+
+        try {
+            const response = await fetch('control/clearCertifiedList', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({})
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                alert("인증 유저가 성공적으로 초기화되었습니다.");
+                fetchCertifiedUsers();
+            } else {
+                alert(`초기화 실패: ${data.message}`);
+            }
+        } catch (error) {
+            console.error("Error clearing certified users:", error);
+        }
+    }
+
+    async function clearCardList() {
+        if (!confirm('모든 데이터를 초기화하시겠습니까?')) return;
+
+        try {
+            const response = await fetch('control/clearCardList', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({})
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                alert("모든 데이터가 성공적으로 초기화되었습니다.");
+                fetchDatabaseData();
+            } else {
+                alert(`초기화 실패: ${data.message}`);
+            }
+        } catch (error) {
+            console.error("Error clearing card data:", error);
+        }
+    }
 
     async function fetchCertifiedUsers() {
         try {
@@ -15,10 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP Error: ${response.status}`);
+                throw new Error('HTTP Error: ${response.status}');
             }
 
             const data = await response.json();
+
             if (data.success) {
                 displayList(data.data, "유저");
             } else {
@@ -42,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const data = await response.json();
+
             if (data.success) {
                 displayList(data.data, "데이터");
             } else {
@@ -67,6 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ? `
                 <p><strong>이메일:</strong> ${item.email}</p>
                 <p><strong>학교명:</strong> ${item.univName}</p>
+                <p><strong>인증시도횟수:</strong> ${item.count}</p>
+                <p><strong>인증여부:</strong> ${item.certified}</p>
                 <p><strong>인증 날짜:</strong> ${item.certified_date}</p>
                 <button class="delete-button" data-email="${item.email}">초기화</button>
             `
@@ -98,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
     async function clearUser(email) {
-        if (!confirm(`${email} 유저를 초기화하시겠습니까?`)) return;
+        if (!confirm('${email} 유저를 초기화하시겠습니까?')) return;
 
         try {
             const response = await fetch('control/clear', {
