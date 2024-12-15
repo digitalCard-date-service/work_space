@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function displayList(items, type) {
-    listContainer.innerHTML = ""; // 기존 내용을 비웁니다.
+    listContainer.innerHTML = ""; 
 
     if (!items.length) {
         listContainer.innerHTML = `<p>현재 ${type}가 없습니다.</p>`;
