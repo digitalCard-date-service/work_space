@@ -164,10 +164,10 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
     async function clearUser(email) {
-        if (!confirm('${email} 유저를 초기화하시겠습니까?')) return;
+        if (!confirm(`${email} 유저를 초기화하시겠습니까?`)) return;
 
         try {
-            const response = await fetch('control/clear', {
+            const response = await fetch('control/clearCertifiedList', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })

@@ -34,36 +34,23 @@ def control():
 
 @bp.route('/control/clearCertifiedList', methods=['POST'])
 def clear_certified_list():
-    try:
+    data = request.get_json()
+
+    if data:
+        email = data['email']
+        response = requests.post(f'{API_BASE_URL}/clear/{email}', headers={
+            'Content-Type': 'application/json'
+        }, json=({
+            'key': API_KEY,
+        }))
+    else:
         response = requests.post(f'{API_BASE_URL}/clear', headers={
             'Content-Type': 'application/json'
-        }, json={'key': API_KEY})
-        result = response.json()
-        return jsonify(result)
-    except Exception as e:
-        return jsonify({
-            "status": 500,
-            "success": False,
-            "message": f"An error occurred: {str(e)}"
-        })
-
-@bp.route('/control/clearCardList', methods=['POST'])
-def clear_card_list():
-    try:
-        # 모든 데이터를 삭제
-        Profile.query.delete()
-        db.session.commit()
-        return jsonify({
-            "status": 200,
-            "success": True,
-            "message": "All records have been deleted"
-        })
-    except Exception as e:
-        return jsonify({
-            "status": 500,
-            "success": False,
-            "message": f"An error occurred: {str(e)}"
-        })
+        }, json=({
+            'key': API_KEY,
+        }))
+    result = response.json()
+    return jsonify(result)
 
 @bp.route('/control/certifiedList', methods=['POST'])
 def certified_list():
