@@ -425,7 +425,8 @@ html {
     text-align: center;
     content: "Go step1 section"; 
     position: absolute;
-    left: 290px; 
+    right: 170px;
+    top: 20px; 
     transform: translateX(110%); 
     width: 100px; 
     background-color: #333; 
