@@ -1,11 +1,11 @@
- //인증 상태 확인
- function checkAuth() {
-     const authToken = getCookie('authToken');
-     if (!authToken) {
-         alert('로그인이 필요합니다.');
-         window.location.href = '/login'; // 로그인 페이지로 리디렉션
-     }
- }
+//인증 상태 확인
+function checkAuth() {
+    const authToken = getCookie('authToken');
+    if (!authToken) {
+        alert('로그인이 필요합니다.');
+        window.location.href = '/login'; // 로그인 페이지로 리디렉션
+    }
+}
 
 'use strict';
 //import { LOGIN_API } from '../config.js'
@@ -116,9 +116,9 @@ document.querySelector('.prove__checkButton').addEventListener('click', async ()
             alert('인증 성공! 로그인이 완료되었습니다.');
             // 특정 아이콘 요소 선택
             const checkIcon = document.querySelector('.check-icon');
-                if (checkIcon) {
-                    checkIcon.style.color = "green";
-                    }
+            if (checkIcon) {
+                checkIcon.style.color = "green";
+            }
 
             startSessionTimer(30); // 세션 타이머 30분 설정
             setTimeout(() => window.location.href = '/writing', 2000);

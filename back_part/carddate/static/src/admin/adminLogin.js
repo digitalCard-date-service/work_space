@@ -1,11 +1,5 @@
 'use strict';
 
-function setCookie(name, value, hours) {
-    const expiration = new Date();
-    expiration.setTime(expiration.getTime() + hours * 60 * 60 * 1000);
-    document.cookie = `${name}=${value}; expires=${expiration.toUTCString()}; path=/`;
-}
-
 document.getElementById("loginButton").addEventListener("click", async function () {
     const password = document.getElementById("password").value;
     const errorMessage = document.getElementById("errorMessage");
@@ -14,16 +8,40 @@ document.getElementById("loginButton").addEventListener("click", async function 
         const response = await fetch("/admin/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-            'password': password })
+            body: JSON.stringify({ 'password': password })
         });
 
         const data = await response.json();
 
         if (response.ok && data.success) {
-            setCookie("authToken", "valid", 1);
             alert("로그인 성공");
-            window.location.href = "/admin/control";
+            localStorage.setItem('accessToken', data.accessToken);
+
+            try {
+                // 2. /admin/control 호출 (토큰 포함)
+                const token = localStorage.getItem('accessToken');
+                const controlResponse = await fetch("/admin/control", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                const pageContent = await controlResponse.text();
+                document.open();
+                document.write(pageContent);
+                document.close();
+
+                if (controlResponse.ok) {
+                    alert("관리자 페이지에 접근 성공!");
+                } else {
+                    errorMessage.textContent = "인증에 실패했습니다.";
+                }
+            } catch (controlError) {
+                console.error("관리자 페이지 호출 중 오류 발생:", controlError);
+                errorMessage.textContent = "관리자 페이지에 접근할 수 없습니다.";
+            }
+            
         } else {
             errorMessage.textContent = data.message || "비밀번호가 틀렸습니다. 다시 시도하세요.";
         }

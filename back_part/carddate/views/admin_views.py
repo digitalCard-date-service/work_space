@@ -1,4 +1,8 @@
 from flask import Blueprint, render_template, jsonify, request
+from flask_jwt_extended import (
+    JWTManager, create_access_token, jwt_required, get_jwt_identity
+)
+from datetime import timedelta
 import requests
 import os
 
@@ -8,6 +12,8 @@ from .. import db
 API_BASE_URL = 'https://univcert.com/api/v1'
 API_KEY = os.environ.get('UNIV_KEY')
 PASSWORD = os.environ.get('PASSWORD')
+JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
+
 
 bp = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -19,7 +25,9 @@ def index():
 def submit():
     password = request.get_json()['password']
     if password == PASSWORD:
+        accessToken = create_access_token(identity='admin', expires_delta =timedelta(minutes=10))
         return jsonify({
+            "accessToken": accessToken,
             "status": 200,
             "success": True
         })
@@ -29,17 +37,19 @@ def submit():
     })
 
 @bp.route('/control')
+@jwt_required()
 def control():
     return render_template('master.html')
 
 @bp.route('/control/clearCertifiedList', methods=['POST'])
+@jwt_required()
 def clear_certified_list():
     data = request.get_json()
 
     if data:
         email = data['email']
         response = requests.post(f'{API_BASE_URL}/clear/{email}', headers={
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         }, json=({
             'key': API_KEY,
         }))
@@ -53,6 +63,7 @@ def clear_certified_list():
     return jsonify(result)
 
 @bp.route('/control/certifiedList', methods=['POST'])
+@jwt_required()
 def certified_list():
     response = requests.post(f'{API_BASE_URL}/certifiedlist', headers={
         'Content-Type': 'application/json'
@@ -63,6 +74,7 @@ def certified_list():
     return jsonify(result)
 
 @bp.route('/control/cardList', methods=['POST'])
+@jwt_required()
 def card_list():
     try:
         # 모든 Profile 데이터를 id 기준으로 오름차순 정렬
@@ -101,6 +113,7 @@ def card_list():
         })
 
 @bp.route('/control/delete', methods=['POST'])
+@jwt_required()
 def delete():
     try:
         # 프론트엔드에서 요청으로 전달된 JSON 데이터에서 id 추출

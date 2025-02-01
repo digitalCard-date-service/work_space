@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fetchUsersButton = document.getElementById("fetchUsersButton");
     const fetchDataButton = document.getElementById("fetchDataButton");
     const listContainer = document.getElementById("list-container");
+    const token = localStorage.getItem('accessToken');
 
     clearAllButton.addEventListener("click", () => {
         if (clearAllTarget === "certifiedList") {
@@ -30,7 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch('control/clearCertifiedList', {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({})
             });
 
@@ -52,7 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch('control/clearCardList', {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({})
             });
 
@@ -72,7 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch('control/certifiedList', {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({})
             });
 
@@ -96,7 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch('control/cardList', {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({})
             });
 
@@ -117,18 +130,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function displayList(items, type) {
-    listContainer.innerHTML = ""; 
+        listContainer.innerHTML = "";
 
-    if (!items.length) {
-        listContainer.innerHTML = `<p>현재 ${type}가 없습니다.</p>`;
-        return;
-    }
+        if (!items.length) {
+            listContainer.innerHTML = `<p>현재 ${type}가 없습니다.</p>`;
+            return;
+        }
 
-    items.forEach(item => {
-        const itemDiv = document.createElement("div");
-        itemDiv.className = "list-item";
-        itemDiv.innerHTML = type === "유저"
-            ? `
+        items.forEach(item => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "list-item";
+            itemDiv.innerHTML = type === "유저"
+                ? `
                 <p><strong>이메일:</strong> ${item.email}</p>
                 <p><strong>학교명:</strong> ${item.univName}</p>
                 <p><strong>인증시도횟수:</strong> ${item.count}</p>
@@ -136,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p><strong>인증 날짜:</strong> ${item.certified_date}</p>
                 <button class="delete-button" data-email="${item.email}">초기화</button>
             `
-            : `
+                : `
                 <p><strong>ID:</strong> ${item.id}</p>
                 <p><strong>이름:</strong> ${item.name}</p>
                 <p><strong>성별:</strong> ${item.gender}</p>
@@ -152,16 +165,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button class="delete-button" data-id="${item.id}">삭제</button>
             `;
 
-        listContainer.appendChild(itemDiv);
+            listContainer.appendChild(itemDiv);
 
-        const deleteButton = itemDiv.querySelector(".delete-button");
-        if (type === "유저") {
-            deleteButton.addEventListener("click", () => clearUser(item.email));
-        } else {
-            deleteButton.addEventListener("click", () => deleteDatabaseData(item.id));
-        }
-    });
-}
+            const deleteButton = itemDiv.querySelector(".delete-button");
+            if (type === "유저") {
+                deleteButton.addEventListener("click", () => clearUser(item.email));
+            } else {
+                deleteButton.addEventListener("click", () => deleteDatabaseData(item.id));
+            }
+        });
+    }
 
     async function clearUser(email) {
         if (!confirm(`${email} 유저를 초기화하시겠습니까?`)) return;
@@ -169,7 +182,10 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch('control/clearCertifiedList', {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({ email })
             });
 
@@ -191,7 +207,10 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch('control/delete', {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({ id })
             });
 

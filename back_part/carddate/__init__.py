@@ -1,13 +1,17 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
 
 db = SQLAlchemy()
+jwt = JWTManager()
 migrate = Migrate()
 def create_app():
     app = Flask(__name__)
     app.config.from_object('config.Config')
-    app.config.from_object('config.Config')
+    app.config['JWT_TOKEN_LOCATION'] = ['headers']
+    
+    jwt = JWTManager(app)
 
     # ORM
     db.init_app(app)
