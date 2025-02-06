@@ -1,8 +1,8 @@
-"""empty message
+"""Inital migration for MariaDB
 
-Revision ID: 703d3ac9d733
+Revision ID: c2932052d5ee
 Revises: 
-Create Date: 2024-12-15 15:27:00.117784
+Create Date: 2025-02-06 18:24:34.741086
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '703d3ac9d733'
+revision = 'c2932052d5ee'
 down_revision = None
 branch_labels = None
 depends_on = None
