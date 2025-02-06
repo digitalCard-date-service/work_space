@@ -15,7 +15,8 @@ document.getElementById("loginButton").addEventListener("click", async function 
 
         if (response.ok && data.success) {
             alert("로그인 성공");
-            localStorage.setItem('accessToken', data.accessToken);
+            localStorage.setItem('accessToken', data.accessToken); // 관리자 jwt토큰 부여
+            document.cookie = `authToken=admin; path=/; secure; samesite=strict`;
 
             try {
                 // 2. /admin/control 호출 (토큰 포함)
