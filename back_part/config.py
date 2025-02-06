@@ -1,5 +1,9 @@
 import os
 import logging
+import pymysql 
+
+pymysql.install_as_MySQLdb() 
+
 class Config:
     DATABASE_URL = os.getenv('JAWSDB_MARIA_URL')
 
