@@ -1107,10 +1107,7 @@ LIMIT 10 OFFSET 0;
 <summary><h2>✉️ Contact</h2></summary>
 	
 - Frontend Developers
-  - 조유찬: yuchancho174@gmail.com
-  - 이서인: guapapamama@gmail.com
 - Backend Developers
-  - 정다운: daun5535@gmail.com
-  - 문효재: dsdk1088@gmail.com
+- 
  </details>
 
