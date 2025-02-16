@@ -29,11 +29,11 @@
 	
 <summary><h2>🔫 사이트 이용</h2></summary>	
 
-[배포 링크](https://morning-sands-38586-8c5d0863d417.herokuapp.com/)
+[배포 링크](https://carddate-56c54625749d.herokuapp.com/)
 
 [테스트 영상](https://youtu.be/rtmiQ2zEn14)
 
-현재는 실제 서비스가 제공되지 않습니다. 나중에 더 나은 웹사이트로 찾아뵙도록 하겠습니다.
+현재는 실제 서비스가 제공되지 않습니다. 새롭게 리빌딩 후 나중에 더 나은 웹사이트로 찾아뵙도록 하겠습니다.
 
 </details>
 
@@ -1107,10 +1107,7 @@ LIMIT 10 OFFSET 0;
 <summary><h2>✉️ Contact</h2></summary>
 	
 - Frontend Developers
-  - 조유찬: yuchancho174@gmail.com
-  - 이서인: guapapamama@gmail.com
 - Backend Developers
-  - 정다운: daun5535@gmail.com
-  - 문효재: dsdk1088@gmail.com
+- 
  </details>
 
