@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 confirmButton.disabled = true;
                 nextButton.disabled = false;
 
-                fetchDeleteCard(cards[currentCardIndex].id);
+                // fetchDeleteCard(cards[currentCardIndex].id);
 
                 // 확정된 카드 정보를 sessionStorage에 저장
                 const confirmedCard = {

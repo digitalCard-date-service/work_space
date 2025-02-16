@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 오픈 버튼 클릭 이벤트 핸들러
     openButton.addEventListener('click', async () => {
         if (isRecommendationOpened) {
-            alert("이미 카드를 오픈했습니다."); 
+            alert("이미 카드를 오픈했습니다.");
             return;
         }
 
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 카드 클릭 이벤트 핸들러
     card.addEventListener('click', () => {
         if (!isRecommendationOpened) {
-            alert("먼저 오픈 버튼을 클릭하세요."); 
+            alert("먼저 오픈 버튼을 클릭하세요.");
             return;
         }
         isFlipped = !isFlipped;
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             infoRows.forEach(row => row.querySelector('.value').style.visibility = 'visible');
             openButton.disabled = true;
 
-            fetchDeleteCard(cardId);
+            // fetchDeleteCard(cardId);
 
             // 저장된 카드 데이터를 sessionStorage에 저장
             const confirmedCard = {
